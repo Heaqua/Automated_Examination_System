@@ -51,30 +51,21 @@ public class StudentMainPage extends JFrame{
 
         //Event
         //click "view exam schedule"
-        viewExam.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                new ExamSchedule();
-            }
+        viewExam.addActionListener(e -> {
+            setVisible(false);
+            new ExamSchedule();
         });
 
         //click "take an exam"
-        take.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                new TakeAnExam();
-            }
+        take.addActionListener(e -> {
+            setVisible(false);
+            new TakeAnExam();
         });
 
         //click "reports and results"
-        result.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                new ReportsAndResults();
-            }
+        result.addActionListener(e -> {
+            setVisible(false);
+            new ReportsAndResults();
         });
 
     }

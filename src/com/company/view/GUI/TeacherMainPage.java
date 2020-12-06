@@ -8,16 +8,14 @@ import java.awt.event.ActionListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
-public class TeacherMainPage {
-    public static void main(String[] args) {
-        place();
-    }
-    private static void place(){
-        JFrame Teacher = new JFrame("Teacher login page");
+public class TeacherMainPage extends JFrame {
+
+    public TeacherMainPage(){
+        super("Teacher login page");
         JPanel panel = new JPanel();
-        Teacher.setBounds(500,300,700,600);
-        Teacher.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Teacher.add(panel);
+        setBounds(500,300,700,600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(panel);
         panel.setLayout(null);
 
         //set fonts
@@ -51,35 +49,26 @@ public class TeacherMainPage {
         result.setFont(font1);
         panel.add(result);
 
-        Teacher.setVisible(true);
-        Teacher.setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setVisible(true);
+        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
 
         //Event
         //click the button "Set an exam"
-        setAnExam.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Teacher.setVisible(false);
-                new SetAnExam();
-            }
+        setAnExam.addActionListener(e -> {
+            setVisible(false);
+            new SetAnExam();
         });
 
         //Click the button "mark papers"
-        markPapers.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Teacher.setVisible(false);
-                new MarkPapers();
-            }
+        markPapers.addActionListener(e -> {
+            setVisible(false);
+            new MarkPapers();
         });
 
         //click the button "View Examination results"
-        result.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Teacher.setVisible(false);
-                new ViewExaminationResults();
-            }
+        result.addActionListener(e -> {
+            setVisible(false);
+            new ViewExaminationResults();
         });
 
     }

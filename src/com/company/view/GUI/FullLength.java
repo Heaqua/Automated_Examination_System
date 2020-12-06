@@ -5,16 +5,14 @@ import java.awt.*;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
-public class FullLength {
-    public static void main(String[] args) {
-        place();
-    }
-    private static void place(){
-        JFrame Standard = new JFrame("Standard full-length test questions");
+public class FullLength extends JFrame {
+
+    public FullLength(){
+
         JPanel panel = new JPanel();
-        Standard.setBounds(500,300,700,600);
-        Standard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Standard.add(panel);
+        setBounds(500,300,700,600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(panel);
         panel.setLayout(null);
 
         //set font
@@ -91,8 +89,9 @@ public class FullLength {
         panel.add(save);
         panel.add(next);
 
-        Standard.setVisible(true);
-        Standard. setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setVisible(true);
+        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+
 
     }
 }

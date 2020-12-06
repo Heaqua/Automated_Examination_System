@@ -7,19 +7,17 @@ import java.awt.event.ActionListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
-public class QuestionType {
-    public static void main(String[] args) {
-        place();
-    }
-    private static void place(){
-        JFrame QType = new JFrame("Question Type");
+public class QuestionType extends JFrame {
+
+    public QuestionType(){
+        super("Question Type");
         JPanel panel = new JPanel();
 
         //set frame size
         int num = 1;
-        QType.setBounds(500,300,700,600);
-        QType.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        QType.add(panel);
+        setBounds(500,300,700,600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(panel);
         panel.setLayout(null);
 
         //set fonts
@@ -53,32 +51,23 @@ public class QuestionType {
         panel.add(standard);
 
 
-        QType.setVisible(true);
-        QType.setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setVisible(true);
+        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
 
 
 
         //Event
-        Mul.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                QType.setVisible(false);
-                MultipleChoice.main();
-            }
+        Mul.addActionListener(e -> {
+           setVisible(false);
+           new MultipleChoice();
         });
 
-        Fill.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        Fill.addActionListener(e -> {
 
-            }
         });
 
-        standard.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        standard.addActionListener(e -> {
 
-            }
         });
 
     }

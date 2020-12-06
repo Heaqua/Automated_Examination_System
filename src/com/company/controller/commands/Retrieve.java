@@ -4,6 +4,8 @@ import oracle.jdbc.driver.*;
 
 import com.company.TestApplication;
 public class Retrieve {
+    // Static methods are for statements. non-static methods are for prepared statements.
+    // You can create a Retrieve instance and use it as a prepared statement.
     public static Statement stmt;
     public PreparedStatement preStmt;
     public static OracleConnection conn = TestApplication.conn;
@@ -21,8 +23,10 @@ public class Retrieve {
         return rset;
     }
 
-    public Retrieve(String prepared){
-
+    public Retrieve(String prepared) throws SQLException {
+        preStmt = conn.prepareStatement(prepared);
         return;
     }
+
+    public ResultSet execute()
 }

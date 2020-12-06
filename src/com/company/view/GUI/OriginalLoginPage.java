@@ -40,7 +40,7 @@ public class OriginalLoginPage extends JFrame{
         contentPane.add(studentButton);
 
         //set the background picture
-        ImageIcon image=new ImageIcon("src\\Images\\background1.jpg");
+        ImageIcon image=new ImageIcon("src\\com\\company\\view\\Images\\background1.jpg");
         JLabel lbBg = new JLabel(image);
         lbBg.setBounds(0, 0, 700, 600);
         contentPane.add(lbBg);
@@ -50,7 +50,7 @@ public class OriginalLoginPage extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
 
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
 
         //Event
         studentButton.addActionListener(e -> {

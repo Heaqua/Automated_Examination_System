@@ -50,13 +50,14 @@ public class LoginPage extends JFrame {
         panel.add(loginButton);
 
         //set the background picture
-        ImageIcon image=new ImageIcon("src\\Images\\background1.jpg");
+        ImageIcon image=new ImageIcon("");
         JLabel lbBg = new JLabel(image);
         lbBg.setBounds(0, 0, 700, 600);
         panel.add(lbBg);
 
         setVisible(true);
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("com\\company\\view\\Images\\logo1.png"));
+
 
         //Event
         loginButton.addActionListener(e -> {

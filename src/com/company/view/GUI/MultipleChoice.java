@@ -3,22 +3,30 @@ package com.company.view.GUI;
 import com.sun.javaws.util.JfxHelper;
 
 import javax.swing.*;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.plaf.FontUIResource;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Enumeration;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class MultipleChoice extends JFrame {
-
+        public static void main(String[] args){
+            new MultipleChoice();
+        }
         public MultipleChoice(){
             super("Set Multiple Choice Question");
             JPanel panel = new JPanel();
-            setSize(700,600);
-            setLocationRelativeTo(null);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            add(panel);
-            setVisible(true);
+            this.setSize(700,600);
+            this.setLocationRelativeTo(null);
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.add(panel);
+
             int number;
             panel.setLayout(null);
             number = 1;
@@ -41,8 +49,8 @@ public class MultipleChoice extends JFrame {
             JRadioButton Com = new JRadioButton("Compulsory");
 
             JRadioButton Optional = new JRadioButton("Optional");
-            JButton save = new JButton("Save and Complete");
-            JButton next = new JButton("Next");
+            JButton save = new JButton("Save and Next");
+            JButton complete = new JButton("Complete");
             ButtonGroup Group = new ButtonGroup();
             Group.add(Com);
             Group.add(Optional);
@@ -90,8 +98,8 @@ public class MultipleChoice extends JFrame {
             Optional.setFont(font);
             save.setBounds(450,460,200,30);
             save.setFont(font);
-            next.setBounds(450,500,200,30);
-            next.setFont(font);
+            complete.setBounds(450,500,200,30);
+            complete.setFont(font);
             panel.add(count);
             panel.add(hint);
             panel.add(hint2);
@@ -110,10 +118,79 @@ public class MultipleChoice extends JFrame {
             panel.add(Optional);
             panel.add(OR);
             panel.add(save);
-            panel.add(next);
-            setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+            panel.add(complete);
+            this.setIconImage(getDefaultToolkit().getImage("src\\com\\company\\view\\Images\\logo1.png"));
+            this.setVisible(true);
 
-        //Event
+
+
+            //Event
+            score2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            });
+
+            question.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+
+                }
+            });
+
+            A0.addActionListener(e -> {
+
+            });
+
+            B0.addActionListener(e -> {
+
+            });
+
+            C0.addActionListener(e -> {
+
+            });
+
+            D0.addActionListener(e -> {
+
+            });
+
+            Optional.addActionListener(e -> {
+
+            });
+
+            Com.addActionListener(e -> {
+
+            });
+
+            A.addActionListener(e -> {
+
+            });
+
+            B.addActionListener(e -> {
+
+            });
+
+            C.addActionListener(e -> {
+
+            });
+
+            D.addActionListener(e -> {
+
+            });
+
+
+
 
 
 

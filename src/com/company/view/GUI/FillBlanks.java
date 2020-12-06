@@ -106,11 +106,8 @@ public class FillBlanks extends JFrame {
         setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
         this.setVisible(true);
 
-        score2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        score2.addActionListener(e -> {
 
-            }
         });
 
         question.addAncestorListener(new AncestorListener() {
@@ -130,25 +127,16 @@ public class FillBlanks extends JFrame {
             }
         });
 
-        answer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        answer.addActionListener(e -> {
 
-            }
         });
 
-        Com.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        Com.addActionListener(e -> {
 
-            }
         });
 
-        Optional.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        Optional.addActionListener(e -> {
 
-            }
         });
 
 

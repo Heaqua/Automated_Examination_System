@@ -62,7 +62,7 @@ public class TeacherMainPage extends JFrame {
         //Click the button "mark papers"
         markPapers.addActionListener(e -> {
             setVisible(false);
-            new MarkPapers();
+            //new MarkPapers();
         });
 
         //click the button "View Examination results"

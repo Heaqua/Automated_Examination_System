@@ -44,8 +44,8 @@ public class FillBlanks extends JFrame {
         question.setLineWrap(true);
         panel.add(question);
 
-        JScrollPane jsp=new JScrollPane(question);    //将文本域放入滚动窗口
-        Dimension size=question.getPreferredSize();    //获得文本域的首选大小
+        JScrollPane jsp=new JScrollPane(question);
+        Dimension size=question.getPreferredSize();
         jsp.setBounds(10,90,600,200);
         panel.add(jsp);
 

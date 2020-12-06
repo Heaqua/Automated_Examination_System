@@ -1,4 +1,7 @@
 package com.company.view.GUI;
 
-public class ExamSchedule {
+import javax.swing.*;
+
+public class ExamSchedule extends JFrame {
+
 }

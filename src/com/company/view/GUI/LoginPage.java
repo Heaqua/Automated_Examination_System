@@ -9,16 +9,19 @@ import java.awt.event.ActionListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 
-public class LoginPage extends JFrame {
+public class LoginPage {
+    public static void main(String[] args) {
+        place();
 
-    public LoginPage(){
+    }
 
-        super("Login page");
+    private static void place(){
+        JFrame login = new JFrame("Login page");
         JPanel panel = new JPanel();
-        setSize(700,600);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(panel);
+        login.setSize(700,600);
+        login.setLocationRelativeTo(null);
+        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        login.add(panel);
         panel.setLayout(null);
         Font font1 = new Font("Times New Roman",Font.ITALIC,40);
         Font font = new Font("Times New Roman",Font.ITALIC,30);
@@ -50,34 +53,35 @@ public class LoginPage extends JFrame {
         panel.add(loginButton);
 
         //set the background picture
-        ImageIcon image=new ImageIcon("");
+        ImageIcon image=new ImageIcon("src\\com\\company\\view\\Images\\background1.jpg");
         JLabel lbBg = new JLabel(image);
         lbBg.setBounds(0, 0, 700, 600);
         panel.add(lbBg);
 
-        setVisible(true);
-        setIconImage(getDefaultToolkit().getImage("com\\company\\view\\Images\\logo1.png"));
-
+        login.setVisible(true);
+        login.setIconImage(getDefaultToolkit().getImage("src\\com\\company\\view\\Images\\logo1.png"));
 
         //Event
-        loginButton.addActionListener(e -> {
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-            //TODO
-            //judge the user ID and password
-            //If the user input a student account, then turn to student main page
-
-
-
-            //If the user input a teacher account, then turn to teacher main page
-
-
-            //else
-            //a remainder showing "Error: Login failed (name/password refused)"
-            JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)",
-                    "Login failed", JOptionPane.INFORMATION_MESSAGE);
+                //TODO
+                //judge the user ID and password
+                //If the user input a student account, then turn to student main page
 
 
 
+                //If the user input a teacher account, then turn to teacher main page
+
+
+                //else
+                //a remainder showing "Error: Login failed (name/password refused)"
+                //JOptionPane.showInternalMessageDialog(loginButton, "Error: Login failed (name/password refused)","Login failed", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+            }
         });
 
     }

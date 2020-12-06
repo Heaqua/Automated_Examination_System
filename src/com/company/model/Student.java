@@ -5,7 +5,7 @@ public class Student {
     private String stu_id;
     // private Exam[] exams;
 
-    public boolean login(String name, String stu_id){
+    public static boolean login(String name, String stu_id){
 
         return true;
     }

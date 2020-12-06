@@ -1,4 +1,7 @@
 package com.company.view.GUI;
 
-public class ReportsAndResults {
+import javax.swing.*;
+
+public class ReportsAndResults extends JFrame {
+
 }

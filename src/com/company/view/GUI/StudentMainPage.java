@@ -11,11 +11,11 @@ import static java.awt.Toolkit.getDefaultToolkit;
 
 public class StudentMainPage extends JFrame{
     public static void main(String[] args) {
-        new StudentMainPage("CSCC");
+        new StudentMainPage();
     }
 
-    public StudentMainPage(String title){
-        super(title);
+    public StudentMainPage(){
+        super("Main Page");
         JPanel panel = new JPanel();
         setSize(700,600);
         setLocationRelativeTo(null);

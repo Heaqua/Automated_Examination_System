@@ -12,7 +12,7 @@ public class TeacherMainPage extends JFrame {
         new TeacherMainPage();
     }
     public TeacherMainPage(){
-        super("Teacher login page");
+        super("Main Page");
         JPanel panel = new JPanel();
         setSize(700,600);
         setLocationRelativeTo(null);

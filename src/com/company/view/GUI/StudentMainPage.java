@@ -8,11 +8,15 @@ import java.awt.event.ActionListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class StudentMainPage extends JFrame{
+    public static void main(String[] args) {
+        new StudentMainPage("CSCC");
+    }
 
     public StudentMainPage(String title){
         super(title);
         JPanel panel = new JPanel();
-        setBounds(500,300,700,600);
+        setSize(700,600);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(panel);
         panel.setLayout(null);
@@ -46,7 +50,7 @@ public class StudentMainPage extends JFrame{
         result.setBounds(140,340,400,60);
         result.setFont(font1);
         panel.add(result);
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
         setVisible(true);
 
         //Event

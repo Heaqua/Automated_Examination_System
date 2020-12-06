@@ -92,18 +92,18 @@ public class FillBlanks extends JFrame {
         panel.add(Optional);
 
         //set two buttons for deciding whether complete or not
-        JButton save = new JButton("Save and Next");
-        JButton complete = new JButton("Complete");
+        JButton save = new JButton("Save and Complete");
+        JButton next = new JButton("Save and Next");
         save.setBounds(450,460,200,30);
         save.setFont(font);
-        complete.setBounds(450,500,200,30);
-        complete.setFont(font);
+        next.setBounds(450,500,200,30);
+        next.setFont(font);
         panel.add(save);
-        panel.add(complete);
+        panel.add(next);
 
         setSize(700,600);
         setLocationRelativeTo(null);
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
         this.setVisible(true);
 
         score2.addActionListener(e -> {
@@ -143,11 +143,21 @@ public class FillBlanks extends JFrame {
 
         });
 
-        complete.addActionListener(e -> {
+        next.addActionListener(e -> {
 
         });
+        //Event
+        //click the button "Save and Complete"
+        save.addActionListener(e -> {
+            setVisible(false);
+            new TeacherMainPage();
+        });
 
-
+        //Click the button "Save and Next"
+        next.addActionListener(e -> {
+            setVisible(false);
+            new QuestionType();
+        });
 
 
     }

@@ -13,7 +13,8 @@ public class TeacherMainPage extends JFrame {
     public TeacherMainPage(){
         super("Teacher login page");
         JPanel panel = new JPanel();
-        setBounds(500,300,700,600);
+        setSize(700,600);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(panel);
         panel.setLayout(null);
@@ -50,7 +51,7 @@ public class TeacherMainPage extends JFrame {
         panel.add(result);
 
         setVisible(true);
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
 
         //Event
         //click the button "Set an exam"

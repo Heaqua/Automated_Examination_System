@@ -50,13 +50,13 @@ public class LoginPage extends JFrame {
         panel.add(loginButton);
 
         //set the background picture
-        ImageIcon image=new ImageIcon("");
+        ImageIcon image=new ImageIcon("src/com/company/view/Images/background1.jpg");
         JLabel lbBg = new JLabel(image);
         lbBg.setBounds(0, 0, 700, 600);
         panel.add(lbBg);
 
         setVisible(true);
-        setIconImage(getDefaultToolkit().getImage("com\\company\\view\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
 
 
         //Event
@@ -73,8 +73,8 @@ public class LoginPage extends JFrame {
 
             //else
             //a remainder showing "Error: Login failed (name/password refused)"
-            JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)",
-                    "Login failed", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)",
+                    //"Login failed", JOptionPane.INFORMATION_MESSAGE);
 
 
 

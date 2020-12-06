@@ -49,8 +49,8 @@ public class MultipleChoice extends JFrame {
             JRadioButton Com = new JRadioButton("Compulsory");
 
             JRadioButton Optional = new JRadioButton("Optional");
-            JButton save = new JButton("Save and Next");
-            JButton complete = new JButton("Complete");
+            JButton save = new JButton("Save and Complete");
+            JButton next = new JButton("Save and Next");
             ButtonGroup Group = new ButtonGroup();
             Group.add(Com);
             Group.add(Optional);
@@ -70,7 +70,12 @@ public class MultipleChoice extends JFrame {
             score.setBounds(450,20,100,70);
             score.setFont(font);
             question.setBounds(10,90,600,100);
+            question.setLineWrap(true);
             question.setFont(font);
+            panel.add(question);
+            JScrollPane roll=new JScrollPane(question);
+            roll.setBounds(10,90,600,100);
+            panel.add(roll);
             score2.setBounds(550,30,40,40);
             score2.setFont(font);
 
@@ -98,13 +103,12 @@ public class MultipleChoice extends JFrame {
             Optional.setFont(font);
             save.setBounds(450,460,200,30);
             save.setFont(font);
-            complete.setBounds(450,500,200,30);
-            complete.setFont(font);
+            next.setBounds(450,500,200,30);
+            next.setFont(font);
             panel.add(count);
             panel.add(hint);
             panel.add(hint2);
             panel.add(score);
-            panel.add(question);
             panel.add(score2);
             panel.add(A);
             panel.add(B);
@@ -118,8 +122,8 @@ public class MultipleChoice extends JFrame {
             panel.add(Optional);
             panel.add(OR);
             panel.add(save);
-            panel.add(complete);
-            this.setIconImage(getDefaultToolkit().getImage("src\\com\\company\\view\\Images\\logo1.png"));
+            panel.add(next);
+            this.setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
             this.setVisible(true);
 
 
@@ -193,16 +197,21 @@ public class MultipleChoice extends JFrame {
 
             });
 
-            complete.addActionListener(e -> {
+            next.addActionListener(e -> {
 
             });
+            //Event
+            //click the button "Save and Complete"
+            save.addActionListener(e -> {
+                setVisible(false);
+                new TeacherMainPage();
+            });
 
-
-
-
-
-
-
+            //Click the button "Save and Next"
+            next.addActionListener(e -> {
+                setVisible(false);
+                new QuestionType();
+            });
 
     }
 }

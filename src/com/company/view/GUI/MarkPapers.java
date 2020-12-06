@@ -63,8 +63,7 @@ public class MarkPapers extends JFrame {
         panel.add(score2);
 
         // full mark
-        int marks = 5;
-        JLabel full = new JLabel("/ "+marks);
+        JLabel full = new JLabel("/ "+ score);
         full.setBounds(605,260,70,40);
         full.setFont(font);
         panel.add(full);
@@ -95,6 +94,20 @@ public class MarkPapers extends JFrame {
         quit.setBounds(455,490,190,40);
         quit.setFont(font1);
         panel.add(quit);
+        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+
+        //Event
+        //click the button "Save and next"
+        save.addActionListener(e -> {
+            setVisible(false);
+            new MarkPapers("3+4 = ?","7",3);
+        });
+
+        //Click the button "Save and quit"
+        quit.addActionListener(e -> {
+            setVisible(false);
+            new TeacherMainPage();
+        });
 
         this.setVisible(true);
     }

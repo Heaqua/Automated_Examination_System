@@ -11,8 +11,8 @@ import static java.awt.Toolkit.getDefaultToolkit;
 
 public class OriginalLoginPage extends JFrame{
     JLabel label;
-    public OriginalLoginPage(String title){
-        super(title);
+    public OriginalLoginPage(){
+        super("Online Examination System");
 
         //settings and fonts
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

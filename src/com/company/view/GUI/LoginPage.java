@@ -69,7 +69,8 @@ public class LoginPage extends JFrame {
 
 
             //If the user input a teacher account, then turn to teacher main page
-
+            setVisible(false);
+            new TeacherMainPage();
 
             //else
             //a remainder showing "Error: Login failed (name/password refused)"

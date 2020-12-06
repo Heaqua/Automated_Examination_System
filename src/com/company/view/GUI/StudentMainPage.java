@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
@@ -50,7 +52,16 @@ public class StudentMainPage extends JFrame{
         result.setBounds(140,340,400,60);
         result.setFont(font1);
         panel.add(result);
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+
+        //log-out logo
+
+
+        ImageIcon image = new ImageIcon("src\\com\\company\\view\\Images\\logout.jpg");
+        JLabel logOut=new JLabel(image);
+        logOut.setBounds(635,1,30,30);
+        panel.add(logOut);
+
         setVisible(true);
 
         //Event
@@ -72,6 +83,33 @@ public class StudentMainPage extends JFrame{
             new ReportsAndResults();
         });
 
+        logOut.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                setVisible(false);
+                new OriginalLoginPage();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
     }
 
 

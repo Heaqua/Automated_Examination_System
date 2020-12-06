@@ -10,7 +10,7 @@ public class Application
 {
     public static void main(String args[]) throws SQLException, IOException
     {
-        new OriginalLoginPage("Online Examination System");
+        new OriginalLoginPage();
         String username, password;
         username = "\"19079968d\"";			// Your Oracle Account ID
         password = "fyntaioc"; 		// Password of Oracle Account

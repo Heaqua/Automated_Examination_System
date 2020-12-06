@@ -1,6 +1,6 @@
 package com.company.view.GUI;
 
-import GUI.LoginPage;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,19 +53,14 @@ public class OriginalLoginPage extends JFrame{
         setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
 
         //Event
-        studentButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                LoginPage.main();
-            }
+        studentButton.addActionListener(e -> {
+            setVisible(false);
+            new LoginPage();
         });
-        teacherButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                LoginPage.main();
-            }
+
+        teacherButton.addActionListener(e -> {
+            setVisible(false);
+            new LoginPage();
         });
     }
 }

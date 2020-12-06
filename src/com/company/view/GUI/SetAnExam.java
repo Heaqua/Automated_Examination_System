@@ -115,6 +115,14 @@ public class SetAnExam extends JFrame {
         startBu.setBounds(530,470,100,50);
         startBu.setFont(font3);
         panel.add(startBu);
+        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+
+        //Event
+        //click the button "Save and Complete"
+        startBu.addActionListener(e -> {
+            setVisible(false);
+            new QuestionType();
+        });
 
 
 

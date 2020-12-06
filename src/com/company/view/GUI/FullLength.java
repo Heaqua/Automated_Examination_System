@@ -12,7 +12,7 @@ import static java.awt.Toolkit.getDefaultToolkit;
 public class FullLength extends JFrame {
     public static void main(String[] args){new FullLength();}
     public FullLength(){
-
+        super("Full length test question");
         JPanel panel = new JPanel();
         setBounds(500,300,700,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,6 +41,10 @@ public class FullLength extends JFrame {
         question.setFont(font);
         panel.add(question);
 
+        JScrollPane roll=new JScrollPane(question);
+        roll.setBounds(10,90,600,200);
+        panel.add(roll);
+
         //set the score
         JLabel score = new JLabel("Set score : ");
         score.setBounds(450,20,100,70);
@@ -65,6 +69,10 @@ public class FullLength extends JFrame {
         answer.setFont(font);
         panel.add(answer);
 
+        JScrollPane roll1=new JScrollPane(answer);
+        roll1.setBounds(10,350,400,100);
+        panel.add(roll1);
+
         //set compulsory or optional button and a "OR" label
         JLabel OR = new JLabel("OR");
         JRadioButton Com = new JRadioButton("Compulsory");
@@ -84,17 +92,17 @@ public class FullLength extends JFrame {
         panel.add(Optional);
 
         //set two buttons for deciding whether complete or not
-        JButton save = new JButton("Save and Next");
-        JButton complete = new JButton("Complete");
+        JButton save = new JButton("Save and Complete");
+        JButton next = new JButton("Save and Next");
         save.setBounds(450,460,200,30);
         save.setFont(font);
-        complete.setBounds(450,500,200,30);
-        complete.setFont(font);
+        next.setBounds(450,500,200,30);
+        next.setFont(font);
         panel.add(save);
-        panel.add(complete);
+        panel.add(next);
 
 
-        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\view\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
         setSize(700,600);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -133,24 +141,18 @@ public class FullLength extends JFrame {
 
         });
 
-        save.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
+        //Event
+        //click the button "Save and Complete"
+        save.addActionListener(e -> {
+            setVisible(false);
+            new TeacherMainPage();
         });
 
-        complete.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
+        //Click the button "Save and Next"
+        next.addActionListener(e -> {
+            setVisible(false);
+            new QuestionType();
         });
-
-
-
-
-
 
     }
 }

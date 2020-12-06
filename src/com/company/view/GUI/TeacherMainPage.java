@@ -1,6 +1,5 @@
 package com.company.view.GUI;
 
-import GUI.SetAnExam;
 
 import javax.swing.*;
 import java.awt.*;

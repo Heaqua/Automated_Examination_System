@@ -62,6 +62,7 @@ public class LoginPage extends JFrame {
         //Event
         loginButton.addActionListener(e -> {
 
+
             //TODO
             //judge the user ID and password
             //If the user input a student account, then turn to student main page
@@ -76,6 +77,10 @@ public class LoginPage extends JFrame {
             //a remainder showing "Error: Login failed (name/password refused)"
             //JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)",
                     //"Login failed", JOptionPane.INFORMATION_MESSAGE);
+
+                setVisible(false);
+                new TeacherMainPage();
+
 
 
 

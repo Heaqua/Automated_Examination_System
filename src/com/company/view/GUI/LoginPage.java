@@ -73,8 +73,8 @@ public class LoginPage extends JFrame {
 
             //else
             //a remainder showing "Error: Login failed (name/password refused)"
-            //JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)",
-                    //"Login failed", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)",
+                    "Login failed", JOptionPane.INFORMATION_MESSAGE);
 
 
 

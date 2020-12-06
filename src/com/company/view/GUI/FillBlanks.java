@@ -92,14 +92,14 @@ public class FillBlanks extends JFrame {
         panel.add(Optional);
 
         //set two buttons for deciding whether complete or not
-        JButton save = new JButton("Save and Complete");
-        JButton next = new JButton("Next");
+        JButton save = new JButton("Save and Next");
+        JButton complete = new JButton("Complete");
         save.setBounds(450,460,200,30);
         save.setFont(font);
-        next.setBounds(450,500,200,30);
-        next.setFont(font);
+        complete.setBounds(450,500,200,30);
+        complete.setFont(font);
         panel.add(save);
-        panel.add(next);
+        panel.add(complete);
 
         setSize(700,600);
         setLocationRelativeTo(null);
@@ -138,6 +138,16 @@ public class FillBlanks extends JFrame {
         Optional.addActionListener(e -> {
 
         });
+
+        save.addActionListener(e -> {
+
+        });
+
+        complete.addActionListener(e -> {
+
+        });
+
+
 
 
     }

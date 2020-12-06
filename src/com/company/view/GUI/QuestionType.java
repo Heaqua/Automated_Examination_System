@@ -9,6 +9,9 @@ import static java.awt.Toolkit.getDefaultToolkit;
 
 public class QuestionType extends JFrame {
 
+    public static void main(String[] args){
+        new QuestionType();
+    }
     public QuestionType(){
         super("Question Type");
         JPanel panel = new JPanel();
@@ -52,7 +55,9 @@ public class QuestionType extends JFrame {
 
 
         setVisible(true);
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\view\\Images\\logo1.png"));
+        setSize(700,600);
+        setLocationRelativeTo(null);
 
 
 
@@ -63,11 +68,13 @@ public class QuestionType extends JFrame {
         });
 
         Fill.addActionListener(e -> {
-
+            setVisible(false);
+            new FillBlanks();
         });
 
         standard.addActionListener(e -> {
-
+            setVisible(false);
+            new FullLength();
         });
 
     }

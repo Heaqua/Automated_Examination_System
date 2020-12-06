@@ -189,8 +189,13 @@ public class MultipleChoice extends JFrame {
 
             });
 
+            save.addActionListener(e -> {
 
+            });
 
+            complete.addActionListener(e -> {
+
+            });
 
 
 

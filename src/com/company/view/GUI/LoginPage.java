@@ -1,0 +1,90 @@
+package com.company.view.GUI;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static java.awt.Toolkit.getDefaultToolkit;
+
+
+public class LoginPage {
+    public static void main() {
+        place();
+
+    }
+
+    private static void place(){
+        JFrame login = new JFrame("Login page");
+        JPanel panel = new JPanel();
+        login.setSize(700,600);
+        login.setLocationRelativeTo(null);
+        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        login.add(panel);
+        panel.setLayout(null);
+        Font font1 = new Font("Times New Roman",Font.ITALIC,40);
+        Font font = new Font("Times New Roman",Font.ITALIC,30);
+        JLabel name = new JLabel("Automated Examination System");
+        JLabel userID = new JLabel("User ID : ");
+        JLabel password = new JLabel("Password : ");
+        JTextField user_text = new JTextField();
+        JPasswordField pw = new JPasswordField();
+        name.setBounds(75,50,600,50);
+        name.setFont(font1);
+        userID.setBounds(50,150,200,30);
+        userID.setFont(font);
+        password.setBounds(50,250,300,30);
+        password.setFont(font);
+        user_text.setBounds(250,150,200,50);
+        user_text.setFont(font);
+        pw.setBounds(250,250,250,50);
+        pw.setFont(font);
+        panel.add(name);
+        panel.add(userID);
+        panel.add(password);
+        panel.add(user_text);
+        panel.add(pw);
+
+        Font font2=new Font("Times New Roman",Font.BOLD,30);
+        JButton loginButton=new JButton("Login");
+        loginButton.setBounds(250,350,150,50);
+        loginButton.setFont(font2);
+        panel.add(loginButton);
+
+        //set the background picture
+        ImageIcon image=new ImageIcon("src\\Images\\background1.jpg");
+        JLabel lbBg = new JLabel(image);
+        lbBg.setBounds(0, 0, 700, 600);
+        panel.add(lbBg);
+
+        login.setVisible(true);
+        login.setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+
+        //Event
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //TODO
+                //judge the user ID and password
+                //If the user input a student account, then turn to student main page
+
+
+
+                //If the user input a teacher account, then turn to teacher main page
+
+
+                //else
+                //a remainder showing "Error: Login failed (name/password refused)"
+                JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)",
+                        "Login failed", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+            }
+        });
+
+    }
+
+}

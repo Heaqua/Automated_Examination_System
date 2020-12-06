@@ -1,14 +1,12 @@
 package com.company.controller.commands;
-import java.io.*;
 import java.sql.*;
 import oracle.jdbc.driver.*;
-import oracle.sql.*;
 
-import com.company.Application;
+import com.company.TestApplication;
 public class Retrieve {
     public static Statement stmt;
     public PreparedStatement preStmt;
-    public static OracleConnection conn = Application.conn;
+    public static OracleConnection conn = TestApplication.conn;
 
     static {
         try {
@@ -24,6 +22,7 @@ public class Retrieve {
     }
 
     public Retrieve(String prepared){
+
         return;
     }
 }

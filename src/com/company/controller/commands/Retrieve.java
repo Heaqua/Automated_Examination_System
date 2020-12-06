@@ -24,6 +24,6 @@ public class Retrieve {
     }
 
     public Retrieve(String prepared){
-
+        return;
     }
 }

@@ -1,7 +1,9 @@
 package com.company.dao;
 
-public interface QuestionDao {
+import com.company.domain.Question;
 
-    public void mark(String type,String answer);
+public interface QuestionDao {
+    public Question findByID(String id);
+    public void create(int questionNo,String testNo,String compulsory,String content,String answer);
 
 }

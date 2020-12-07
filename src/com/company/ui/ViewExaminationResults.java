@@ -8,9 +8,7 @@ import java.awt.event.ItemListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ViewExaminationResults extends JFrame {
-    public static void main(String[] args) {
-        new ViewExaminationResults();
-    }
+
     public ViewExaminationResults(){
         super("View Examination Results");
         JPanel panel = new JPanel();
@@ -21,7 +19,7 @@ public class ViewExaminationResults extends JFrame {
         panel.setLayout(null);
 
         //logo
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src/com/company/ui/Images/logo1.png"));
 
         //set fonts
         Font font = new Font("Times New Roman",Font.PLAIN,30);
@@ -102,7 +100,6 @@ public class ViewExaminationResults extends JFrame {
         //click "Sure"
         sure.addActionListener(e -> {
             setVisible(false);
-            System.out.println(class2[0] + sub2[0]);
             new ViewExaminationResults2(class2[0],sub2[0]);
         });
 

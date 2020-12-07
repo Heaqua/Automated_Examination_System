@@ -1,9 +1,8 @@
 package com.company.domain;
 
-public class Teacher {
-    private String name;
-    private String tea_id;
+public class Teacher extends People {
 
+    /*
     public boolean login(String name, String stu_id){
         return true;
     }
@@ -41,4 +40,6 @@ public class Teacher {
     public void getAnalysisReport(Student s){
 
     }
+
+     */
 }

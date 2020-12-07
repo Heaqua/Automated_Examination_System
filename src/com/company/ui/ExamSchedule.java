@@ -6,9 +6,6 @@ import java.awt.*;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ExamSchedule extends JFrame {
-    public static void main(String[] args) {
-        new ExamSchedule();
-    }
     public ExamSchedule(){
         super("Exam Schedule");
         JPanel panel = new JPanel();
@@ -19,7 +16,7 @@ public class ExamSchedule extends JFrame {
         panel.setLayout(null);
 
         //logo
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src/com/company/ui/Images/logo1.png"));
 
         //set fonts
         Font font = new Font("Times New Roman",Font.PLAIN,30);

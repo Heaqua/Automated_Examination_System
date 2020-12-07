@@ -1,18 +1,17 @@
 package com.company.ui;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
-public class TakeAnExamM extends JFrame {
-
-    public TakeAnExamM(int num,int total,int score,String Question,String A,String B,String C,String D,String Com){
+public class TakeAnExamB extends JFrame {
+    public static void main(String[] args) {
+        new TakeAnExamB(2,10,5,"5+65 = ?","Compulsory");
+    }
+    public TakeAnExamB(int num,int total,int score,String Question,String Com){
         super("Take an exam");
         JPanel panel = new JPanel();
         setSize(700,600);
@@ -50,47 +49,18 @@ public class TakeAnExamM extends JFrame {
         jsp.setBounds(30,100,620,200);
         panel.add(jsp);
 
-        //4 buttons for student to choose
+        //get answer
+        JTextArea answer = new JTextArea();
+        answer.setBounds(30,350,400,130);
+        answer.setFont(font);
+        answer.setLineWrap(true);
+        panel.add(answer);
 
-        JRadioButton A1 = new JRadioButton("A");
-        JRadioButton B1 = new JRadioButton("B");
-        JRadioButton C1 = new JRadioButton("C");
-        JRadioButton D1 = new JRadioButton("D");
-        ButtonGroup Group2 = new ButtonGroup();
-        Group2.add(A1);
-        Group2.add(B1);
-        Group2.add(C1);
-        Group2.add(D1);
-        A1.setBounds(30,320,50,30);
-        A1.setFont(font);
-        B1.setBounds(30,370,50,30);
-        B1.setFont(font);
-        C1.setBounds(30,420,50,30);
-        C1.setFont(font);
-        D1.setBounds(30,470,50,30);
-        D1.setFont(font);
-        panel.add(A1);
-        panel.add(B1);
-        panel.add(C1);
-        panel.add(D1);
+        JScrollPane jsp1=new JScrollPane(answer);
+        jsp1.setBounds(30,350,400,130);
+        panel.add(jsp1);
 
-        //four labels for answer
-        JLabel A2 = new JLabel(A);
-        JLabel B2 = new JLabel(B);
-        JLabel C2 = new JLabel(C);
-        JLabel D2 = new JLabel(D);
-        A2.setBounds(100,320,100,30);
-        A2.setFont(font2);
-        B2.setBounds(100,370,100,30);
-        B2.setFont(font2);
-        C2.setBounds(100,420,100,30);
-        C2.setFont(font2);
-        D2.setBounds(100,470,100,30);
-        D2.setFont(font2);
-        panel.add(A2);
-        panel.add(B2);
-        panel.add(C2);
-        panel.add(D2);
+
 
         //set a progressBar
         final int MIN_PROGRESS = 0;

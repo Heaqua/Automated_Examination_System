@@ -8,9 +8,6 @@ import java.awt.event.ItemListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ReportsAndResults extends JFrame {
-    public static void main(String[] args) {
-        new ReportsAndResults();
-    }
 
     public ReportsAndResults() {
         super("Reports and Results");
@@ -22,7 +19,7 @@ public class ReportsAndResults extends JFrame {
         panel.setLayout(null);
 
         //logo
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src/com/company/ui/Images/logo1.png"));
 
         //set fonts
         Font font = new Font("Times New Roman", Font.PLAIN, 30);

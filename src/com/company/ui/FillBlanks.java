@@ -1,11 +1,9 @@
-package com.company.view.GUI;
+package com.company.ui;
 
 import javax.swing.*;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
@@ -44,8 +42,8 @@ public class FillBlanks extends JFrame {
         question.setLineWrap(true);
         panel.add(question);
 
-        JScrollPane jsp=new JScrollPane(question);    //将文本域放入滚动窗口
-        Dimension size=question.getPreferredSize();    //获得文本域的首选大小
+        JScrollPane jsp=new JScrollPane(question);
+        Dimension size=question.getPreferredSize();
         jsp.setBounds(10,90,600,200);
         panel.add(jsp);
 
@@ -93,7 +91,7 @@ public class FillBlanks extends JFrame {
 
         //set two buttons for deciding whether complete or not
         JButton save = new JButton("Save and Complete");
-        JButton next = new JButton("Next");
+        JButton next = new JButton("Save and Next");
         save.setBounds(450,460,200,30);
         save.setFont(font);
         next.setBounds(450,500,200,30);
@@ -103,14 +101,11 @@ public class FillBlanks extends JFrame {
 
         setSize(700,600);
         setLocationRelativeTo(null);
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
         this.setVisible(true);
 
-        score2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        score2.addActionListener(e -> {
 
-            }
         });
 
         question.addAncestorListener(new AncestorListener() {
@@ -130,25 +125,36 @@ public class FillBlanks extends JFrame {
             }
         });
 
-        answer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        answer.addActionListener(e -> {
 
-            }
         });
 
-        Com.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        Com.addActionListener(e -> {
 
-            }
         });
 
-        Optional.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        Optional.addActionListener(e -> {
 
-            }
+        });
+
+        save.addActionListener(e -> {
+
+        });
+
+        next.addActionListener(e -> {
+
+        });
+        //Event
+        //click the button "Save and Complete"
+        save.addActionListener(e -> {
+            setVisible(false);
+            new TeacherMainPage();
+        });
+
+        //Click the button "Save and Next"
+        next.addActionListener(e -> {
+            setVisible(false);
+            new QuestionType();
         });
 
 

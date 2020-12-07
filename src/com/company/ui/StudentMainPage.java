@@ -1,18 +1,22 @@
-package com.company.view.GUI;
+package com.company.ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class StudentMainPage extends JFrame{
+    public static void main(String[] args) {
+        new StudentMainPage();
+    }
 
-    public StudentMainPage(String title){
-        super(title);
+    public StudentMainPage(){
+        super("Main Page");
         JPanel panel = new JPanel();
-        setBounds(500,300,700,600);
+        setSize(700,600);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(panel);
         panel.setLayout(null);
@@ -46,37 +50,64 @@ public class StudentMainPage extends JFrame{
         result.setBounds(140,340,400,60);
         result.setFont(font1);
         panel.add(result);
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
+
+        //log-out logo
+
+
+        ImageIcon image = new ImageIcon("src\\com\\company\\ui\\Images\\logout.jpg");
+        JLabel logOut=new JLabel(image);
+        logOut.setBounds(635,1,30,30);
+        panel.add(logOut);
+
         setVisible(true);
 
         //Event
         //click "view exam schedule"
-        viewExam.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                new ExamSchedule();
-            }
+        viewExam.addActionListener(e -> {
+            setVisible(false);
+            new ExamSchedule();
         });
 
         //click "take an exam"
-        take.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                new TakeAnExam();
-            }
+        take.addActionListener(e -> {
+            setVisible(false);
+            new TakeAnExam();
         });
 
         //click "reports and results"
-        result.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                new ReportsAndResults();
-            }
+        result.addActionListener(e -> {
+            setVisible(false);
+            new ReportsAndResults();
         });
 
+        logOut.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                setVisible(false);
+                new OriginalLoginPage();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
     }
 
 

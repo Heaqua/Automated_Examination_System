@@ -1,20 +1,20 @@
-package com.company.view.GUI;
+package com.company.ui;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
-public class FullLength {
-    public static void main(String[] args) {
-        place();
-    }
-    private static void place(){
-        JFrame Standard = new JFrame("Standard full-length test questions");
+public class FullLength extends JFrame {
+    public static void main(String[] args){new FullLength();}
+    public FullLength(){
+        super("Full length test question");
         JPanel panel = new JPanel();
-        Standard.setBounds(500,300,700,600);
-        Standard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Standard.add(panel);
+        setBounds(500,300,700,600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(panel);
         panel.setLayout(null);
 
         //set font
@@ -38,6 +38,10 @@ public class FullLength {
         question.setBounds(10,90,600,200);
         question.setFont(font);
         panel.add(question);
+
+        JScrollPane roll=new JScrollPane(question);
+        roll.setBounds(10,90,600,200);
+        panel.add(roll);
 
         //set the score
         JLabel score = new JLabel("Set score : ");
@@ -63,6 +67,10 @@ public class FullLength {
         answer.setFont(font);
         panel.add(answer);
 
+        JScrollPane roll1=new JScrollPane(answer);
+        roll1.setBounds(10,350,400,100);
+        panel.add(roll1);
+
         //set compulsory or optional button and a "OR" label
         JLabel OR = new JLabel("OR");
         JRadioButton Com = new JRadioButton("Compulsory");
@@ -83,7 +91,7 @@ public class FullLength {
 
         //set two buttons for deciding whether complete or not
         JButton save = new JButton("Save and Complete");
-        JButton next = new JButton("Next");
+        JButton next = new JButton("Save and Next");
         save.setBounds(450,460,200,30);
         save.setFont(font);
         next.setBounds(450,500,200,30);
@@ -91,8 +99,58 @@ public class FullLength {
         panel.add(save);
         panel.add(next);
 
-        Standard.setVisible(true);
-        Standard. setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
+        setSize(700,600);
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+        //Event
+        question.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
+            }
+        });
+
+        Com.addActionListener(e -> {
+
+        });
+
+        Optional.addActionListener(e -> {
+
+        });
+
+        score2.addActionListener(e -> {
+
+        });
+
+        answer.addActionListener(e -> {
+
+        });
+
+        //Event
+        //click the button "Save and Complete"
+        save.addActionListener(e -> {
+            setVisible(false);
+            new TeacherMainPage();
+        });
+
+        //Click the button "Save and Next"
+        next.addActionListener(e -> {
+            setVisible(false);
+            new QuestionType();
+        });
 
     }
 }

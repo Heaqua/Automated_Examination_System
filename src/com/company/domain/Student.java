@@ -1,4 +1,4 @@
-package com.company.model;
+package com.company.domain;
 
 import com.company.TestApplication;
 import oracle.jdbc.driver.OracleConnection;

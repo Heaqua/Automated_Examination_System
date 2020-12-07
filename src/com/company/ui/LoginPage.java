@@ -1,27 +1,21 @@
-package com.company.view.GUI;
+package com.company.ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
 
-public class LoginPage {
-    public static void main() {
-        place();
+public class LoginPage extends JFrame {
 
-    }
+    public LoginPage(){
 
-    private static void place(){
-        JFrame login = new JFrame("Login page");
+        super("Login page");
         JPanel panel = new JPanel();
-        login.setSize(700,600);
-        login.setLocationRelativeTo(null);
-        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        login.add(panel);
+        setSize(700,600);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(panel);
         panel.setLayout(null);
         Font font1 = new Font("Times New Roman",Font.ITALIC,40);
         Font font = new Font("Times New Roman",Font.ITALIC,30);
@@ -53,36 +47,40 @@ public class LoginPage {
         panel.add(loginButton);
 
         //set the background picture
-        ImageIcon image=new ImageIcon("src\\Images\\background1.jpg");
+        ImageIcon image=new ImageIcon("src\\com\\company\\ui\\Images\\background1.jpg");
         JLabel lbBg = new JLabel(image);
         lbBg.setBounds(0, 0, 700, 600);
         panel.add(lbBg);
 
-        login.setVisible(true);
-        login.setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setVisible(true);
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
+
 
         //Event
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                //TODO
-                //judge the user ID and password
-                //If the user input a student account, then turn to student main page
+        loginButton.addActionListener(e -> {
 
 
-
-                //If the user input a teacher account, then turn to teacher main page
-
-
-                //else
-                //a remainder showing "Error: Login failed (name/password refused)"
-                JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)",
-                        "Login failed", JOptionPane.INFORMATION_MESSAGE);
+            //TODO
+            //judge the user ID and password
+            //If the user input a student account, then turn to student main page
 
 
 
-            }
+            //If the user input a teacher account, then turn to teacher main page
+            setVisible(false);
+            new TeacherMainPage();
+
+            //else
+            //a remainder showing "Error: Login failed (name/password refused)"
+            //JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)",
+                    //"Login failed", JOptionPane.INFORMATION_MESSAGE);
+
+                setVisible(false);
+                new TeacherMainPage();
+
+
+
+
         });
 
     }

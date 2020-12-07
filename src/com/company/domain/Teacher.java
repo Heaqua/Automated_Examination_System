@@ -1,4 +1,4 @@
-package com.company.model;
+package com.company.domain;
 
 public class Teacher {
     private String name;

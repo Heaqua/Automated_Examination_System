@@ -1,17 +1,11 @@
-package com.company.view.GUI;
-
-import com.sun.javaws.util.JfxHelper;
+package com.company.ui;
 
 import javax.swing.*;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Enumeration;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 

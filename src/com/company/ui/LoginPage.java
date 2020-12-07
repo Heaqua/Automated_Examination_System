@@ -1,10 +1,7 @@
-package com.company.view.GUI;
+package com.company.ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 

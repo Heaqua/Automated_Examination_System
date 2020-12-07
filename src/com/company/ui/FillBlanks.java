@@ -1,5 +1,9 @@
 package com.company.ui;
 
+import com.company.dao.QuestionDao;
+import com.company.dao.sqlplus.QuestionDaoImp;
+import com.company.domain.Question;
+
 import javax.swing.*;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
@@ -8,14 +12,17 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.math.BigDecimal;
 
+import static com.company.ui.MainApplication.num;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class FillBlanks extends JFrame {
     public static void main(String[] args) {
         new FillBlanks();
     }
+
+    String comOrOp;
     public FillBlanks(){
-        super("Fill in the blanks");
+        super("Fill in the blank");
         JPanel panel = new JPanel();
         this.setBounds(500,300,700,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,8 +33,7 @@ public class FillBlanks extends JFrame {
         Font font = new Font("Times New Roman",Font.PLAIN,20);
 
         //set Q#
-        int number = 1;
-        JLabel count = new JLabel("Question "+number);
+        JLabel count = new JLabel("Question "+MainApplication.num);
         count.setBounds(1,2,100,30);
         count.setFont(font);
         panel.add(count);
@@ -107,61 +113,47 @@ public class FillBlanks extends JFrame {
         setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
         this.setVisible(true);
 
-        score2.addActionListener(e -> {
-            String scoreFromText=score2.getText();
-        });
 
-        question.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                String questionFromText=question.getText();
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-
-            }
-        });
-
-
-        answer.addActionListener(e -> {
-
-        });
 
         Com.addActionListener(e -> {
-            String comOrOp="Y";
+            comOrOp="Y";
         });
 
         Optional.addActionListener(e -> {
-            String comOrOp="N";
+            comOrOp="N";
         });
 
         save.addActionListener(e -> {
-            MainApplication.num++;
-            new TeacherMainPage();
-        });
-
-        next.addActionListener(e -> {
-            MainApplication.num++;
-
-        });
-        //Event
-        //click the button "Save and Complete"
-        save.addActionListener(e -> {
+            num++;
             setVisible(false);
             new TeacherMainPage();
+
+            String scoreFromText=score2.getText();
+            BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
+            String questionFromText=question.getText();
+            String answer2 = answer.getText();
+            //insert values
+            QuestionDao questionDao=new QuestionDaoImp();
+            questionDao.create(num,SetAnExam.testNumber,comOrOp,"blank",scoreBigDecimal,questionFromText,answer2);
+
         });
 
-        //Click the button "Save and Next"
         next.addActionListener(e -> {
+            num++;
             setVisible(false);
             new QuestionType();
+
+
+            String scoreFromText=score2.getText();
+            BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
+            String questionFromText=question.getText();
+            String answer2 = answer.getText();
+            //insert values
+            QuestionDao questionDao=new QuestionDaoImp();
+            questionDao.create(num,SetAnExam.testNumber,comOrOp,"blank",scoreBigDecimal,questionFromText,answer2);
+
         });
+
 
 
     }

@@ -1,10 +1,14 @@
 package com.company.ui;
 
+import com.company.dao.QuestionDao;
+import com.company.dao.sqlplus.QuestionDaoImp;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 
+import static com.company.ui.MainApplication.num;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class FullLength extends JFrame {
@@ -20,8 +24,7 @@ public class FullLength extends JFrame {
         Font font = new Font("Times New Roman",Font.PLAIN,20);
 
         //set Q#
-        int number = 1;
-        JLabel count = new JLabel("Question "+number);
+        JLabel count = new JLabel("Question "+MainApplication.num);
         count.setBounds(1,2,100,30);
         count.setFont(font);
         panel.add(count);
@@ -123,11 +126,11 @@ public class FullLength extends JFrame {
         });
 
         Com.addActionListener(e -> {
-
+            String comOrOp="Y";
         });
 
         Optional.addActionListener(e -> {
-
+            String comOrOp="N";
         });
 
         score2.addActionListener(e -> {
@@ -141,14 +144,30 @@ public class FullLength extends JFrame {
         //Event
         //click the button "Save and Complete"
         save.addActionListener(e -> {
+            MainApplication.num++;
             setVisible(false);
             new TeacherMainPage();
+
+            String questionFromText=question.getText();
+            String scoreFromText=score2.getText();
+
+            //insert values
+            QuestionDao questionDao=new QuestionDaoImp();
+            questionDao.create(num,);
+
+
         });
 
         //Click the button "Save and Next"
         next.addActionListener(e -> {
+            MainApplication.num++;
             setVisible(false);
             new QuestionType();
+
+            //insert values
+            QuestionDao questionDao=new QuestionDaoImp();
+            questionDao.create(num,);
+
         });
 
     }

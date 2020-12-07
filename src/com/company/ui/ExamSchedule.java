@@ -3,6 +3,8 @@ package com.company.ui;
 import javax.swing.*;
 import java.awt.*;
 
+import static java.awt.Toolkit.getDefaultToolkit;
+
 public class ExamSchedule extends JFrame {
     public static void main(String[] args) {
         new ExamSchedule();
@@ -15,6 +17,9 @@ public class ExamSchedule extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(panel);
         panel.setLayout(null);
+
+        //logo
+        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
 
         //set fonts
         Font font = new Font("Times New Roman",Font.PLAIN,30);

@@ -5,8 +5,8 @@ import java.sql.*;
 import oracle.jdbc.driver.*;
 import oracle.sql.*;
 
-import com.company.model.*;
-
+import com.company.domain.Student;
+// java -cp ojdbc7.jar:. com.company.TestApplication
 public class TestApplication
 {
     public static OracleConnection conn;

@@ -8,9 +8,6 @@ import java.awt.event.ActionListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class TakeAnExamB extends JFrame {
-    public static void main(String[] args) {
-        new TakeAnExamB(2,10,5,"5+65 = ?","Compulsory");
-    }
     public TakeAnExamB(int num,int total,int score,String Question,String Com){
         super("Take an exam");
         JPanel panel = new JPanel();
@@ -100,12 +97,12 @@ public class TakeAnExamB extends JFrame {
 
 
         //click "next"
-        next.addActionListener(e -> {
-            setVisible(false);
-            new TakeAnExamM(3,10,5,"7*8","56","98","2","3","Optional");
-        });
-        this.setVisible(true);
-
+//        next.addActionListener(e -> {
+//            setVisible(false);
+//            new TakeAnExamM(3,10,5,"7*8","56","98","2","3","Optional");
+//        });
+//        this.setVisible(true);
+//
 
 
     }

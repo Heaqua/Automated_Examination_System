@@ -2,18 +2,23 @@ package com.company.domain;
 
 public class Answer {
     private int quesNo;
+    private String testNo;
     private String stu_ID;
     private String stu_ans;
     private int score;
 
     public Answer(){}
-    public Answer(int quesNo, String stu_ID, String stu_ans, int score){
+    public Answer(int quesNo, String testNo, String stu_ID, String stu_ans, int score){
+        this.testNo = testNo;
         this.quesNo = quesNo;
         this.stu_ID = stu_ID;
         this.stu_ans = stu_ans;
         this.score = score;
     }
 
+    public String getTestNo(){
+        return testNo;
+    }
     public void setQuesNo(int quesNo) {
         this.quesNo = quesNo;
     }

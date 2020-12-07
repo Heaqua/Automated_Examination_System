@@ -8,7 +8,7 @@ import oracle.jdbc.driver.*;
 public class TestApplication
 {
     public static OracleConnection conn;
-    public static void main(String args[]) throws SQLException, IOException
+    public static void testApplication() throws SQLException, IOException
     {
 
         String username, password;
@@ -24,12 +24,7 @@ public class TestApplication
                         username, password);
         Statement stmt = conn.createStatement();
         System.out.println("After connection");
-        ResultSet rset = stmt.executeQuery("SELECT INSTRUCTORNO, INSTRUCTORNAME, INSTRUCTORPHONE FROM INSTRUCTOR");
-        while (rset.next())
-        {
-            System.out.println(rset.getInt(1) + " " + rset.getString(2) + " " + rset.getInt(3));
-        }
-        System.out.println();
+
         //System.out.println(new Student("S180101").login("123456"));
         conn.close();
     }

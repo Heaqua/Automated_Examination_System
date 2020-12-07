@@ -85,10 +85,7 @@ public class TeacherDaoImp implements TeacherDao {
             pstmt2.setString(1, teacher.getId());
             rs2 = pstmt2.executeQuery();
 
-            int index=0;
-            if(rs2.next()){
-                index=rs2.getInt(1);
-            }
+            int index = rs2.getInt(1);
             result = new Subject[index];
             int i = 0;
 

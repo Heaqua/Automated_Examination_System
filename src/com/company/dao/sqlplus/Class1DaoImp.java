@@ -10,6 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Class1DaoImp implements ClassDao {
+    @Override
+    public Class1 findById(String id) {
+        return null;
+    }
+
     public Student[] allStudents(Class1 class1){
         Connection conn=null;
         PreparedStatement pstmt1=null;

@@ -65,6 +65,16 @@ public class TeacherDaoImp implements TeacherDao {
 
     }
 
+    @Override
+    public Subject[] findAllSubjects(Teacher teacher) {
+        return new Subject[0];
+    }
+
+    @Override
+    public Class1[] findAllClasses(Teacher teacher) {
+        return new Class1[0];
+    }
+
     public Subject[] allSubjects(Teacher teacher) {
         Connection conn = null;
         PreparedStatement pstmt1 = null;

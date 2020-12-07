@@ -8,7 +8,7 @@ import oracle.jdbc.driver.*;
 public class TestApplication
 {
     public static OracleConnection conn;
-    public static void main(String args[]) throws SQLException, IOException
+    public static void testApplication(String args[]) throws SQLException, IOException
     {
 
         String username, password;

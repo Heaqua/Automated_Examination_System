@@ -12,8 +12,10 @@ import java.sql.SQLException;
 public class AnswerDaoImp implements AnswerDao {
     static OracleConnection conn = TestApplication.conn;
     static PreparedStatement queryAnswer;
+    static PreparedStatement storeAnswer;
     static {
         try {
+            storeAnswer = conn.prepareStatement("INSERT INTO ANSWER VALUES (?,?,?,?,?)");
             queryAnswer = conn.prepareStatement("SELECT STU_ANS, STU_SCORE FROM ANSWER WHERE TEST# = ? " +
                     "AND Q# = ? AND STU_ID =?");
         } catch (SQLException throwables) {
@@ -47,8 +49,26 @@ public class AnswerDaoImp implements AnswerDao {
     return a;
     }
     @Override
-    public void create(int questionNo, String testNo, String stu_id, String stu_answer, BigDecimal stu_score) {
-
+    public void create(int questionNo, String testNo, String stu_id, String stu_answer, BigDecimal stu_score){
+        ResultSet rs = null;
+        try {
+            storeAnswer.setString(1, testNo);
+            storeAnswer.setInt(2, questionNo);
+            storeAnswer.setString(3, stu_id);
+            storeAnswer.setString(4, stu_answer);
+            storeAnswer.setBigDecimal(5, stu_score);
+            storeAnswer.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+            if(rs!=null){
+                try{
+                    rs.close();
+                }
+                catch (SQLException exception){
+                }
+            }
+        }
     }
 
     @Override
@@ -58,11 +78,6 @@ public class AnswerDaoImp implements AnswerDao {
 
     @Override
     public void modify(BigDecimal stu_score) {
-
-    }
-
-    @Override
-    public void modify(String stu_answer, BigDecimal stu_score) {
 
     }
 

@@ -11,6 +11,7 @@ public class SetAnExam extends JFrame {
     public static void main(String[] a){
         new SetAnExam();
     }
+    static String testNumber;
     public SetAnExam(){
         super("Set an Exam");
         JPanel panel = new JPanel();
@@ -120,7 +121,7 @@ public class SetAnExam extends JFrame {
             setVisible(false);
             String sub2 = (String) comboBox.getSelectedItem();
             String cla = (String) comboBox2.getSelectedItem();
-            String testN = testNo.getText();
+            testNumber = testNo.getText();
             Timestamp start2 = Timestamp.valueOf(start.getText());
             int dur = Integer.parseInt(du.getText());
             new QuestionType();

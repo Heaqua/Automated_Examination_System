@@ -1,8 +1,13 @@
 package com.company.ui;
 
+import com.company.dao.AnswerDao;
+import com.company.dao.sqlplus.AnswerDaoImp;
+
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
@@ -91,21 +96,39 @@ public class MarkPapers extends JFrame {
         quit.setFont(font1);
         panel.add(quit);
         setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
+        this.setVisible(true);
 
         //Event
+        //
+        score2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String scoreFromText=score2.getText();
+            }
+        });
+
         //click the button "Save and next"
         save.addActionListener(e -> {
             setVisible(false);
             new MarkPapers("3+4 = ?","7",3);
+
+            AnswerDao answerDao=new AnswerDaoImp();
+            answerDao.modify();
+
         });
 
         //Click the button "Save and quit"
         quit.addActionListener(e -> {
             setVisible(false);
             new TeacherMainPage();
+
+
         });
 
-        this.setVisible(true);
+
+
+
+
     }
     void SetText(JLabel jLabel, String longString) {
         StringBuilder text = new StringBuilder("<html>");

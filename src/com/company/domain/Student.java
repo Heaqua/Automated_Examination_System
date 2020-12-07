@@ -1,12 +1,12 @@
 package com.company.domain;
 
-import com.company.TestApplication;
+import com.company.dao.sqlplus.TestApplication;
 import oracle.jdbc.driver.OracleConnection;
 import java.math.BigDecimal;
 import java.sql.*;
 
 public class Student {
-    private final String stu_id;
+    //private final String stu_id;
     static OracleConnection conn = TestApplication.conn;
     static Statement stmt;
     static PreparedStatement storeAnswer;
@@ -33,9 +33,9 @@ public class Student {
     }
 
     // private Exam[] exams;
-    public Student(String ID){
-        stu_id = ID;
-    }
+    //public Student(String ID){
+        //stu_id = ID;
+    //}
 
     /**
      * Return a boolean variable indicating whether its password is correct

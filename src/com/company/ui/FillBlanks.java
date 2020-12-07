@@ -3,11 +3,17 @@ package com.company.ui;
 import javax.swing.*;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.math.BigDecimal;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class FillBlanks extends JFrame {
+    public static void main(String[] args) {
+        new FillBlanks();
+    }
     public FillBlanks(){
         super("Fill in the blank");
         JPanel panel = new JPanel();
@@ -102,43 +108,46 @@ public class FillBlanks extends JFrame {
         this.setVisible(true);
 
         score2.addActionListener(e -> {
-
+            String scoreFromText=score2.getText();
         });
 
-        question.addAncestorListener(new AncestorListener() {
+        question.getDocument().addDocumentListener(new DocumentListener() {
             @Override
-            public void ancestorAdded(AncestorEvent event) {
+            public void insertUpdate(DocumentEvent e) {
+                String questionFromText=question.getText();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
 
             }
 
             @Override
-            public void ancestorRemoved(AncestorEvent event) {
-
-            }
-
-            @Override
-            public void ancestorMoved(AncestorEvent event) {
+            public void changedUpdate(DocumentEvent e) {
 
             }
         });
+
 
         answer.addActionListener(e -> {
 
         });
 
         Com.addActionListener(e -> {
-
+            String comOrOp="Y";
         });
 
         Optional.addActionListener(e -> {
-
+            String comOrOp="N";
         });
 
         save.addActionListener(e -> {
-
+            MainApplication.num++;
+            new TeacherMainPage();
         });
 
         next.addActionListener(e -> {
+            MainApplication.num++;
 
         });
         //Event

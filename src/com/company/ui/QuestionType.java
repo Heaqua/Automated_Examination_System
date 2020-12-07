@@ -53,7 +53,7 @@ public class QuestionType extends JFrame {
 
 
         setVisible(true);
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
         setSize(700,600);
         setLocationRelativeTo(null);
 

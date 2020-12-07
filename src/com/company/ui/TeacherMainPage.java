@@ -51,14 +51,14 @@ public class TeacherMainPage extends JFrame {
         result.setFont(font1);
         panel.add(result);
 
-        ImageIcon image = new ImageIcon("src\\com\\company\\view\\Images\\logout.jpg");
+        ImageIcon image = new ImageIcon("src\\com\\company\\ui\\Images\\logout.jpg");
         JLabel logOut=new JLabel(image);
         logOut.setBounds(635,1,30,30);
         panel.add(logOut);
 
 
         setVisible(true);
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
 
         //Event
         //click the button "Set an exam"

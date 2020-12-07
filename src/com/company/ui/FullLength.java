@@ -100,7 +100,7 @@ public class FullLength extends JFrame {
         panel.add(next);
 
 
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
         setSize(700,600);
         setLocationRelativeTo(null);
         setVisible(true);

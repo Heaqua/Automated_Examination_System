@@ -17,7 +17,7 @@ public class SetAnExam extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(panel);
         panel.setLayout(null);
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
 
         //set fonts
         Font font = new Font("Times New Roman",Font.PLAIN,30);

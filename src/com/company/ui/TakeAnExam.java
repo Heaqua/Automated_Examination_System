@@ -10,7 +10,7 @@ public class TakeAnExam extends JFrame {
     }
     public TakeAnExam(){
 
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
 
     }
 }

@@ -101,7 +101,7 @@ public class FillBlanks extends JFrame {
 
         setSize(700,600);
         setLocationRelativeTo(null);
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
         this.setVisible(true);
 
         score2.addActionListener(e -> {

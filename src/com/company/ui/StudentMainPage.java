@@ -50,12 +50,12 @@ public class StudentMainPage extends JFrame{
         result.setBounds(140,340,400,60);
         result.setFont(font1);
         panel.add(result);
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
 
         //log-out logo
 
 
-        ImageIcon image = new ImageIcon("src\\com\\company\\view\\Images\\logout.jpg");
+        ImageIcon image = new ImageIcon("src\\com\\company\\ui\\Images\\logout.jpg");
         JLabel logOut=new JLabel(image);
         logOut.setBounds(635,1,30,30);
         panel.add(logOut);

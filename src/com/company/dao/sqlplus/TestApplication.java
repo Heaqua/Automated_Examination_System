@@ -3,9 +3,7 @@ package com.company.dao.sqlplus;
 import java.io.*;
 import java.sql.*;
 import oracle.jdbc.driver.*;
-import oracle.sql.*;
 
-import com.company.domain.Student;
 // java -cp ojdbc7.jar:. com.company.TestApplication
 public class TestApplication
 {

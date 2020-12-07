@@ -2,6 +2,9 @@ package com.company.dao.sqlplus;
 
 import com.company.dao.ExamDao;
 import com.company.domain.Exam;
+import com.company.domain.Question;
+import oracle.jdbc.driver.OracleConnection;
+import oracle.jdbc.proxy.annotation.Pre;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,6 +29,14 @@ public class ExamDaoImp implements ExamDao {
         } catch (SQLException e){
             e.printStackTrace();
         }
+
+    }
+
+    public Question[] allQuestions(Exam e){
+        OracleConnection conn = TestApplication.conn;
+        PreparedStatement stmt = conn.prepareStatement("SELECT Q#, COMPULSORY, TYPE, SCORE, Q_CONTENT " +
+                "FROM QUESTION WHERE TEST# = ?");
+
 
     }
 

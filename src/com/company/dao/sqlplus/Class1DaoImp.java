@@ -3,7 +3,6 @@ package com.company.dao.sqlplus;
 import com.company.dao.ClassDao;
 import com.company.domain.Class1;
 import com.company.domain.Student;
-import com.company.domain.Subject;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

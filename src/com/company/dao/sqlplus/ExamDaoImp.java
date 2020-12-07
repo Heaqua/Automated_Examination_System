@@ -112,7 +112,6 @@ public class ExamDaoImp implements ExamDao {
                     rs.close();
                 }
                 catch (SQLException exception){
-
                 }
             }
 

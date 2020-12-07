@@ -1,18 +1,17 @@
-package com.company.view.GUI;
+package com.company.ui;
+
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
-public class StudentMainPage extends JFrame{
-    public static void main(String[] args) {
-        new StudentMainPage();
+public class TeacherMainPage extends JFrame {
+    public static void main(String[] args){
+        new TeacherMainPage();
     }
-
-    public StudentMainPage(){
+    public TeacherMainPage(){
         super("Main Page");
         JPanel panel = new JPanel();
         setSize(700,600);
@@ -26,6 +25,7 @@ public class StudentMainPage extends JFrame{
         Font font1 = new Font("Times New Roman",Font.PLAIN,40);
 
         //set a label to show the personal information
+        //TODO
         JLabel info = new JLabel("Personal information: " + "xxxxxxxxxxxxxxxxx");
         info.setBounds(1,1,500,30);
         info.setFont(font);
@@ -33,52 +33,50 @@ public class StudentMainPage extends JFrame{
 
         //set a label to notice logout
         JLabel logout = new JLabel("Logout");
-        logout.setBounds(560,1,200,30);
+        logout.setBounds(560,1,150,30);
         logout.setFont(font);
         panel.add(logout);
 
         //set three buttons to show the functions
-        JButton viewExam = new JButton("View exam timetable");
-        viewExam.setBounds(140,140,400,60);
-        viewExam.setFont(font1);
-        panel.add(viewExam);
-        JButton take = new JButton("Take exam");
-        take.setBounds(140,240,400,60);
-        take.setFont(font1);
-        panel.add(take);
-        JButton result = new JButton("Report and results");
+        JButton setAnExam = new JButton("Set an exam");
+        setAnExam.setBounds(140,140,400,60);
+        setAnExam.setFont(font1);
+        panel.add(setAnExam);
+        JButton markPapers = new JButton("Mark papers");
+        markPapers.setBounds(140,240,400,60);
+        markPapers.setFont(font1);
+        panel.add(markPapers);
+        JButton result = new JButton("View results");
         result.setBounds(140,340,400,60);
         result.setFont(font1);
         panel.add(result);
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
 
-        //log-out logo
-
-
-        ImageIcon image = new ImageIcon("src/com/company/view/Images/logout.jpg");
+        ImageIcon image = new ImageIcon("src\\com\\company\\ui\\Images\\logout.jpg");
         JLabel logOut=new JLabel(image);
         logOut.setBounds(635,1,30,30);
         panel.add(logOut);
 
+
         setVisible(true);
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
 
         //Event
-        //click "view exam schedule"
-        viewExam.addActionListener(e -> {
+        //click the button "Set an exam"
+        setAnExam.addActionListener(e -> {
             setVisible(false);
-            new ExamSchedule();
+            new SetAnExam();
         });
 
-        //click "take an exam"
-        take.addActionListener(e -> {
+        //Click the button "mark papers"
+        markPapers.addActionListener(e -> {
             setVisible(false);
-            new TakeAnExamM(2,10,5,"5+65 = ?","3","5","70","1","Compulsory");
+            new MarkPapers("ab=?","1",2);
         });
 
-        //click "reports and results"
+        //click the button "View Examination results"
         result.addActionListener(e -> {
             setVisible(false);
-            new ReportsAndResults();
+            new ViewExaminationResults();
         });
 
         logOut.addMouseListener(new MouseListener() {
@@ -108,8 +106,7 @@ public class StudentMainPage extends JFrame{
 
             }
         });
+
     }
 
-
 }
-

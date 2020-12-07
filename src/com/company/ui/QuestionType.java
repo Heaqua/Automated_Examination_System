@@ -1,9 +1,7 @@
-package com.company.view.GUI;
+package com.company.ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
@@ -55,7 +53,7 @@ public class QuestionType extends JFrame {
 
 
         setVisible(true);
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
         setSize(700,600);
         setLocationRelativeTo(null);
 

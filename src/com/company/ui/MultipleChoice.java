@@ -1,17 +1,11 @@
-package com.company.view.GUI;
-
-import com.sun.javaws.util.JfxHelper;
+package com.company.ui;
 
 import javax.swing.*;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Enumeration;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
@@ -123,7 +117,7 @@ public class MultipleChoice extends JFrame {
             panel.add(OR);
             panel.add(save);
             panel.add(next);
-            this.setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+            this.setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
             this.setVisible(true);
 
 

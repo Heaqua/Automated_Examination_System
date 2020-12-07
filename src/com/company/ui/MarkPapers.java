@@ -1,4 +1,4 @@
-package com.company.view.GUI;
+package com.company.ui;
 
 import javax.swing.*;
 
@@ -94,7 +94,7 @@ public class MarkPapers extends JFrame {
         quit.setBounds(455,490,190,40);
         quit.setFont(font1);
         panel.add(quit);
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
 
         //Event
         //click the button "Save and next"

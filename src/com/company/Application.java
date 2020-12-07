@@ -1,10 +1,9 @@
 package com.company;
 
-import com.company.view.GUI.OriginalLoginPage;
+import com.company.ui.OriginalLoginPage;
 import java.io.*;
 import java.sql.*;
 import oracle.jdbc.driver.*;
-import oracle.sql.*;
 
 public class Application
 {

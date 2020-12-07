@@ -1,24 +1,20 @@
-package com.company.view.GUI;
+package com.company.ui;
 
 import javax.swing.*;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
-public class FillBlanks extends JFrame {
-    public static void main(String[] args){
-        new FillBlanks();
-    }
-    public FillBlanks(){
-        super("Fill in the blanks");
+public class FullLength extends JFrame {
+    public static void main(String[] args){new FullLength();}
+    public FullLength(){
+        super("Full length test question");
         JPanel panel = new JPanel();
-        this.setBounds(500,300,700,600);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.add(panel);
+        setBounds(500,300,700,600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(panel);
         panel.setLayout(null);
 
         //set font
@@ -32,7 +28,7 @@ public class FillBlanks extends JFrame {
         panel.add(count);
 
         //set the question
-        JLabel ques = new JLabel("Please set the question: (with a blank in it)");
+        JLabel ques = new JLabel("Please set the question: ");
         ques.setBounds(10,30,500,50);
         ques.setFont(font);
         panel.add(ques);
@@ -41,13 +37,11 @@ public class FillBlanks extends JFrame {
         JTextArea question = new JTextArea();
         question.setBounds(10,90,600,200);
         question.setFont(font);
-        question.setLineWrap(true);
         panel.add(question);
 
-        JScrollPane jsp=new JScrollPane(question);
-        Dimension size=question.getPreferredSize();
-        jsp.setBounds(10,90,600,200);
-        panel.add(jsp);
+        JScrollPane roll=new JScrollPane(question);
+        roll.setBounds(10,90,600,200);
+        panel.add(roll);
 
         //set the score
         JLabel score = new JLabel("Set score : ");
@@ -72,6 +66,10 @@ public class FillBlanks extends JFrame {
         answer.setBounds(10,350,400,100);
         answer.setFont(font);
         panel.add(answer);
+
+        JScrollPane roll1=new JScrollPane(answer);
+        roll1.setBounds(10,350,400,100);
+        panel.add(roll1);
 
         //set compulsory or optional button and a "OR" label
         JLabel OR = new JLabel("OR");
@@ -101,34 +99,28 @@ public class FillBlanks extends JFrame {
         panel.add(save);
         panel.add(next);
 
+
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
         setSize(700,600);
         setLocationRelativeTo(null);
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
-        this.setVisible(true);
+        setVisible(true);
 
-        score2.addActionListener(e -> {
-
-        });
-
-        question.addAncestorListener(new AncestorListener() {
+        //Event
+        question.getDocument().addDocumentListener(new DocumentListener() {
             @Override
-            public void ancestorAdded(AncestorEvent event) {
+            public void insertUpdate(DocumentEvent e) {
 
             }
 
             @Override
-            public void ancestorRemoved(AncestorEvent event) {
+            public void removeUpdate(DocumentEvent e) {
 
             }
 
             @Override
-            public void ancestorMoved(AncestorEvent event) {
+            public void changedUpdate(DocumentEvent e) {
 
             }
-        });
-
-        answer.addActionListener(e -> {
-
         });
 
         Com.addActionListener(e -> {
@@ -139,13 +131,14 @@ public class FillBlanks extends JFrame {
 
         });
 
-        save.addActionListener(e -> {
+        score2.addActionListener(e -> {
 
         });
 
-        next.addActionListener(e -> {
+        answer.addActionListener(e -> {
 
         });
+
         //Event
         //click the button "Save and Complete"
         save.addActionListener(e -> {
@@ -159,6 +152,6 @@ public class FillBlanks extends JFrame {
             new QuestionType();
         });
 
-
     }
 }
+

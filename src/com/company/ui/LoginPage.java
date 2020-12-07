@@ -1,10 +1,7 @@
-package com.company.view.GUI;
+package com.company.ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
@@ -50,13 +47,13 @@ public class LoginPage extends JFrame {
         panel.add(loginButton);
 
         //set the background picture
-        ImageIcon image=new ImageIcon("src/com/company/view/Images/background1.jpg");
+        ImageIcon image=new ImageIcon("src\\com\\company\\ui\\Images\\background1.jpg");
         JLabel lbBg = new JLabel(image);
         lbBg.setBounds(0, 0, 700, 600);
         panel.add(lbBg);
 
         setVisible(true);
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
 
 
         //Event

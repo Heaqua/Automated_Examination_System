@@ -1,22 +1,22 @@
-package com.company.view.GUI;
+package com.company.ui;
 
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
-public class FullLength extends JFrame {
-    public static void main(String[] args){new FullLength();}
-    public FullLength(){
-        super("Full length test question");
+public class FillBlanks extends JFrame {
+    public static void main(String[] args){
+        new FillBlanks();
+    }
+    public FillBlanks(){
+        super("Fill in the blanks");
         JPanel panel = new JPanel();
-        setBounds(500,300,700,600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(panel);
+        this.setBounds(500,300,700,600);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.add(panel);
         panel.setLayout(null);
 
         //set font
@@ -30,7 +30,7 @@ public class FullLength extends JFrame {
         panel.add(count);
 
         //set the question
-        JLabel ques = new JLabel("Please set the question: ");
+        JLabel ques = new JLabel("Please set the question: (with a blank in it)");
         ques.setBounds(10,30,500,50);
         ques.setFont(font);
         panel.add(ques);
@@ -39,11 +39,13 @@ public class FullLength extends JFrame {
         JTextArea question = new JTextArea();
         question.setBounds(10,90,600,200);
         question.setFont(font);
+        question.setLineWrap(true);
         panel.add(question);
 
-        JScrollPane roll=new JScrollPane(question);
-        roll.setBounds(10,90,600,200);
-        panel.add(roll);
+        JScrollPane jsp=new JScrollPane(question);
+        Dimension size=question.getPreferredSize();
+        jsp.setBounds(10,90,600,200);
+        panel.add(jsp);
 
         //set the score
         JLabel score = new JLabel("Set score : ");
@@ -68,10 +70,6 @@ public class FullLength extends JFrame {
         answer.setBounds(10,350,400,100);
         answer.setFont(font);
         panel.add(answer);
-
-        JScrollPane roll1=new JScrollPane(answer);
-        roll1.setBounds(10,350,400,100);
-        panel.add(roll1);
 
         //set compulsory or optional button and a "OR" label
         JLabel OR = new JLabel("OR");
@@ -101,28 +99,34 @@ public class FullLength extends JFrame {
         panel.add(save);
         panel.add(next);
 
-
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
         setSize(700,600);
         setLocationRelativeTo(null);
-        setVisible(true);
+        setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
+        this.setVisible(true);
 
-        //Event
-        question.getDocument().addDocumentListener(new DocumentListener() {
+        score2.addActionListener(e -> {
+
+        });
+
+        question.addAncestorListener(new AncestorListener() {
             @Override
-            public void insertUpdate(DocumentEvent e) {
+            public void ancestorAdded(AncestorEvent event) {
 
             }
 
             @Override
-            public void removeUpdate(DocumentEvent e) {
+            public void ancestorRemoved(AncestorEvent event) {
 
             }
 
             @Override
-            public void changedUpdate(DocumentEvent e) {
+            public void ancestorMoved(AncestorEvent event) {
 
             }
+        });
+
+        answer.addActionListener(e -> {
+
         });
 
         Com.addActionListener(e -> {
@@ -133,14 +137,13 @@ public class FullLength extends JFrame {
 
         });
 
-        score2.addActionListener(e -> {
+        save.addActionListener(e -> {
 
         });
 
-        answer.addActionListener(e -> {
+        next.addActionListener(e -> {
 
         });
-
         //Event
         //click the button "Save and Complete"
         save.addActionListener(e -> {
@@ -154,6 +157,6 @@ public class FullLength extends JFrame {
             new QuestionType();
         });
 
+
     }
 }
-

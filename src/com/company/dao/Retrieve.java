@@ -1,4 +1,4 @@
-package com.company.controller.commands;
+package com.company.dao;
 import java.sql.*;
 import oracle.jdbc.driver.*;
 

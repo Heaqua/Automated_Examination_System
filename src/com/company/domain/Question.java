@@ -1,5 +1,58 @@
 package com.company.domain;
 
 public class Question {
-    // Delete this class and use entity id
+    private String quesNo;
+    private String com;
+    private String type;
+    private int score;
+    private String content;
+    private String answer;
+
+    public void setQuesNo(String quesNo) {
+        this.quesNo = quesNo;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public void setCom(String com) {
+        this.com = com;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public String getCom() {
+        return com;
+    }
+
+    public String getQuesNo() {
+        return quesNo;
+    }
 }

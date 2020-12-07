@@ -7,9 +7,6 @@ import static java.awt.Toolkit.getDefaultToolkit;
 
 public class QuestionType extends JFrame {
 
-    public static void main(String[] args){
-        new QuestionType();
-    }
     public QuestionType(){
         super("Question Type");
         JPanel panel = new JPanel();

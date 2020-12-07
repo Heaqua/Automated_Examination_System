@@ -8,9 +8,6 @@ import java.awt.event.MouseListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class StudentMainPage extends JFrame{
-    public static void main(String[] args) {
-        new StudentMainPage();
-    }
 
     public StudentMainPage(){
         super("Main Page");

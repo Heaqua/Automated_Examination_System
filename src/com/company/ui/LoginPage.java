@@ -4,6 +4,7 @@ import com.company.dao.StudentDao;
 import com.company.dao.TeacherDao;
 import com.company.dao.sqlplus.StudentDaoImp;
 import com.company.dao.sqlplus.TeacherDaoImp;
+import com.company.domain.People;
 import com.company.domain.Student;
 import com.company.domain.Teacher;
 

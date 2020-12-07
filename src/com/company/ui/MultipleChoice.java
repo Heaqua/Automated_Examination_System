@@ -10,9 +10,6 @@ import java.awt.event.ActionListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class MultipleChoice extends JFrame {
-        public static void main(String[] args){
-            new MultipleChoice();
-        }
         public MultipleChoice(){
             super("Set Multiple Choice Question");
             JPanel panel = new JPanel();

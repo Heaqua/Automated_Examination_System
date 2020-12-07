@@ -1,6 +1,6 @@
 package com.company.domain;
 
-import com.company.TestApplication;
+import com.company.dao.sqlplus.TestApplication;
 import oracle.jdbc.driver.OracleConnection;
 
 

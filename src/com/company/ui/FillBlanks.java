@@ -8,9 +8,6 @@ import java.awt.*;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class FillBlanks extends JFrame {
-    public static void main(String[] args){
-        new FillBlanks();
-    }
     public FillBlanks(){
         super("Fill in the blanks");
         JPanel panel = new JPanel();

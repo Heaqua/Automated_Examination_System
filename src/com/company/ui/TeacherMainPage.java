@@ -8,9 +8,7 @@ import java.awt.event.*;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class TeacherMainPage extends JFrame {
-    public static void main(String[] args){
-        new TeacherMainPage();
-    }
+
     public TeacherMainPage(){
         super("Main Page");
         JPanel panel = new JPanel();

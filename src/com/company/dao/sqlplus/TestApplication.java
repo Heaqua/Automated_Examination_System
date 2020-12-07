@@ -12,6 +12,7 @@ public class TestApplication
     public static OracleConnection conn;
     public static void main(String args[]) throws SQLException, IOException
     {
+
         String username, password;
         username = "\"18080915d\"";			// Your Oracle Account ID
         password = "jephoufg"; 		// Password of Oracle Account
@@ -31,7 +32,7 @@ public class TestApplication
             System.out.println(rset.getInt(1) + " " + rset.getString(2) + " " + rset.getInt(3));
         }
         System.out.println();
-        System.out.println(new Student("S180101").login("123456"));
+        //System.out.println(new Student("S180101").login("123456"));
         conn.close();
     }
 }

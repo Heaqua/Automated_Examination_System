@@ -8,9 +8,7 @@ import java.awt.event.ItemListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ViewExaminationResults extends JFrame {
-    public static void main(String[] args) {
-        new ViewExaminationResults();
-    }
+
     public ViewExaminationResults(){
         super("View Examination Results");
         JPanel panel = new JPanel();

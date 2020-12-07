@@ -8,9 +8,6 @@ import java.awt.event.ItemListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ReportsAndResults extends JFrame {
-    public static void main(String[] args) {
-        new ReportsAndResults();
-    }
 
     public ReportsAndResults() {
         super("Reports and Results");

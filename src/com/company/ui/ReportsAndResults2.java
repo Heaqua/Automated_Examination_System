@@ -6,9 +6,7 @@ import java.awt.*;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ReportsAndResults2 extends JFrame {
-    public static void main(String[] args) {
-        new ReportsAndResults();
-    }
+
 
     public ReportsAndResults2(String subject,String result,String report) {
         super("Reports and Results");

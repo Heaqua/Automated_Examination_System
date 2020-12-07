@@ -11,9 +11,6 @@ import java.util.Set;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class SetAnExam extends JFrame {
-    public static void main(String[] a){
-        new SetAnExam();
-    }
     static String testNumber;
     public SetAnExam(){
         super("Set an Exam");

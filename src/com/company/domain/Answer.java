@@ -16,6 +16,9 @@ public class Answer {
         this.score = score;
     }
 
+    public String getTestNo(){
+        return testNo;
+    }
     public void setQuesNo(int quesNo) {
         this.quesNo = quesNo;
     }

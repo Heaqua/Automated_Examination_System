@@ -10,6 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SubjectDaoImp implements SubjectDao {
+    @Override
+    public Subject findById(String id) {
+        return null;
+    }
+
     public Subject findByTeaClaId(String teaId, String classId){
         Connection conn = null;
         PreparedStatement pstmt = null;

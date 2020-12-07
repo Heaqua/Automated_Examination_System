@@ -3,8 +3,6 @@ package com.company.dao.sqlplus;
 import com.company.dao.StudentDao;
 import com.company.domain.Exam;
 import com.company.domain.Student;
-import com.company.domain.Subject;
-import com.company.domain.Teacher;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +24,7 @@ public class StudentDaoImp implements StudentDao {
             rs=pstmt.executeQuery();
 
             if(rs.next()){
-                result=new Student();
+                result= new Student();
 
                 result.setName(rs.getString("stu_name"));
                 result.setId(rs.getString("stu_id"));

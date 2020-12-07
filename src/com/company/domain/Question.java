@@ -8,6 +8,15 @@ public class Question {
     private String content;
     private String answer;
 
+    public Question(String quesNo, String com, String type, int score, String content, String answer) {
+        this.quesNo = quesNo;
+        this.com = com;
+        this.type = type;
+        this.score = score;
+        this.content = content;
+        this.answer = answer;
+    }
+
     public void setQuesNo(String quesNo) {
         this.quesNo = quesNo;
     }

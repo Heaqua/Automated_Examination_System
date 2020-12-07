@@ -14,6 +14,8 @@ public class Student {
     static PreparedStatement queryQuestion;
     static PreparedStatement testNumGrade;
     static PreparedStatement testComments;
+    static PreparedStatement getTestStartTime;
+    static PreparedStatement getTestDuration;
 
     static {
         try {
@@ -27,6 +29,8 @@ public class Student {
                     "WHERE TEST# = ? AND STU_ID = ?");
             testComments = conn.prepareStatement("SELECT COMMENTS FROM TAKE " +
                     "WHERE TEST# = ? AND STU_ID = ?");
+            getTestStartTime = conn.prepareStatement("SELECT START_TIME FROM EXAM WHERE TEST# = ?");
+            getTestDuration = conn.prepareStatement("SELECT START_TIME, DURATION FROM EXAM WHERE TEST# = ?");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -52,18 +56,27 @@ public class Student {
     }
 
 
-//    public ResultSet printExamTable(){
-//
-//
-//    }
+    public String[][] getExamTable(){
+
+
+    }
+
+    /**
+     *
+     * @param testId
+     * @return the start date and time as a Timestamp
+     * @throws SQLException
+     */
+    public Timestamp getExamStartTime(String testId) throws SQLException {
+        getTestStartTime.setString(1, testId);
+        ResultSet rset = getTestStartTime.executeQuery();
+        rset.next();
+        Timestamp time = rset.getTimestamp(1);
+        return time;
+    }
 
     public void printClass(){}
 
-    public boolean examAvailable(String ExamId){
-        // Get time and judge whether it is later than the start time
-
-        return true;
-    }
 
 
      /**

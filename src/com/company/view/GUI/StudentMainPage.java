@@ -2,8 +2,6 @@ package com.company.view.GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -52,12 +50,12 @@ public class StudentMainPage extends JFrame{
         result.setBounds(140,340,400,60);
         result.setFont(font1);
         panel.add(result);
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
 
         //log-out logo
 
 
-        ImageIcon image = new ImageIcon("src\\com\\company\\view\\Images\\logout.jpg");
+        ImageIcon image = new ImageIcon("src/com/company/view/Images/logout.jpg");
         JLabel logOut=new JLabel(image);
         logOut.setBounds(635,1,30,30);
         panel.add(logOut);
@@ -74,7 +72,7 @@ public class StudentMainPage extends JFrame{
         //click "take an exam"
         take.addActionListener(e -> {
             setVisible(false);
-            new TakeAnExam();
+            new TakeAnExamM(2,10,5,"5+65 = ?","3","5","70","1","Compulsory");
         });
 
         //click "reports and results"

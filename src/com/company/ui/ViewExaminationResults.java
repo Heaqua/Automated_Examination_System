@@ -21,7 +21,7 @@ public class ViewExaminationResults extends JFrame {
         panel.setLayout(null);
 
         //logo
-        setIconImage(getDefaultToolkit().getImage("src/com/company/view/Images/logo1.png"));
+        setIconImage(getDefaultToolkit().getImage("src/com/company/ui/Images/logo1.png"));
 
         //set fonts
         Font font = new Font("Times New Roman",Font.PLAIN,30);

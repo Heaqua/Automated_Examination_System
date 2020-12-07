@@ -1,5 +1,8 @@
 package com.company.domain;
 
 public class Question {
-    // Delete this class and use entity id
+    private String quesNo;
+    private String com;
+    private
+
 }

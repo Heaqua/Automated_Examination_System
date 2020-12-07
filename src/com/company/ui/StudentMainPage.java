@@ -67,10 +67,10 @@ public class StudentMainPage extends JFrame{
         });
 
         //click "take an exam"
-        take.addActionListener(e -> {
-            setVisible(false);
-            new TakeAnExamM(2,10,5,"5+65 = ?","3","5","70","1","Compulsory");
-        });
+//        take.addActionListener(e -> {
+//            setVisible(false);
+//            new TakeAnExamM(2,10,5,"5+65 = ?","3","5","70","1","Compulsory");
+//        });
 
         //click "reports and results"
         result.addActionListener(e -> {

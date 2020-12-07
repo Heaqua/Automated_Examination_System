@@ -1,4 +1,4 @@
-package com.company;
+package com.company.dao.sqlplus;
 
 import java.io.*;
 import java.sql.*;

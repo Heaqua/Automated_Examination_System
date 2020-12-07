@@ -1,8 +1,16 @@
 package com.company.ui;
 
+import com.company.dao.StudentDao;
+import com.company.dao.TeacherDao;
+import com.company.dao.sqlplus.StudentDaoImp;
+import com.company.dao.sqlplus.TeacherDaoImp;
+import com.company.domain.Student;
+import com.company.domain.Teacher;
+
 import javax.swing.*;
 import java.awt.*;
 
+import static com.company.ui.MainApplication.app;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 
@@ -58,28 +66,33 @@ public class LoginPage extends JFrame {
 
         //Event
         loginButton.addActionListener(e -> {
+            if(app.ifAStudent[0]==1) {
+                TeacherDao teacherDao = new TeacherDaoImp();
+                Teacher teacher = teacherDao.login(user_text.getText());
 
+                String passwordText = new String(pw.getPassword());
 
-            //TODO
-            //judge the user ID and password
-            //If the user input a student account, then turn to student main page
+                if (teacher.getPassword().equals(passwordText) && teacher != null) {
+                    new TeacherMainPage();
+                    MainApplication.user = teacher;
+                } else {
+                    JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)", "Login failed", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+            else{
+                StudentDao studentDao=new StudentDaoImp();
+                Student student=studentDao.login(user_text.getText());
 
+                String passwordText=new String(pw.getPassword());
 
+                if(student.getPassword().equals(passwordText)&&student!=null){
+                    new StudentMainPage();
+                    MainApplication.user=student;
+                }else {
+                    JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)", "Login failed", JOptionPane.INFORMATION_MESSAGE);
+                }
 
-            //If the user input a teacher account, then turn to teacher main page
-            setVisible(false);
-            new TeacherMainPage();
-
-            //else
-            //a remainder showing "Error: Login failed (name/password refused)"
-            //JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)",
-                    //"Login failed", JOptionPane.INFORMATION_MESSAGE);
-
-                setVisible(false);
-                new TeacherMainPage();
-
-
-
+            }
 
         });
 

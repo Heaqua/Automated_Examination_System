@@ -2,7 +2,7 @@ package com.company.dao;
 import java.sql.*;
 import oracle.jdbc.driver.*;
 
-import com.company.TestApplication;
+import com.company.dao.sqlplus.TestApplication;
 public class Retrieve {
     public static Statement stmt;
     public PreparedStatement preStmt;

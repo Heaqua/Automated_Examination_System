@@ -1,8 +1,11 @@
 package com.company.domain;
 
-public class Student {
-    private String name;
-    private String stu_id;
+public class Student extends People {
+
+    private String classId;
+
+
+
     // private Exam[] exams;
 
     public static boolean login(String name, String stu_id){
@@ -45,5 +48,15 @@ public class Student {
     }
 
 
+    //getter and setter
 
+
+
+    public String getClassId() {
+        return classId;
+    }
+
+    public void setClassId(String classId) {
+        this.classId = classId;
+    }
 }

@@ -3,6 +3,7 @@ package com.company.dao.sqlplus;
 import com.company.dao.ClassDao;
 import com.company.domain.Class1;
 import com.company.domain.Student;
+import com.company.domain.Teacher;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +12,55 @@ import java.sql.SQLException;
 
 public class Class1DaoImp implements ClassDao {
     @Override
-    public Class1 findById(String id) {
+    public Class1 findById(String cId) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Class1 result = null;
+
+        try {
+            conn = TestApplication.conn;
+            String sql = "select c_id, instructor_id  from class where c_id= ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, cId);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                result = new Class1();
+
+               result.setC_id(rs.getString(1));
+               result.setInstructor_id(rs.getString(2));
+
+                return result;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+
+                }
+            }
+
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                    ;
+                } catch (SQLException e) {
+
+                }
+            }
+
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+
+                }
+            }
+        }
         return null;
     }
 

@@ -6,6 +6,7 @@ import oracle.jdbc.driver.OracleConnection;
 
 import javax.xml.transform.Result;
 import java.math.BigDecimal;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,6 +52,25 @@ public class QuestionDaoImp implements QuestionDao {
 
     @Override
     public void create(int questionNo, String testNo, String compulsory, String type, BigDecimal score, String content, String answer) {
+        try{
+            Connection conn=TestApplication.conn;
+            String sql="insert into question (q#,test#,compulsory,type,score,question_content,answer) values (?,?,?,?,?,?,?)" ;
+            PreparedStatement pstmt=conn.prepareStatement(sql);
 
+            pstmt.setString(1,testNo);
+            pstmt.setString(2,testNo);
+            pstmt.setString(3,compulsory);
+            pstmt.setString(4,type);
+            pstmt.setBigDecimal(5,score);
+            pstmt.setString(6,content);
+            pstmt.setString(7,answer);
+
+            int insertedRows=pstmt.executeUpdate();
+
+            System.out.printf("Insert %d rows successfully \n",insertedRows);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }
+

@@ -5,10 +5,7 @@ import com.company.domain.Answer;
 import oracle.jdbc.driver.OracleConnection;
 
 import java.math.BigDecimal;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.*;
 
 public class AnswerDaoImp implements AnswerDao {
     static OracleConnection conn = TestApplication.conn;
@@ -101,14 +98,20 @@ public class AnswerDaoImp implements AnswerDao {
     }
 
     @Override
-    public void modify(BigDecimal stu_score) {
-//        try {
-//            updateScore.setBigDecimal(1, stu_score);
-//            updateScore.setString(2, );
-//
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
+    public void modify(Answer answer,BigDecimal stu_score) {
+        try{
+            Connection conn = TestApplication.conn;
+            String sql = "update answer set stu_score=? where q#=? and test#=? and stu_id=?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setBigDecimal(1,stu_score);
+            pstmt.setInt(2,answer.getQuesNo());
+            pstmt.setString(3,answer.getTestNo());
+            pstmt.setString(4,answer.getStu_ID());
+            int rows = pstmt.executeUpdate();
+            System.out.printf("Successfully insert %d data item \n", rows);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 

@@ -2,11 +2,6 @@ package com.company.domain;
 
 public class Teacher extends People {
 
-
-
-
-
-
     /*
     public boolean login(String name, String stu_id){
         return true;

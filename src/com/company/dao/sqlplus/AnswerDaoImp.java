@@ -30,19 +30,34 @@ public class AnswerDaoImp implements AnswerDao {
             queryAnswer.setString(3, stu_id);
             rs = queryAnswer.executeQuery();
             rs.next();
-
-
-
+            String stu_ans = rs.getString(1);
+            int score = rs.getInt(2);
+            a = new Answer(questionNo, testNo, stu_id, stu_ans, score);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            if(rs!=null){
+                try{
+                    rs.close();
+                }
+                catch (SQLException exception){
+                }
+            }
         }
+    return a;
+    }
+    @Override
+    public void create(int questionNo, String testNo, String stu_id, String stu_answer, BigDecimal stu_score) {
 
-
-        return null;
     }
 
     @Override
-    public void create(int questionNo, String testNo, String stu_id, String stu_answer, BigDecimal stu_score) {
+    public void create1(int questionNo, String testNo, String stu_id, String stu_answer) {
+
+    }
+
+    @Override
+    public void modify(BigDecimal stu_score) {
 
     }
 

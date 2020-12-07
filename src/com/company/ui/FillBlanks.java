@@ -3,6 +3,8 @@ package com.company.ui;
 import javax.swing.*;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 
 import static java.awt.Toolkit.getDefaultToolkit;
@@ -105,22 +107,23 @@ public class FillBlanks extends JFrame {
 
         });
 
-        question.addAncestorListener(new AncestorListener() {
+        question.getDocument().addDocumentListener(new DocumentListener() {
             @Override
-            public void ancestorAdded(AncestorEvent event) {
+            public void insertUpdate(DocumentEvent e) {
 
             }
 
             @Override
-            public void ancestorRemoved(AncestorEvent event) {
+            public void removeUpdate(DocumentEvent e) {
 
             }
 
             @Override
-            public void ancestorMoved(AncestorEvent event) {
+            public void changedUpdate(DocumentEvent e) {
 
             }
         });
+
 
         answer.addActionListener(e -> {
 

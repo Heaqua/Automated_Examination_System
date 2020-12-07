@@ -1,5 +1,8 @@
 package com.company.ui;
 
+import com.company.dao.QuestionDao;
+import com.company.dao.sqlplus.QuestionDaoImp;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -18,11 +21,9 @@ public class MultipleChoice extends JFrame {
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.add(panel);
 
-            int number;
             panel.setLayout(null);
-            number = 1;
             Font font = new Font("Times New Roman",Font.PLAIN,20);
-            JLabel count = new JLabel("Question "+number);
+            JLabel count = new JLabel("Question "+MainApplication.num);
             JLabel hint = new JLabel("Please set the question: (multiple choice) ");
             JLabel score = new JLabel("Set score : ");
             JLabel hint2 = new JLabel("Please set four answers : ");
@@ -123,6 +124,7 @@ public class MultipleChoice extends JFrame {
             score2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    int score3= Integer.parseInt(score2.getText());
 
                 }
             });
@@ -194,8 +196,11 @@ public class MultipleChoice extends JFrame {
             //Event
             //click the button "Save and Complete"
             save.addActionListener(e -> {
+
                 setVisible(false);
                 new TeacherMainPage();
+                QuestionDao questionDao = new QuestionDaoImp();
+                questionDao.create();
             });
 
             //Click the button "Save and Next"

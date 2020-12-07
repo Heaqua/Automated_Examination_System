@@ -12,7 +12,6 @@ public class QuestionType extends JFrame {
         JPanel panel = new JPanel();
 
         //set frame size
-        int num = 1;
         setBounds(500,300,700,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(panel);
@@ -23,7 +22,7 @@ public class QuestionType extends JFrame {
         Font font1 = new Font("Times New Roman",Font.PLAIN,30);
 
         //set a label to show the Q#
-        JLabel count = new JLabel("Question " + num);
+        JLabel count = new JLabel("Question " + MainApplication.num);
         count.setBounds(1,1,200,50);
         count.setFont(font);
         panel.add(count);

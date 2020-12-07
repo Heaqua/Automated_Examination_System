@@ -23,8 +23,7 @@ public class MarkPapers extends JFrame {
         Font font2 = new Font("Times New Roman", Font.ITALIC, 20);
 
         //set label for Question#
-        int number = 1;
-        JLabel num = new JLabel("Question " + number);
+        JLabel num = new JLabel("Question " + MainApplication.num);
         num.setBounds(1, 1, 200, 30);
         num.setFont(font1);
         panel.add(num);

@@ -6,12 +6,18 @@ import com.company.domain.Question;
 import oracle.jdbc.driver.OracleConnection;
 import oracle.jdbc.proxy.annotation.Pre;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 
 public class ExamDaoImp implements ExamDao {
+    static OracleConnection conn = TestApplication.conn;
+    static PreparedStatement questions = conn.prepareStatement("SELECT Q#, COMPULSORY, TYPE, SCORE, Q_CONTENT " +
+            "FROM QUESTION WHERE TEST# = ?");
+
+
+    @Override
+    public Exam findById(String exam) {
+        return null;
+    }
 
     public void create(String testNo, Timestamp start, int duration){
         try{
@@ -33,9 +39,24 @@ public class ExamDaoImp implements ExamDao {
     }
 
     public Question[] allQuestions(Exam e){
-        OracleConnection conn = TestApplication.conn;
-        PreparedStatement stmt = conn.prepareStatement("SELECT Q#, COMPULSORY, TYPE, SCORE, Q_CONTENT " +
-                "FROM QUESTION WHERE TEST# = ?");
+
+        try {
+            questions.setString(1, e.getTestNo());
+            ResultSet rs = questions.executeQuery();
+            int num = 0;
+            if(rs.last()){
+                num = rs.getRow();
+                rs.beforeFirst();
+            }
+            Question[] ques = new Question[num];
+            for(int i = 0; i < num; i++){
+                ques[i] = new Question()
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
 
 
     }

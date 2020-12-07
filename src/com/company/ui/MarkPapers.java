@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
@@ -20,7 +21,6 @@ public class MarkPapers extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(panel);
         panel.setLayout(null);
-        setIconImage(getDefaultToolkit().getImage("src\\Images\\logo1.png"));
 
         //set fonts
         Font font = new Font("Times New Roman", Font.PLAIN, 30);
@@ -99,21 +99,17 @@ public class MarkPapers extends JFrame {
         this.setVisible(true);
 
         //Event
-        //
-        score2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String scoreFromText=score2.getText();
-            }
-        });
+
 
         //click the button "Save and next"
         save.addActionListener(e -> {
             setVisible(false);
             new MarkPapers("3+4 = ?","7",3);
 
+            String scoreFromText=score2.getText();
+            BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
             AnswerDao answerDao=new AnswerDaoImp();
-            answerDao.modify();
+            answerDao.modify(scoreBigDecimal);
 
         });
 
@@ -122,6 +118,10 @@ public class MarkPapers extends JFrame {
             setVisible(false);
             new TeacherMainPage();
 
+            String scoreFromText=score2.getText();
+            BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
+            AnswerDao answerDao=new AnswerDaoImp();
+            answerDao.modify(scoreBigDecimal);
 
         });
 

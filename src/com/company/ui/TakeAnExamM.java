@@ -1,5 +1,8 @@
 package com.company.ui;
 
+import com.company.dao.AnswerDao;
+import com.company.dao.sqlplus.AnswerDaoImp;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -12,7 +15,7 @@ import static java.awt.Toolkit.getDefaultToolkit;
 
 public class TakeAnExamM extends JFrame {
 
-    public TakeAnExamM(int num,int total,int score,String Question,String A,String B,String C,String D,String Com){
+    public TakeAnExamM(int num,int total,int score,String Question,String Com){
         super("Take an exam");
         JPanel panel = new JPanel();
         setSize(700,600);
@@ -132,7 +135,9 @@ public class TakeAnExamM extends JFrame {
         //click "next"
         next.addActionListener(e -> {
             setVisible(false);
-            new TakeAnExamM(3,10,5,"7*8","56","98","2","3","Optional");
+            new TakeAnExamM(3,10,5,"7*8|56|98|2|3","Optional");
+            AnswerDao answerDao = new AnswerDaoImp();
+            answerDao.create(, ,);
         });
         this.setVisible(true);
 

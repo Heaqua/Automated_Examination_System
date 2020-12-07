@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TeacherDaoImp implements TeacherDao {
-    public Teacher login(String userId) {
+    public Teacher findById(String userId) {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;

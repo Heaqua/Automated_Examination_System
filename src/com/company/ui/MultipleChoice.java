@@ -9,10 +9,14 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 
+import static com.company.ui.MainApplication.num;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class MultipleChoice extends JFrame {
+    String A1,B1,C1,D1,ques,ans,compul;
+    BigDecimal scores;
         public MultipleChoice(){
             super("Set Multiple Choice Question");
             JPanel panel = new JPanel();
@@ -124,7 +128,6 @@ public class MultipleChoice extends JFrame {
             score2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    int score3= Integer.parseInt(score2.getText());
 
                 }
             });
@@ -163,27 +166,29 @@ public class MultipleChoice extends JFrame {
             });
 
             Optional.addActionListener(e -> {
+                compul = "N";
 
             });
 
             Com.addActionListener(e -> {
+                compul = "Y";
 
             });
 
             A.addActionListener(e -> {
-
+                ans = "A";
             });
 
             B.addActionListener(e -> {
-
+                ans = "B";
             });
 
             C.addActionListener(e -> {
-
+                ans = "C";
             });
 
             D.addActionListener(e -> {
-
+                ans = "D";
             });
 
             save.addActionListener(e -> {
@@ -196,17 +201,32 @@ public class MultipleChoice extends JFrame {
             //Event
             //click the button "Save and Complete"
             save.addActionListener(e -> {
-
+                A1 = A0.getText();
+                B1 = B0.getText();
+                C1 = C0.getText();
+                D1 = D0.getText();
+                String scoreText = score2.getText();
+                scores = new BigDecimal(scoreText);
+                ques = question.getText()+"|"+A1+"|"+B1+"|"+C1+"|"+D1;
                 setVisible(false);
                 new TeacherMainPage();
                 QuestionDao questionDao = new QuestionDaoImp();
-                questionDao.create();
+                questionDao.create(num,SetAnExam.testNumber,compul,"MC",scores,ques,ans);
             });
 
             //Click the button "Save and Next"
             next.addActionListener(e -> {
+                A1 = A0.getText();
+                B1 = B0.getText();
+                C1 = C0.getText();
+                D1 = D0.getText();
+                String scoreText = score2.getText();
+                scores = new BigDecimal(scoreText);
+                ques = question.getText()+"|"+A1+"|"+B1+"|"+C1+"|"+D1;
                 setVisible(false);
                 new QuestionType();
+                QuestionDao questionDao = new QuestionDaoImp();
+                questionDao.create(num,SetAnExam.testNumber,compul,"MC",scores,ques,ans);
             });
 
     }

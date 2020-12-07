@@ -19,7 +19,7 @@ public class SetDaoImp implements SetDao {
 
         try {
             conn = TestApplication.conn;
-            String sql = "select test#,";
+            String sql = "select test#,year,sem,tea_id,c_id from set where test#=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, testNo );
             rs = pstmt.executeQuery();
@@ -27,11 +27,11 @@ public class SetDaoImp implements SetDao {
             if (rs.next()) {
                 result = new Set();
 
-                result.setC_ID(rs.getString(""));
-                result.setSem(rs.getInt(""));
-                result.setTea_ID(rs.getString(""));
-                result.setTestNo(rs.getString(""));
-                result.setTea_ID(rs.getString(""));
+                result.setC_ID(rs.getString("test#"));
+                result.setSem(rs.getInt("year"));
+                result.setTea_ID(rs.getString("sem"));
+                result.setTestNo(rs.getString("tea_id"));
+                result.setTea_ID(rs.getString("c_id"));
 
                 return result;
             }
@@ -64,5 +64,25 @@ public class SetDaoImp implements SetDao {
             }
         }
         return null;
+    }
+
+    public void create(String testNo,int year,int sem,String tea_id,String c_id){
+     try{
+        Connection conn=TestApplication.conn;
+        String sql="insert into set (test#,year,sem,tea_id,c_id) values (?,?,?,?,?)" ;
+        PreparedStatement pstmt=conn.prepareStatement(sql);
+
+        pstmt.setString(1,testNo);
+        pstmt.setInt(2,year);
+        pstmt.setInt(3,sem);
+        pstmt.setString(4,tea_id);
+        pstmt.setString(5,c_id);
+
+        int insertedRows=pstmt.executeUpdate();
+
+        System.out.printf("Insert %d rows successfully \n",insertedRows);
+    } catch (SQLException e){
+        e.printStackTrace();
+    }
     }
 }

@@ -100,7 +100,9 @@ public class Student {
     }
 
     /**
-     *
+     * java.Math.BigDecimal
+     * SCORE NUMBER(2,2)
+     * Delete Answer
      * @param questionId
      * @param testId
      * @return string COMPULSORY ("Y" or "N"), string TYPE, BigDecimal SCORE, string Q_CONTENT, string ANSWER

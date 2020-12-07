@@ -6,7 +6,15 @@ public class Answer {
     private String stu_ans;
     private int score;
 
-    public  void setQuesNo(int quesNo) {
+    public Answer(){}
+    public Answer(int quesNo, String stu_ID, String stu_ans, int score){
+        this.quesNo = quesNo;
+        this.stu_ID = stu_ID;
+        this.stu_ans = stu_ans;
+        this.score = score;
+    }
+
+    public void setQuesNo(int quesNo) {
         this.quesNo = quesNo;
     }
 

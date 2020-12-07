@@ -6,6 +6,27 @@ public class Exam {
     private String testNo;
     private Timestamp start;
     private int duration;
+    private int year;
+    private int sem;
+    private String tea_id;
+    private String c_id;
+    private String sub_id;
+
+    public Exam(){
+
+    }
+
+    public Exam(String testNo, Timestamp start, int duration,
+                int year, int sem, String tea_id, String c_id, String sub_id){
+        this.testNo = testNo;
+        this.start = start;
+        this.duration = duration;
+        this.year = year;
+        this.sem = sem;
+        this.tea_id = tea_id;
+        this.c_id = c_id;
+        this.sub_id = sub_id;
+    }
 
     public void setTestNo(String testNo) {
         this.testNo = testNo;

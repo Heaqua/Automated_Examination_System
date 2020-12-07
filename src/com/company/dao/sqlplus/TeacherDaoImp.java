@@ -1,6 +1,7 @@
 package com.company.dao.sqlplus;
 
 import com.company.dao.TeacherDao;
+import com.company.domain.Student;
 import com.company.domain.Teacher;
 
 import java.sql.Connection;
@@ -84,40 +85,59 @@ public class TeacherDaoImp implements TeacherDao {
 
             String sql2="select sum(sub_id) from teach where tea_id=?";
             pstmt2=conn.prepareStatement(sql2);
-            pstmt2.setString(1,);
+            pstmt2.setString(1,teacher.getId());
+            rs2=pstmt2.executeQuery();
 
+            int index=rs2.getInt(1);
+            result=new String[index];
+            int i=1;
 
             if(rs1.next()){
-                result=new Teacher();
-
-                result.setName(rs.getString("tea_name"));
-                result.setId(rs.getString("tea_id"));
-                result.setPassword(rs.getString("tea_pwd"));
-
-                return result;
+                i++;
+                result[i-1]=rs1.getString("sub_name");
             }
+            return result;
+
+
         }
         catch (SQLException e){
             e.printStackTrace();
         }
         finally {
-            if(rs!=null){
+            if(rs1!=null){
                 try{
-                    rs.close();
+                    rs1.close();
+                }
+                catch (SQLException e){
+
+                }
+            }
+            if(rs2!=null){
+                try{
+                    rs2.close();
                 }
                 catch (SQLException e){
 
                 }
             }
 
-            if(pstmt!=null){
+            if(pstmt1!=null){
                 try{
-                    pstmt.close();;
+                    pstmt1.close();;
                 }
                 catch (SQLException e){
 
                 }
             }
+            if(pstmt2!=null){
+                try{
+                    pstmt2.close();
+                }
+                catch (SQLException e){
+
+                }
+            }
+
 
             if(conn !=null){
                 try {
@@ -129,5 +149,10 @@ public class TeacherDaoImp implements TeacherDao {
             }
         }
         return null;
+    }
+
+
+    public String[] allClasses(Student student){
+
     }
 }

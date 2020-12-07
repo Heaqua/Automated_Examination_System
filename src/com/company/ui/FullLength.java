@@ -8,7 +8,6 @@ import java.awt.*;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class FullLength extends JFrame {
-    public static void main(String[] args){new FullLength();}
     public FullLength(){
         super("Full length test question");
         JPanel panel = new JPanel();

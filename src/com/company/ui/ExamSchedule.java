@@ -6,9 +6,6 @@ import java.awt.*;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ExamSchedule extends JFrame {
-    public static void main(String[] args) {
-        new ExamSchedule();
-    }
     public ExamSchedule(){
         super("Exam Schedule");
         JPanel panel = new JPanel();

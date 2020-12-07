@@ -2,15 +2,17 @@ package com.company.ui;
 
 
 
-import com.company.ui.LoginPage;
-
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class OriginalLoginPage extends JFrame{
     JLabel label;
+    public int[] ifAStudent=new int[1];
     public OriginalLoginPage(){
         super("Online Examination System");
 
@@ -52,13 +54,19 @@ public class OriginalLoginPage extends JFrame{
 
         setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
 
+
         //Event
-        studentButton.addActionListener(e -> {
-            setVisible(false);
-            new LoginPage();
-        });
+        studentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ifAStudent[0]=1;
+                setVisible(false);
+                new LoginPage();
+            }
+        } );
 
         teacherButton.addActionListener(e -> {
+            ifAStudent[0]=0;
             setVisible(false);
             new LoginPage();
         });

@@ -6,9 +6,7 @@ import java.awt.*;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ViewExaminationResults2 extends JFrame {
-    public static void main(String[] args) {
-        new ViewExaminationResults();
-    }
+
 
     public ViewExaminationResults2(String class0,String subject) {
         super("View Examination Results");

@@ -2,11 +2,12 @@ package com.company.ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Set;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class SetAnExam extends JFrame {
-    public static void main(String[] args) {
+    public static void main(String[] a){
         new SetAnExam();
     }
     public SetAnExam(){

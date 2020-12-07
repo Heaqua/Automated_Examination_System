@@ -7,9 +7,6 @@ import java.awt.*;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class MarkPapers extends JFrame {
-    public static void main(String[] args) {
-        new MarkPapers("1+1 = ?","2",2);
-    }
     public MarkPapers(String Question, String Answer, int score) {
         super("Mark papers");
         JPanel panel = new JPanel();

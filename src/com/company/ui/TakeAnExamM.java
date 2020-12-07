@@ -11,9 +11,7 @@ import java.awt.event.ActionListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class TakeAnExamM extends JFrame {
-    public static void main(String[] args) {
-        new TakeAnExamM(2,10,5,"5+65 = ?","3","5","70","1","Compulsory");
-    }
+
     public TakeAnExamM(int num,int total,int score,String Question,String A,String B,String C,String D,String Com){
         super("Take an exam");
         JPanel panel = new JPanel();

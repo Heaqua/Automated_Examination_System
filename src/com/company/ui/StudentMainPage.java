@@ -8,9 +8,6 @@ import java.awt.event.MouseListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class StudentMainPage extends JFrame{
-    public static void main(String[] args) {
-        new StudentMainPage();
-    }
 
     public StudentMainPage(){
         super("Main Page");
@@ -26,7 +23,7 @@ public class StudentMainPage extends JFrame{
         Font font1 = new Font("Times New Roman",Font.PLAIN,40);
 
         //set a label to show the personal information
-        JLabel info = new JLabel("Personal information: " + "xxxxxxxxxxxxxxxxx");
+        JLabel info = new JLabel( MainApplication.user.getName()+" "+MainApplication.user.getId());
         info.setBounds(1,1,500,30);
         info.setFont(font);
         panel.add(info);

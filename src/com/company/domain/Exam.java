@@ -1,6 +1,6 @@
 package com.company.domain;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class Exam {
     private String testNo;

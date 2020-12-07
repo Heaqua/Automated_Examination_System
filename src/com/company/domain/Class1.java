@@ -1,6 +1,6 @@
 package com.company.domain;
 
-public class Class {
+public class Class1 {
     private String c_id;
     private String instructor_id;
 

@@ -1,5 +1,8 @@
 package com.company.ui;
 
+import com.company.dao.ExamDao;
+import com.company.dao.sqlplus.ExamDaoImp;
+
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Timestamp;
@@ -114,6 +117,7 @@ public class SetAnExam extends JFrame {
         startBu.setBounds(530,470,100,50);
         startBu.setFont(font3);
         panel.add(startBu);
+        this.setVisible(true);
 
         //Event
         //click the button "Start"
@@ -125,11 +129,15 @@ public class SetAnExam extends JFrame {
             Timestamp start2 = Timestamp.valueOf(start.getText());
             int dur = Integer.parseInt(du.getText());
             new QuestionType();
+
+            //insert values into EXAM
+            ExamDao examDao=new ExamDaoImp();
+            examDao.create(testNumber,start2,dur);
         });
 
 
 
-        this.setVisible(true);
+
     }
 
 }

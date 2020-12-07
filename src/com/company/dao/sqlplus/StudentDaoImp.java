@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class StudentDaoImp implements StudentDao {
-    public Student login(String userId){
+    public Student findById(String userId){
         Connection conn=null;
         PreparedStatement pstmt=null;
         ResultSet rs=null;

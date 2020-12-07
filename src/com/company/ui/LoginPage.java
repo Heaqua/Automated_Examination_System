@@ -68,7 +68,7 @@ public class LoginPage extends JFrame {
         loginButton.addActionListener(e -> {
             if(app.ifAStudent[0]==1) {
                 TeacherDao teacherDao = new TeacherDaoImp();
-                Teacher teacher = teacherDao.login(user_text.getText());
+                Teacher teacher = teacherDao.findById(user_text.getText());
 
                 String passwordText = new String(pw.getPassword());
 
@@ -81,7 +81,7 @@ public class LoginPage extends JFrame {
             }
             else{
                 StudentDao studentDao=new StudentDaoImp();
-                Student student=studentDao.login(user_text.getText());
+                Student student=studentDao.findById(user_text.getText());
 
                 String passwordText=new String(pw.getPassword());
 

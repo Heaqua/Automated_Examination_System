@@ -7,11 +7,13 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.math.BigDecimal;
 
 import static com.company.ui.MainApplication.num;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class FullLength extends JFrame {
+    String comOrOp;
     public FullLength(){
         super("Full length test question");
         JPanel panel = new JPanel();
@@ -126,11 +128,11 @@ public class FullLength extends JFrame {
         });
 
         Com.addActionListener(e -> {
-            String comOrOp="Y";
+            comOrOp="Y";
         });
 
         Optional.addActionListener(e -> {
-            String comOrOp="N";
+            comOrOp="N";
         });
 
         score2.addActionListener(e -> {
@@ -150,10 +152,11 @@ public class FullLength extends JFrame {
 
             String questionFromText=question.getText();
             String scoreFromText=score2.getText();
-
+            BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
+            String answerFromText=answer.getText();
             //insert values
             QuestionDao questionDao=new QuestionDaoImp();
-            questionDao.create(num,);
+            questionDao.create(num,SetAnExam.testNumber,comOrOp,"long",scoreBigDecimal,questionFromText,answerFromText);
 
 
         });
@@ -165,8 +168,14 @@ public class FullLength extends JFrame {
             new QuestionType();
 
             //insert values
+            String questionFromText=question.getText();
+            String scoreFromText=score2.getText();
+            BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
+            String answerFromText=answer.getText();
+            //insert values
             QuestionDao questionDao=new QuestionDaoImp();
-            questionDao.create(num,);
+            questionDao.create(num,SetAnExam.testNumber,comOrOp,"long",scoreBigDecimal,questionFromText,answerFromText);
+
 
         });
 

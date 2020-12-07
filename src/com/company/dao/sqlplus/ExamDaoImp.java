@@ -10,8 +10,16 @@ import java.sql.*;
 
 public class ExamDaoImp implements ExamDao {
     static OracleConnection conn = TestApplication.conn;
-    static PreparedStatement questions = conn.prepareStatement("SELECT Q#, COMPULSORY, TYPE, SCORE, Q_CONTENT " +
-            "FROM QUESTION WHERE TEST# = ?");
+    static PreparedStatement questions;
+
+    static {
+        try {
+            questions = conn.prepareStatement("SELECT Q#, COMPULSORY, TYPE, SCORE, Q_CONTENT " +
+                    "FROM QUESTION WHERE TEST# = ?");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
 
     @Override
@@ -39,26 +47,35 @@ public class ExamDaoImp implements ExamDao {
     }
 
     public Question[] allQuestions(Exam e){
-
+        ResultSet rs = null;
+        Question[] ques = null;
         try {
             questions.setString(1, e.getTestNo());
-            ResultSet rs = questions.executeQuery();
+            rs = questions.executeQuery();
             int num = 0;
             if(rs.last()){
                 num = rs.getRow();
                 rs.beforeFirst();
             }
-            Question[] ques = new Question[num];
+            ques = new Question[num];
             for(int i = 0; i < num; i++){
-                ques[i] = new Question()
+                ques[i] = new Question(rs.getString(1), rs.getString(2), rs.getString(3),
+                        rs.getInt(4), rs.getString(5), rs.getString(6));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            if(rs!=null){
+                try{
+                    rs.close();
+                }
+                catch (SQLException exception){
+
+                }
+            }
+
         }
-
-
-
-
+        return ques;
     }
 
 

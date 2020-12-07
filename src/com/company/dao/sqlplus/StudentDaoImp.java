@@ -70,7 +70,7 @@ public class StudentDaoImp implements StudentDao {
 
     }
 
-    public Exam[]  allExams(Student student){
+    public Exam[]  findAllExams(Student student){
         Connection conn=null;
         PreparedStatement pstmt1=null;
         PreparedStatement pstmt2=null;
@@ -92,17 +92,20 @@ public class StudentDaoImp implements StudentDao {
             pstmt2.setString(1,student.getId());
             rs2=pstmt2.executeQuery();
 
-            int index=rs2.getInt(1);
+            int index=0;
+            if(rs2.next()){
+                index=rs2.getInt(1);
+            }
             result=new Exam[index];
-            int i=1;
+            int i=0;
 
             if(rs1.next()){
                 i++;
                 Exam exam=new Exam();
 
-                exam.setDuration(rs1.getInt(""));
-                exam.setStart(rs1.getTimestamp(""));
-                exam.setTestNo(rs1.getString(""));
+                exam.setDuration(rs1.getInt("duration"));
+                exam.setStart(rs1.getTimestamp("start_time"));
+                exam.setTestNo(rs1.getString("test#"));
 
                 result[i-1]=exam;
 
@@ -162,7 +165,7 @@ public class StudentDaoImp implements StudentDao {
         return null;
     }
 
-    public Subject[] allSubjects(Student student){
+    public Subject[] findAllSubjects(Student student){
         Connection conn=null;
         PreparedStatement pstmt1=null;
         PreparedStatement pstmt2=null;
@@ -177,24 +180,29 @@ public class StudentDaoImp implements StudentDao {
             pstmt1.setString(1,student.getId());
             rs1=pstmt1.executeQuery();
 
-            String sql2="";
+            String sql2="select sum(sub_id) from subject,choose,student where subject.sub_id=choose.sub_id and choose.c_id=student.c_id and student.stu_id=?";
             pstmt2=conn.prepareStatement(sql2);
             pstmt2.setString(1,student.getId());
             rs2=pstmt2.executeQuery();
 
-            int index=rs2.getInt(1);
-            result=new Exam[index];
-            int i=1;
+
+            int index=0;
+            if(rs2.next()){
+                index=rs2.getInt(1);
+            }
+
+
+            result=new Subject[index];
+            int i=0;
 
             if(rs1.next()){
                 i++;
-                Exam exam=new Exam();
+                Subject subject=new Subject();
 
-                exam.setDuration(rs1.getInt(""));
-                exam.setStart(rs1.getTimestamp(""));
-                exam.setTestNo(rs1.getString(""));
+                subject.setSub_id(rs1.getString("sub_id"));
+                subject.setSub_name(rs1.getString("sub_name"));
 
-                result[i-1]=exam;
+                result[i-1]=subject;
 
             }
             return result;

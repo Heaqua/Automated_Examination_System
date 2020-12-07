@@ -66,7 +66,7 @@ public class SetDaoImp implements SetDao {
         return null;
     }
 
-    public void create(String testNo,int year,int sem,String tea_id,String c_id){
+    public void create(String testNo,int year,int sem,String teaId,String cId){
      try{
         Connection conn=TestApplication.conn;
         String sql="insert into set (test#,year,sem,tea_id,c_id) values (?,?,?,?,?)" ;
@@ -75,8 +75,8 @@ public class SetDaoImp implements SetDao {
         pstmt.setString(1,testNo);
         pstmt.setInt(2,year);
         pstmt.setInt(3,sem);
-        pstmt.setString(4,tea_id);
-        pstmt.setString(5,c_id);
+        pstmt.setString(4,teaId);
+        pstmt.setString(5,cId);
 
         int insertedRows=pstmt.executeUpdate();
 

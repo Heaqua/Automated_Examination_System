@@ -65,7 +65,7 @@ public class TeacherDaoImp implements TeacherDao {
 
     }
 
-    public Subject[] allSubjects(Teacher teacher) {
+    public Subject[] findAllSubjects(Teacher teacher) {
         Connection conn = null;
         PreparedStatement pstmt1 = null;
         PreparedStatement pstmt2 = null;
@@ -85,9 +85,12 @@ public class TeacherDaoImp implements TeacherDao {
             pstmt2.setString(1, teacher.getId());
             rs2 = pstmt2.executeQuery();
 
-            int index = rs2.getInt(1);
+            int index=0;
+            if(rs2.next()){
+                index=rs2.getInt(1);
+            }
             result = new Subject[index];
-            int i = 1;
+            int i = 0;
 
             if (rs1.next()) {
                 i++;
@@ -149,7 +152,7 @@ public class TeacherDaoImp implements TeacherDao {
     }
 
 
-    public Class1[] allClasses(Teacher teacher) {
+    public Class1[] findAllClasses(Teacher teacher) {
         Connection conn = null;
         PreparedStatement pstmt1 = null;
         PreparedStatement pstmt2 = null;
@@ -169,9 +172,12 @@ public class TeacherDaoImp implements TeacherDao {
             pstmt2.setString(1, teacher.getId());
             rs2 = pstmt2.executeQuery();
 
-            int index = rs2.getInt(1);
+            int index=0;
+            if(rs2.next()){
+                index=rs2.getInt(1);
+            }
             result = new Class1[index];
-            int i = 1;
+            int i = 0;
 
             if (rs1.next()) {
                 i++;

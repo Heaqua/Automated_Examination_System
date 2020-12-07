@@ -100,7 +100,6 @@ public class ViewExaminationResults extends JFrame {
         //click "Sure"
         sure.addActionListener(e -> {
             setVisible(false);
-            System.out.println(class2[0] + sub2[0]);
             new ViewExaminationResults2(class2[0],sub2[0]);
         });
 

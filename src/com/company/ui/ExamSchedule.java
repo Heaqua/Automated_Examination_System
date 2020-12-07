@@ -1,5 +1,12 @@
 package com.company.ui;
 
+import com.company.dao.ExamDao;
+import com.company.dao.StudentDao;
+import com.company.dao.sqlplus.ExamDaoImp;
+import com.company.dao.sqlplus.StudentDaoImp;
+import com.company.domain.Exam;
+import com.company.domain.Student;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -66,6 +73,27 @@ public class ExamSchedule extends JFrame {
             setVisible(false);
             new StudentMainPage();
         });
+
+
+        //
+        StudentDao studentDao=new StudentDaoImp();
+        Exam[] exams=studentDao.allExams((Student) MainApplication.user);
+        int len=exams.length;
+
+        //start格式改
+
+        Object[] rowData1=new Object[len];
+        for(int i=0;i<len;i++){
+            String[] oneExam=new String[4];
+            oneExam[0]=
+            oneExam[1]=
+            oneExam[2]=
+            //oneExam[0]=exams[i].getStart().toString();
+            oneExam[3]= String.valueOf(exams[i].getDuration());
+        }
+
+
+
 
     }
 }

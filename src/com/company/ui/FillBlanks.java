@@ -9,7 +9,7 @@ import static java.awt.Toolkit.getDefaultToolkit;
 
 public class FillBlanks extends JFrame {
     public FillBlanks(){
-        super("Fill in the blanks");
+        super("Fill in the blank");
         JPanel panel = new JPanel();
         this.setBounds(500,300,700,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

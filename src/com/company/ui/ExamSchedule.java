@@ -1,5 +1,11 @@
 package com.company.ui;
 
+import com.company.dao.StudentDao;
+import com.company.dao.sqlplus.StudentDaoImp;
+import com.company.domain.Exam;
+import com.company.domain.Student;
+import com.company.domain.Subject;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -66,6 +72,8 @@ public class ExamSchedule extends JFrame {
             setVisible(false);
             new StudentMainPage();
         });
+
+        StudentDao studentDao = new StudentDaoImp();
 
     }
 }

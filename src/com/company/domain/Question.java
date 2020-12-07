@@ -1,14 +1,18 @@
 package com.company.domain;
 
 public class Question {
-    private String quesNo;
+    private int quesNo;
     private String com;
     private String type;
     private int score;
     private String content;
     private String answer;
 
-    public Question(String quesNo, String com, String type, int score, String content, String answer) {
+    public Question(){
+
+    }
+
+    public Question(int quesNo, String com, String type, int score, String content, String answer) {
         this.quesNo = quesNo;
         this.com = com;
         this.type = type;
@@ -17,7 +21,7 @@ public class Question {
         this.answer = answer;
     }
 
-    public void setQuesNo(String quesNo) {
+    public void setQuesNo(int quesNo) {
         this.quesNo = quesNo;
     }
 
@@ -61,7 +65,7 @@ public class Question {
         return com;
     }
 
-    public String getQuesNo() {
+    public int getQuesNo() {
         return quesNo;
     }
 }

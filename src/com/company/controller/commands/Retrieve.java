@@ -28,5 +28,4 @@ public class Retrieve {
         return;
     }
 
-    public ResultSet execute()
 }

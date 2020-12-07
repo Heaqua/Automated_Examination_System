@@ -1,6 +1,6 @@
 package com.company.view.GUI;
 
-import GUI.LoginPage;
+import com.company.view.GUI.LoginPage;
 
 import javax.swing.*;
 import java.awt.*;

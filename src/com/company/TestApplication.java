@@ -5,7 +5,7 @@ import java.sql.*;
 import oracle.jdbc.driver.*;
 import oracle.sql.*;
 
-import com.company.model.Student;
+import com.company.model.*;
 
 public class TestApplication
 {

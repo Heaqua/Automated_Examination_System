@@ -6,10 +6,14 @@ import javax.swing.event.AncestorListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.math.BigDecimal;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class FillBlanks extends JFrame {
+    public static void main(String[] args) {
+        new FillBlanks();
+    }
     public FillBlanks(){
         super("Fill in the blanks");
         JPanel panel = new JPanel();
@@ -104,13 +108,13 @@ public class FillBlanks extends JFrame {
         this.setVisible(true);
 
         score2.addActionListener(e -> {
-
+            String scoreFromText=score2.getText();
         });
 
         question.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-
+                String questionFromText=question.getText();
             }
 
             @Override
@@ -130,18 +134,20 @@ public class FillBlanks extends JFrame {
         });
 
         Com.addActionListener(e -> {
-
+            String comOrOp="Y";
         });
 
         Optional.addActionListener(e -> {
-
+            String comOrOp="N";
         });
 
         save.addActionListener(e -> {
-
+            MainApplication.num++;
+            new TeacherMainPage();
         });
 
         next.addActionListener(e -> {
+            MainApplication.num++;
 
         });
         //Event

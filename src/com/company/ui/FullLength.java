@@ -20,8 +20,7 @@ public class FullLength extends JFrame {
         Font font = new Font("Times New Roman",Font.PLAIN,20);
 
         //set Q#
-        int number = 1;
-        JLabel count = new JLabel("Question "+number);
+        JLabel count = new JLabel("Question "+MainApplication.num);
         count.setBounds(1,2,100,30);
         count.setFont(font);
         panel.add(count);

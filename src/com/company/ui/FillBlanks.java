@@ -15,7 +15,7 @@ public class FillBlanks extends JFrame {
         new FillBlanks();
     }
     public FillBlanks(){
-        super("Fill in the blanks");
+        super("Fill in the blank");
         JPanel panel = new JPanel();
         this.setBounds(500,300,700,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,8 +26,7 @@ public class FillBlanks extends JFrame {
         Font font = new Font("Times New Roman",Font.PLAIN,20);
 
         //set Q#
-        int number = 1;
-        JLabel count = new JLabel("Question "+number);
+        JLabel count = new JLabel("Question "+MainApplication.num);
         count.setBounds(1,2,100,30);
         count.setFont(font);
         panel.add(count);
@@ -130,6 +129,7 @@ public class FillBlanks extends JFrame {
 
 
         answer.addActionListener(e -> {
+            String answer2 = answer.getText();
 
         });
 

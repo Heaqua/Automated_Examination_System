@@ -2,6 +2,7 @@ package com.company.ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Timestamp;
 import java.util.Set;
 
 import static java.awt.Toolkit.getDefaultToolkit;
@@ -78,7 +79,7 @@ public class SetAnExam extends JFrame {
         panel.add(start);
 
         //set the hint
-        JLabel hint = new JLabel("(Format: Sep 16 16:00 )");
+        JLabel hint = new JLabel("(Format:yyyy-MM-dd'T'HH-mm)");
         hint.setBounds(70,380,300,30);
         hint.setFont(font4);
         panel.add(hint);
@@ -114,9 +115,14 @@ public class SetAnExam extends JFrame {
         panel.add(startBu);
 
         //Event
-        //click the button "Save and Complete"
+        //click the button "Start"
         startBu.addActionListener(e -> {
             setVisible(false);
+            String sub2 = (String) comboBox.getSelectedItem();
+            String cla = (String) comboBox2.getSelectedItem();
+            String testN = testNo.getText();
+            Timestamp start2 = Timestamp.valueOf(start.getText());
+            int dur = Integer.parseInt(du.getText());
             new QuestionType();
         });
 

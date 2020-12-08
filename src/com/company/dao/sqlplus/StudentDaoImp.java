@@ -253,20 +253,14 @@ public class StudentDaoImp implements StudentDao {
         String[][] table = new String[exams.length][8];
         int year = exams[0].getYear();
         int sem = exams[0].getSem();
-        System.out.println("Before execution: ");
-        for(Exam exam: exams){
-            System.out.println(exam.getTestNo());
-        }
-        System.out.println("End");
         for(int i = 0; i < exams.length; i++){
             table[i][0] = exams[i].getSub_id();
             // Find the sub_name
             Subject subject = subjectDaoImp.findById(exams[i].getSub_id());
             table[i][1] = subject.getSub_name();
             // Find letter grade and comments
-            System.out.println("testNo " + exams[i].getTestNo());
             Take take = takeDaoImp.findByKey(exams[i].getTestNo(), s.getId());
-            System.out.println("testNo after take: " + exams[i].getTestNo());
+            System.out.println(exams[i].getTestNo());
             System.out.println(s.getId());
             System.out.println(take == null);
 

@@ -76,12 +76,12 @@ public class TakeAnExamM extends JFrame {
         panel.add(B1);
         panel.add(C1);
         panel.add(D1);
-        /*
+
         //four labels for answer
-        JLabel A2 = new JLabel(A);
-        JLabel B2 = new JLabel(B);
-        JLabel C2 = new JLabel(C);
-        JLabel D2 = new JLabel(D);
+        JLabel A2 = new JLabel(getA(ques.getText()));
+        JLabel B2 = new JLabel(getB(ques.getText()));
+        JLabel C2 = new JLabel(getC(ques.getText()));
+        JLabel D2 = new JLabel(getD(ques.getText()));
         A2.setBounds(100,320,100,30);
         A2.setFont(font2);
         B2.setBounds(100,370,100,30);
@@ -95,25 +95,9 @@ public class TakeAnExamM extends JFrame {
         panel.add(C2);
         panel.add(D2);
 
-        //set a progressBar
-        final int MIN_PROGRESS = 0;
-        final int MAX_PROGRESS = 100;
-
-        final int[] currentProgress = {MIN_PROGRESS};
-        JProgressBar progressBar = new JProgressBar();{
-            new Timer(1000, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    currentProgress[0]++;
-                    if (currentProgress[0] > MAX_PROGRESS) {
-                        currentProgress[0] = MIN_PROGRESS;
-                    }
-                    progressBar.setValue(currentProgress[0]);
-                }
-            }).start();
-        }
-        progressBar.setBounds(30,60,600,20);
-        progressBar.setMinimum(MIN_PROGRESS);
+        //set a button
+        JButton next = new JButton("Save and next");
+        next.setBounds(480,480,150,50);
         next.setFont(font);
         panel.add(next);
 
@@ -122,6 +106,7 @@ public class TakeAnExamM extends JFrame {
         compulsory.setBounds(480,300,300,40);
         compulsory.setFont(font2);
         panel.add(compulsory);
+        String content2 = ques.getText();
 
 
         //click "next"
@@ -132,13 +117,30 @@ public class TakeAnExamM extends JFrame {
             answerDao.create(, ,);
         });
         this.setVisible(true);
-
-
-         */
-
     }
 
     public TakeAnExamM(int num, int total, int score, String question, String com, String s, String s1, String s2, String optional) {
+    }
+
+    public String getA(String content){
+        String[] sep = content.split("/");
+        String A3 = sep[1];
+        return A3;
+    }
+    public String getB(String content){
+        String[] sep = content.split("/");
+        String B3 = sep[2];
+        return B3;
+    }
+    public String getC(String content){
+        String[] sep = content.split("/");
+        String C3 = sep[3];
+        return C3;
+    }
+    public String getD(String content){
+        String[] sep = content.split("/");
+        String D3 = sep[4];
+        return D3;
     }
 
     void SetText(JLabel jLabel, String longString) {
@@ -164,11 +166,4 @@ public class TakeAnExamM extends JFrame {
         text.append("</html>");
         jLabel.setText(text.toString());
     }
-}//        progressBar.setMaximum(MAX_PROGRESS);
-//        progressBar.setValue(currentProgress[0]);
-//        progressBar.setStringPainted(true);
-//        panel.add(progressBar);
-//
-//        //a button for next
-//        JButton next = new JButton("Next");
-//        next.setBounds(480,480,150,50);
+}

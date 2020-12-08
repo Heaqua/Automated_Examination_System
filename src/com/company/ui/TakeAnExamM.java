@@ -110,10 +110,10 @@ public class TakeAnExamM extends JFrame {
         panel.add(D1);
 
         //four labels for answer
-        JLabel A2 = new JLabel(A);
-        JLabel B2 = new JLabel(B);
-        JLabel C2 = new JLabel(C);
-        JLabel D2 = new JLabel(D);
+        JLabel A2 = new JLabel(getA(ques.getText()));
+        JLabel B2 = new JLabel(getB(ques.getText()));
+        JLabel C2 = new JLabel(getC(ques.getText()));
+        JLabel D2 = new JLabel(getD(ques.getText()));
         A2.setBounds(100,320,100,30);
         A2.setFont(font2);
         B2.setBounds(100,370,100,30);

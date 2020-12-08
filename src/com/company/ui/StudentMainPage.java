@@ -94,7 +94,7 @@ public class StudentMainPage extends JFrame{
             for (int i = 0; i < exams.length; i++) {
                 if (currentTime.toString().equals(exams[i].getStart().toString())) {
                     takeAnExam=exams[i];
-
+                    /*
                     //judge the first question type
                     ExamDao examDao=new ExamDaoImp();
                     Question[] allQuestions=examDao.allQuestions(takeAnExam);
@@ -105,6 +105,7 @@ public class StudentMainPage extends JFrame{
                         new TakeAnExamB(takeAnExam,0);
                     }
 
+                     */
                 }
             }
         });

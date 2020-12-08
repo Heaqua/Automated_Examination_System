@@ -1,7 +1,5 @@
 package com.company.domain;
 
-import java.math.BigDecimal;
-
 public class TestStats {
     private double[] scores;
     private double average;

@@ -8,7 +8,7 @@ public class Exam {
     private int duration;
 
     //
-    private int year;
+    private short year;
     private int sem;
     private String tea_id;
     private String c_id;
@@ -19,7 +19,7 @@ public class Exam {
     }
 
     public Exam(String testNo, Timestamp start, int duration,
-                int year, int sem, String tea_id, String c_id, String sub_id){
+                short year, int sem, String tea_id, String c_id, String sub_id){
         this.testNo = testNo;
         this.start = start;
         this.duration = duration;

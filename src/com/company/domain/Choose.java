@@ -4,7 +4,7 @@ public class Choose {
     private String c_ID;
     private String sub_ID;
     private int sem;
-    private int year;
+    private short year;
 
     public String getC_ID() {
         return c_ID;
@@ -34,7 +34,7 @@ public class Choose {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(short year) {
         this.year = year;
     }
 }

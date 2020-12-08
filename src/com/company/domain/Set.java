@@ -2,7 +2,7 @@ package com.company.domain;
 
 public class Set {
     private String testNo;
-    private int year;
+    private short year;
     private boolean sem;
     private String tea_ID;
     private String c_ID;
@@ -19,7 +19,7 @@ public class Set {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(short year) {
         this.year = year;
     }
 

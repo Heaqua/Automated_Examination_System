@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class MarkPapers extends JFrame {
+
+
     public MarkPapers(String Question, String Answer, int score) {
         super("Mark papers");
         JPanel panel = new JPanel();

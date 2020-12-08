@@ -1,7 +1,7 @@
 package com.company.domain;
 
 public class Teach {
-    private int year;
+    private short year;
 
     //semester 1:true semester 2:false
     private boolean sem;
@@ -9,11 +9,11 @@ public class Teach {
     private String tea_ID;
     private String sub_ID;
 
-    public int getYear() {
+    public short getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(short year) {
         this.year = year;
     }
 

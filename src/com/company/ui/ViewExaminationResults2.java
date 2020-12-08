@@ -50,11 +50,11 @@ public class ViewExaminationResults2 extends JFrame {
 
         Object[][] row0=new Object[3][2];
         row0[0][0]="Average";
-        row0[0][1]=;
+        //row0[0][1]=;
         row0[1][0]="Median";
-        row0[1][1]=;
+        //row0[1][1]=;
         row0[2][0]="Mode";
-        row0[2][1]=;
+        //row0[2][1]=;
 
 
 

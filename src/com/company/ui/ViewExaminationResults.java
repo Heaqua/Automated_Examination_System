@@ -6,6 +6,7 @@ import com.company.dao.TeacherDao;
 import com.company.dao.sqlplus.StudentDaoImp;
 import com.company.dao.sqlplus.SubjectDaoImp;
 import com.company.dao.sqlplus.TeacherDaoImp;
+import com.company.domain.Class1;
 import com.company.domain.People;
 import com.company.domain.Subject;
 import com.company.domain.Teacher;
@@ -21,6 +22,7 @@ public class ViewExaminationResults extends JFrame {
 
     TeacherDao teacherDao=new TeacherDaoImp();
     Subject[] allSubjects=teacherDao.findAllSubjects((Teacher)MainApplication.user);
+    Class1[] allClasses=teacherDao.findAllClasses((Teacher)MainApplication.user) ;
 
     public ViewExaminationResults(){
         super("View Examination Results");
@@ -52,7 +54,15 @@ public class ViewExaminationResults extends JFrame {
         panel.add(subject);
 
         //set a ComboBox
-        String[] classes= new String[]{"C01", "C02", "C03"};
+        String[] classesId=new String[allClasses.length];
+        for(int i=0;i<allClasses.length;i++){
+            classesId[i]=allClasses[i].getC_id();
+        }
+
+
+        //String[] classes= new String[]{"C01", "C02", "C03"};
+        String[] classes=classesId;
+
         final String[] class2 = new String[1];
         final JComboBox<String> comboBox = new JComboBox<String>(classes);{
             comboBox.addItemListener(new ItemListener() {

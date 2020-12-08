@@ -27,13 +27,13 @@ public class MainApplication {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        forTestingPurpose();
+        //forTestingPurpose();
         app=new OriginalLoginPage();
-        try {
-            TestApplication.conn.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+//        try {
+//            TestApplication.conn.close();
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
     }
 
     public static void forTestingPurpose() {

@@ -34,20 +34,24 @@ public class StudentMainPage extends JFrame{
         logout.setFont(font);
         panel.add(logout);
 
-        //set three buttons to show the functions
+        //set four buttons to show the functions
         JButton viewExam = new JButton("View exam timetable");
-        viewExam.setBounds(140,140,400,60);
+        viewExam.setBounds(140,120,400,60);
         viewExam.setFont(font1);
         panel.add(viewExam);
         JButton take = new JButton("Take exam");
-        take.setBounds(140,240,400,60);
+        take.setBounds(140,220,400,60);
         take.setFont(font1);
         panel.add(take);
         JButton result = new JButton("Report and results");
-        result.setBounds(140,340,400,60);
+        result.setBounds(140,320,400,60);
         result.setFont(font1);
         panel.add(result);
         setIconImage(getDefaultToolkit().getImage("src\\com\\company\\ui\\Images\\logo1.png"));
+        JButton analysis = new JButton("Analysis Report");
+        analysis.setBounds(140,420,400,60);
+        analysis.setFont(font1);
+        panel.add(analysis);
 
         //log-out logo
 
@@ -64,6 +68,10 @@ public class StudentMainPage extends JFrame{
         viewExam.addActionListener(e -> {
             setVisible(false);
             new ExamSchedule();
+        });
+        analysis.addActionListener(e -> {
+            setVisible(false);
+            new AnalysisReport();
         });
 
         //click "take an exam"

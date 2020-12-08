@@ -17,4 +17,6 @@ public interface ExamDao {
     public void deleteExam(String testId);
     public TestStats getTestStatsById(String testId);
 
+    public Exam findBySubIdCId(String subId,String cId);
+
 }

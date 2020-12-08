@@ -1,5 +1,18 @@
 package com.company.ui;
 
+import com.company.dao.ExamDao;
+import com.company.dao.StudentDao;
+import com.company.dao.SubjectDao;
+import com.company.dao.TakeDao;
+import com.company.dao.sqlplus.ExamDaoImp;
+import com.company.dao.sqlplus.StudentDaoImp;
+import com.company.dao.sqlplus.SubjectDaoImp;
+import com.company.dao.sqlplus.TakeDaoImp;
+import com.company.domain.Exam;
+import com.company.domain.Student;
+import com.company.domain.Subject;
+import com.company.domain.Take;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,11 +21,47 @@ import static java.awt.Toolkit.getDefaultToolkit;
 public class ViewExaminationResults2 extends JFrame {
 
 
+
+
+
     public ViewExaminationResults2(String class0,String subject) {
 
-
-
         super("View Examination Results");
+
+        StudentDao studentDao=new StudentDaoImp();
+        Student[] allStudents=studentDao.findByCId(class0);
+        TakeDao takeDao=new TakeDaoImp();
+        SubjectDao subjectDao=new SubjectDaoImp();
+        ExamDao examDao=new ExamDaoImp();
+
+        String[] oneString;
+
+
+        int len=allStudents.length;
+        Object[][] rowData0=new Object[len][2];
+
+        for(int i=0;i<len;i++){
+            oneString=new String[2];
+            oneString[0]=allStudents[i].getName();
+            Take take=takeDao.findByKey(examDao.findBySubIdCId(subject,class0).getTestNo(),allStudents[i].getId());
+            oneString[1]=take.getTest_result().toString();
+            rowData0[i]=oneString;
+        }
+
+        Object[][] row0=new Object[3][2];
+        row0[0][0]="Average";
+        //row0[0][1]=;
+        row0[1][0]="Median";
+        //row0[1][1]=;
+        row0[2][0]="Mode";
+        //row0[2][1]=;
+
+
+
+
+
+
+
         JPanel panel = new JPanel();
         setSize(700, 600);
         setLocationRelativeTo(null);

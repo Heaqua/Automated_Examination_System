@@ -12,4 +12,5 @@ public interface StudentDao {
     public Subject[] allSubjects(Student student);
     public Exam[] allExams(Student student);
     public StudentReport getStudentReport(Student s);
+    public Student[] findByCId(String cId);
 }

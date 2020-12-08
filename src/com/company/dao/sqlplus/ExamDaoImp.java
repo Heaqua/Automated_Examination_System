@@ -191,5 +191,48 @@ public class ExamDaoImp implements ExamDao {
         }
     }
 
+    public Exam findBySubIdCId(String subId,String cId){
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Exam result = null;
+
+        try {
+            String sql = "";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, cId);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                result = new Exam();
+
+                result.setTestNo(rs.getString("TEST#"));
+                result.setStart(rs.getTimestamp("START_TIME"));
+                result.setDuration(rs.getInt("DURATION"));
+
+                return result;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+
+                }
+            }
+
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                    ;
+                } catch (SQLException e) {
+
+                }
+            }
+        }
+        return null;
+
+    }
 
 }

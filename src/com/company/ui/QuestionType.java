@@ -53,6 +53,12 @@ public class QuestionType extends JFrame {
         setSize(700,600);
         setLocationRelativeTo(null);
 
+        //set a button for back
+        JButton back = new JButton("Back");
+        back.setBounds(40,460,150,50);
+        back.setFont(font);
+        panel.add(back);
+
 
 
         //Event
@@ -69,6 +75,11 @@ public class QuestionType extends JFrame {
         standard.addActionListener(e -> {
             setVisible(false);
             new FullLength();
+        });
+
+        back.addActionListener(e -> {
+            setVisible(false);
+            new TeacherMainPage();
         });
 
     }

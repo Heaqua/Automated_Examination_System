@@ -102,15 +102,19 @@ public class SubjectDaoImp implements SubjectDao {
         return null;
     }
 
-    public Subject findByStuId(short year,boolean sem,String stuId,String testNo){
+    public Subject findByStuId(String testNo){
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Subject result = null;
 
         try {
-            String sql = "";
+            String sql = "SELECT T.SUB_ID" +
+                    "FROM SETE S, TEACH T" +
+                    "WHERE T.TEA_ID=S.TEA_ID AND" +
+                    "TEST#=? AND S.YEAR=T.YEAR AND S.SEM=T.SEM" +
+                    "AND S.C_ID=T.C_ID";
             pstmt = conn.prepareStatement(sql);
-            //pstmt.setString(1, );
+            pstmt.setString(1, testNo);
 
             rs = pstmt.executeQuery();
 

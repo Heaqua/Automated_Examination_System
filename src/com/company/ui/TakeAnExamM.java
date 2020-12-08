@@ -95,25 +95,9 @@ public class TakeAnExamM extends JFrame {
         panel.add(C2);
         panel.add(D2);
 
-        //set a progressBar
-        final int MIN_PROGRESS = 0;
-        final int MAX_PROGRESS = 100;
-
-        final int[] currentProgress = {MIN_PROGRESS};
-        JProgressBar progressBar = new JProgressBar();{
-            new Timer(1000, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    currentProgress[0]++;
-                    if (currentProgress[0] > MAX_PROGRESS) {
-                        currentProgress[0] = MIN_PROGRESS;
-                    }
-                    progressBar.setValue(currentProgress[0]);
-                }
-            }).start();
-        }
-        progressBar.setBounds(30,60,600,20);
-        progressBar.setMinimum(MIN_PROGRESS);
+        //set a button
+        JButton next = new JButton("Save and next");
+        next.setBounds(480,480,150,50);
         next.setFont(font);
         panel.add(next);
 

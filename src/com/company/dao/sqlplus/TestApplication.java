@@ -26,6 +26,5 @@ public class TestApplication
         System.out.println("After connection");
 
         //System.out.println(new Student("S180101").login("123456"));
-        conn.close();
     }
 }

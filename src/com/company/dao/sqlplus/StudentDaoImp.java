@@ -169,6 +169,91 @@ public class StudentDaoImp implements StudentDao {
         return null;
     }
 
+    public Student[] findByCId(String cId){
+        PreparedStatement pstmt1=null;
+        PreparedStatement pstmt2=null;
+        ResultSet rs1=null;
+        ResultSet rs2=null;
+        Student[] result=null;
+
+        try{
+            String sql1="SELECT STU_ID, STU_NAME, C_ID,STU_PWD FROM STUDENT WHERE C_ID=?";
+            pstmt1=conn.prepareStatement(sql1);
+            pstmt1.setString(1,cId);
+            rs1=pstmt1.executeQuery();
+
+            String sql2="SELECT SUM(STU_ID) FROM STUDENT WHERE C_ID=?";
+            pstmt2=conn.prepareStatement(sql2);
+            pstmt2.setString(1,cId);
+            rs2=pstmt2.executeQuery();
+
+
+            int index=0;
+            if(rs2.next()){
+                index=rs2.getInt(1);
+            }
+
+
+            result=new Student[index];
+            int i=0;
+
+            if(rs1.next()){
+                i++;
+                Student student=new Student();
+
+                student.setId(rs1.getString(1));
+                student.setName(rs1.getString(2));
+                student.setC_id(rs1.getString(3));
+                student.setPassword(rs1.getString(4));
+
+                result[i-1]=student;
+
+            }
+            return result;
+
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            if(rs1!=null){
+                try{
+                    rs1.close();
+                }
+                catch (SQLException e){
+
+                }
+            }
+            if(rs2!=null){
+                try{
+                    rs2.close();
+                }
+                catch (SQLException e){
+
+                }
+            }
+
+            if(pstmt1!=null){
+                try{
+                    pstmt1.close();;
+                }
+                catch (SQLException e){
+
+                }
+            }
+            if(pstmt2!=null){
+                try{
+                    pstmt2.close();
+                }
+                catch (SQLException e){
+
+                }
+            }
+        }
+        return null;
+    }
+
 
 
 }

@@ -74,8 +74,8 @@ public class LoginPage extends JFrame {
 
                 if (teacher.getPassword().equals(passwordText) && teacher != null) {
                     setVisible(false);
-                    new TeacherMainPage();
                     MainApplication.user = teacher;
+                    new TeacherMainPage();
                 } else {
                     JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)", "Login failed", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -88,8 +88,9 @@ public class LoginPage extends JFrame {
 
                 if(student.getPassword().equals(passwordText)&&student!=null){
                     setVisible(false);
-                    new StudentMainPage();
                     MainApplication.user=student;
+                    new StudentMainPage();
+
                 }else {
                     JOptionPane.showInternalMessageDialog(null, "Error: Login failed (name/password refused)", "Login failed", JOptionPane.INFORMATION_MESSAGE);
                 }

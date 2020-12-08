@@ -1,11 +1,16 @@
 package com.company.ui;
 
 import com.company.dao.ExamDao;
+import com.company.dao.SetDao;
 import com.company.dao.sqlplus.ExamDaoImp;
+import com.company.dao.sqlplus.SetDaoImp;
 
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 import static java.awt.Toolkit.getDefaultToolkit;
@@ -80,7 +85,7 @@ public class SetAnExam extends JFrame {
         panel.add(start);
 
         //set the hint
-        JLabel hint = new JLabel("(Format:yyyy-MM-dd'T'HH-mm)");
+        JLabel hint = new JLabel("(Format:yyyy/mm/dd:hh:mi:ss)");
         hint.setBounds(70,380,300,30);
         hint.setFont(font4);
         panel.add(hint);
@@ -98,7 +103,7 @@ public class SetAnExam extends JFrame {
         panel.add(duration);
 
         //set the second hint
-        JLabel hint2 = new JLabel("(Format: 120min)");
+        JLabel hint2 = new JLabel("(Format: 120)(min)");
         hint2.setBounds(70,460,300,30);
         hint2.setFont(font4);
         panel.add(hint2);
@@ -123,15 +128,32 @@ public class SetAnExam extends JFrame {
             String sub2 = (String) comboBox.getSelectedItem();
             String cla = (String) comboBox2.getSelectedItem();
             testNumber = testNo.getText();
-            Timestamp start2 = Timestamp.valueOf(start.getText());
+            String start2 = start.getText();
+
             int dur = Integer.parseInt(du.getText());
             new QuestionType();
 
             //insert values into EXAM
             ExamDao examDao=new ExamDaoImp();
-//            examDao.create(testNumber,"",dur);
+            examDao.create(testNumber,start2,dur);
+            SetDao setDao = new SetDaoImp();
+            setDao.create(testNumber,getYear(start2),getMonth(start2),MainApplication.user.getId(),cla);
         });
 
+    }
+    public short getYear(String date){
+        String[] sep = date.split("/");
+        short year = Short.parseShort(sep[0]);
+        return year;
+    }
+    public boolean getMonth(String date){
+        String[] sep = date.split("/");
+        int month = Integer.parseInt(sep[1]);
+        if(month>8 && month <=12){
+            return true;
+        }
+        return false;
+    }
 
 
 

@@ -1,6 +1,9 @@
 package com.company.ui;
 
 
+import com.company.dao.AnswerDao;
+import com.company.dao.sqlplus.AnswerDaoImp;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -24,10 +27,10 @@ public class TeacherMainPage extends JFrame {
 
         //set a label to show the personal information
         //TODO
-        //JLabel info = new JLabel(MainApplication.user.getName()+" "+MainApplication.user.getId());
-        //info.setBounds(1,1,500,30);
-        //info.setFont(font);
-        //panel.add(info);
+        JLabel info = new JLabel(MainApplication.user.getName()+" "+MainApplication.user.getId());
+        info.setBounds(1,1,500,30);
+        info.setFont(font);
+        panel.add(info);
 
         //set a label to notice logout
         JLabel logout = new JLabel("Logout");
@@ -68,7 +71,7 @@ public class TeacherMainPage extends JFrame {
         //Click the button "mark papers"
         markPapers.addActionListener(e -> {
             setVisible(false);
-            new MarkPapers("ab=?","1",2);
+            //new MarkPapers("ab=?", ,2);
         });
 
         //click the button "View Examination results"

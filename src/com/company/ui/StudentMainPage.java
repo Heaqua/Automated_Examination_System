@@ -99,10 +99,10 @@ public class StudentMainPage extends JFrame{
                     ExamDao examDao=new ExamDaoImp();
                     Question[] allQuestions=examDao.allQuestions(takeAnExam);
                     if(allQuestions[0].getType().equals("MC")){
-                        new TakeAnExamM(allQuestions[0].getQuesNo(),allQuestions.length,allQuestions[0].getScore(),allQuestions[0].getContent(),allQuestions[0].getCom());
+                        new TakeAnExamM(takeAnExam,0);
                     }
                     else {
-                        new TakeAnExamB(allQuestions[0].getQuesNo(),allQuestions.length,allQuestions[0].getScore(),allQuestions[0].getContent(),allQuestions[0].getCom());
+                        new TakeAnExamB(takeAnExam,0);
                     }
 
                 }

@@ -1,7 +1,11 @@
 package com.company.ui;
 
 import com.company.dao.AnswerDao;
+import com.company.dao.ExamDao;
 import com.company.dao.sqlplus.AnswerDaoImp;
+import com.company.dao.sqlplus.ExamDaoImp;
+import com.company.domain.Exam;
+import com.company.domain.Question;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -15,8 +19,29 @@ import static java.awt.Toolkit.getDefaultToolkit;
 
 public class TakeAnExamM extends JFrame {
 
-    public TakeAnExamM(int num,int total,int score,String Question,String Com){
+    int num;
+    int total;
+    int score;
+    String Question;
+    String Com;
+    public TakeAnExamM(Exam e, int i){
         super("Take an exam");
+
+        //
+        //
+        ExamDao examDao=new ExamDaoImp();
+        Question[] allQuestions=examDao.allQuestions(e);
+
+        num=allQuestions[i].getQuesNo();
+        total=allQuestions.length;
+        score=allQuestions[i].getScore();
+        Question=allQuestions[i].getContent();
+        Com=allQuestions[i].getCom();
+
+
+
+
+
         JPanel panel = new JPanel();
         setSize(700,600);
         setLocationRelativeTo(null);
@@ -108,21 +133,26 @@ public class TakeAnExamM extends JFrame {
         panel.add(compulsory);
 
 
-        //click "next"
-        next.addActionListener(e -> {
-            setVisible(false);
-            new TakeAnExamM(3,10,5,"7*8|56|98|2|3","Optional");
-            AnswerDao answerDao = new AnswerDaoImp();
-            answerDao.create(, ,);
-        });
+
         this.setVisible(true);
 
+        next.addActionListener(x -> {
+            setVisible(false);
+            MainApplication.start++;
+            if(MainApplication.start<allQuestions.length) {
+                if (allQuestions[i].getType().equals("MC")) {
+                    new TakeAnExamM(e, MainApplication.start);
+                } else {
+                    new TakeAnExamB(e, MainApplication.start);
+                }
+
+            }
+        });
 
 
     }
 
-    public TakeAnExamM(int num, int total, int score, String question, String com, String s, String s1, String s2, String optional) {
-    }
+
 
     void SetText(JLabel jLabel, String longString) {
         StringBuilder text = new StringBuilder("<html>");

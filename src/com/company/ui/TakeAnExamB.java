@@ -1,6 +1,10 @@
 package com.company.ui;
 
+import com.company.dao.ExamDao;
+import com.company.dao.sqlplus.ExamDaoImp;
 import com.company.domain.Exam;
+import com.company.domain.Question;
+import sun.applet.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,9 +15,27 @@ import static java.awt.Toolkit.getDefaultToolkit;
 
 public class TakeAnExamB extends JFrame {
 
+    int num;
+    int total;
+    int score;
+    String Question;
+    String Com;
 
-    public TakeAnExamB(int num,int total,int score,String Question,String Com){
+    public TakeAnExamB(Exam e, int i){
         super("Take an exam");
+
+        //
+        ExamDao examDao=new ExamDaoImp();
+        Question[] allQuestions=examDao.allQuestions(e);
+
+        num=allQuestions[i].getQuesNo();
+        total=allQuestions.length;
+        score=allQuestions[i].getScore();
+        Question=allQuestions[i].getContent();
+        Com=allQuestions[i].getCom();
+
+
+
         JPanel panel = new JPanel();
         setSize(700,600);
         setLocationRelativeTo(null);
@@ -107,11 +129,17 @@ public class TakeAnExamB extends JFrame {
 //        });
 //        this.setVisible(true);
 //
-        next.addActionListener(e -> {
+        next.addActionListener(x -> {
             setVisible(false);
             MainApplication.start++;
-            (StudentMainPage)MainApplication.mainPage.takeAnExam
+            if(MainApplication.start<allQuestions.length) {
+                if (allQuestions[i].getType().equals("MC")) {
+                    new TakeAnExamM(e, MainApplication.start);
+                } else {
+                    new TakeAnExamB(e, MainApplication.start);
+                }
 
+            }
         });
 
 

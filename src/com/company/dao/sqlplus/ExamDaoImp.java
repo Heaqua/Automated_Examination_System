@@ -19,6 +19,7 @@ public class ExamDaoImp implements ExamDao {
     static PreparedStatement subByExam;
     static PreparedStatement queryTestStats;
     static PreparedStatement queryAllScore;
+    static PreparedStatement deleteExam;
 
     static {
         try {
@@ -28,6 +29,7 @@ public class ExamDaoImp implements ExamDao {
             queryExamSete = conn.prepareStatement("SELECT YEAR, SEM, TEA_ID, C_ID FROM SETE WHERE TEST# = ?");
             queryTestStats = conn.prepareStatement("SELECT AVG(TEST_RESULT), MEDIAN(TEST_RESULT), MAX(TEST_RESULT), MIN(TEST_RESULT), STDDEV(TEST_RESULT) FROM TAKE WHERE TEST# = ?");
             queryAllScore = conn.prepareStatement("SELECT TEST_RESULT FROM TAKE WHERE TEST# = ?");
+            deleteExam = conn.prepareStatement("DELETE FROM EXAM WHERE TEST# = ?");
             subByExam = conn.prepareStatement("SELECT SUB_ID FROM TEACH WHERE YEAR = ? " +
                     "AND SEM = ? AND C_ID = ? AND TEA_ID = ?");
         } catch (SQLException throwables) {
@@ -158,6 +160,16 @@ public class ExamDaoImp implements ExamDao {
             }
         }
         return t;
+    }
+
+    public void deleteExam(String testId){
+        try {
+            deleteExam.setString(1, testId);
+            deleteExam.executeUpdate();
+            System.out.println(testId + " deleted");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 

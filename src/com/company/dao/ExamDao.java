@@ -14,6 +14,7 @@ public interface ExamDao {
     public void create(String testNo, String start, int duration);
     public Question[] allQuestions(Exam exam);
 
+    public void deleteExam(String testId);
     public TestStats getTestStatsById(String testId);
 
 }

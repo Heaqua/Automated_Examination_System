@@ -6,6 +6,9 @@ import com.company.dao.sqlplus.ExamDaoImp;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 import static java.awt.Toolkit.getDefaultToolkit;
@@ -123,7 +126,36 @@ public class SetAnExam extends JFrame {
             String sub2 = (String) comboBox.getSelectedItem();
             String cla = (String) comboBox2.getSelectedItem();
             testNumber = testNo.getText();
-            Timestamp start2 = Timestamp.valueOf(start.getText());
+            String start2 = start.getText();
+            /*
+            String dateString = "2017/2/16";
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/M/dd");
+
+            Date date = null;
+
+            try
+
+            { date = sdf.parse(dateString);
+
+            } catch (ParseException e)
+
+            {
+
+                e.printStackTrace();
+
+            }
+
+            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            String dateTime = sdf2.format(date);
+
+
+
+
+            Timestamp finDate = Timestamp.valueOf(dateTime);
+
+             */
             int dur = Integer.parseInt(du.getText());
             new QuestionType();
 

@@ -135,10 +135,9 @@ public class ExamSchedule extends JFrame {
 
         SubjectDao subjectDao=new SubjectDaoImp();
 
-        Subject subject=subjectDao.findByTeaClaId(set.getTea_ID(),set.getC_ID());
+        Subject subject=subjectDao.findByTeaClaId(getCurrentYear(),getCurrentSem(),set.getTea_ID(),set.getC_ID());
         String sub_id=subject.getSub_id();
         return sub_id;
-        return null;
     }
 
 }

@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SubjectDaoImp implements SubjectDao {
-    public Subject findByTeaClaId(short year,int sem,String teaId, String classId){
+    public Subject findByTeaClaId(short year,boolean sem,String teaId, String classId){
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -24,7 +24,7 @@ public class SubjectDaoImp implements SubjectDao {
             pstmt.setString(1, teaId);
             pstmt.setString(2, classId);
             pstmt.setShort(3,year);
-            pstmt.setInt(4,sem);
+            pstmt.setBoolean(4,sem);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {

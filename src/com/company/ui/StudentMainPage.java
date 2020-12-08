@@ -94,17 +94,18 @@ public class StudentMainPage extends JFrame{
             for (int i = 0; i < exams.length; i++) {
                 if (currentTime.toString().equals(exams[i].getStart().toString())) {
                     takeAnExam=exams[i];
-
+                    /*
                     //judge the first question type
                     ExamDao examDao=new ExamDaoImp();
                     Question[] allQuestions=examDao.allQuestions(takeAnExam);
                     if(allQuestions[0].getType().equals("MC")){
-                        new TakeAnExamM();
+                        new TakeAnExamM(takeAnExam,0);
                     }
                     else {
-                        new TakeAnExamB(allQuestions[0].getQuesNo(),allQuestions.length,allQuestions[0].getScore(),allQuestions[0].getContent(),allQuestions[0].getCom());
+                        new TakeAnExamB(takeAnExam,0);
                     }
 
+                     */
                 }
             }
         });

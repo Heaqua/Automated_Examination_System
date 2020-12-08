@@ -1,10 +1,12 @@
 package com.company.domain;
 
+import java.math.BigDecimal;
+
 public class Question {
     private int quesNo;
     private String com;
     private String type;
-    private int score;
+    private BigDecimal score;
     private String content;
     private String answer;
 
@@ -12,7 +14,7 @@ public class Question {
 
     }
 
-    public Question(int quesNo, String com, String type, int score, String content, String answer) {
+    public Question(int quesNo, String com, String type, BigDecimal score, String content, String answer) {
         this.quesNo = quesNo;
         this.com = com;
         this.type = type;
@@ -25,7 +27,7 @@ public class Question {
         this.quesNo = quesNo;
     }
 
-    public void setScore(int score) {
+    public void setScore(BigDecimal score) {
         this.score = score;
     }
 
@@ -53,7 +55,7 @@ public class Question {
         return content;
     }
 
-    public int getScore() {
+    public BigDecimal getScore() {
         return score;
     }
 

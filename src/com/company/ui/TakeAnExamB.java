@@ -1,19 +1,47 @@
 package com.company.ui;
 
+import com.company.dao.AnswerDao;
+import com.company.dao.ExamDao;
+import com.company.dao.sqlplus.AnswerDaoImp;
+import com.company.dao.sqlplus.ExamDaoImp;
 import com.company.domain.Exam;
+import com.company.domain.Question;
+import sun.applet.Main;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class TakeAnExamB extends JFrame {
 
+    int num;
+    int total;
+    BigDecimal score;
+    String Question;
+    String Com;
 
-    public TakeAnExamB(int num,int total,int score,String Question,String Com){
+    String studentAnswer;
+    BigDecimal stuScore=null;
+
+    public TakeAnExamB(Exam e, int i){
         super("Take an exam");
+
+        //
+        ExamDao examDao=new ExamDaoImp();
+        Question[] allQuestions=examDao.allQuestions(e);
+
+        num=allQuestions[i].getQuesNo();
+        total=allQuestions.length;
+        score=allQuestions[i].getScore();
+        Question=allQuestions[i].getContent();
+        Com=allQuestions[i].getCom();
+
+
+
         JPanel panel = new JPanel();
         setSize(700,600);
         setLocationRelativeTo(null);
@@ -106,7 +134,34 @@ public class TakeAnExamB extends JFrame {
 //            new TakeAnExamM(3,10,5,"7*8","56","98","2","3","Optional");
 //        });
 //        this.setVisible(true);
-//
+
+
+        if(allQuestions[i].getType().equals("blank")) {
+
+            if (studentAnswer.equals(allQuestions[i].getAnswer())) {
+                stuScore = allQuestions[i].getScore();
+
+            } else {
+                stuScore = new BigDecimal(0);
+            }
+        }
+
+        next.addActionListener(x -> {
+            setVisible(false);
+            MainApplication.start++;
+            if(MainApplication.start<allQuestions.length) {
+                if (allQuestions[i].getType().equals("MC")) {
+                    AnswerDao answerDao=new AnswerDaoImp();
+                    answerDao.create(num,e.getTestNo(),MainApplication.user.getId(),studentAnswer,stuScore);
+                    new TakeAnExamM(e, MainApplication.start);
+                } else {
+                    AnswerDao answerDao=new AnswerDaoImp();
+                    answerDao.create(num,e.getTestNo(),MainApplication.user.getId(),studentAnswer,stuScore);
+                    new TakeAnExamB(e, MainApplication.start);
+                }
+
+            }
+        });
 
 
     }

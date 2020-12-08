@@ -1,6 +1,9 @@
 package com.company.ui;
 
 
+import com.company.dao.AnswerDao;
+import com.company.dao.sqlplus.AnswerDaoImp;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -68,7 +71,7 @@ public class TeacherMainPage extends JFrame {
         //Click the button "mark papers"
         markPapers.addActionListener(e -> {
             setVisible(false);
-            new MarkPapers("ab=?","1",2);
+            //new MarkPapers("ab=?", ,2);
         });
 
         //click the button "View Examination results"

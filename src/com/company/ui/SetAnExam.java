@@ -1,7 +1,9 @@
 package com.company.ui;
 
 import com.company.dao.ExamDao;
+import com.company.dao.SetDao;
 import com.company.dao.sqlplus.ExamDaoImp;
+import com.company.dao.sqlplus.SetDaoImp;
 
 import javax.swing.*;
 import java.awt.*;
@@ -127,48 +129,32 @@ public class SetAnExam extends JFrame {
             String cla = (String) comboBox2.getSelectedItem();
             testNumber = testNo.getText();
             String start2 = start.getText();
-            /*
-            String dateString = "2017/2/16";
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/M/dd");
-
-            Date date = null;
-
-            try
-
-            { date = sdf.parse(dateString);
-
-            } catch (ParseException e)
-
-            {
-
-                e.printStackTrace();
-
-            }
-
-            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-            String dateTime = sdf2.format(date);
-
-
-
-
-            Timestamp finDate = Timestamp.valueOf(dateTime);
-
-             */
             int dur = Integer.parseInt(du.getText());
             new QuestionType();
 
             //insert values into EXAM
             ExamDao examDao=new ExamDaoImp();
             examDao.create(testNumber,start2,dur);
-            //Ex12 18:00,120
+            SetDao setDao = new SetDaoImp();
+            setDao.create(testNumber,getYear(start2),getMonth(start2),MainApplication.user.getId(),cla);
         });
 
-
-
-
     }
+    public short getYear(String date){
+        String[] sep = date.split("/");
+        short year = Short.parseShort(sep[0]);
+        return year;
+    }
+    public boolean getMonth(String date){
+        String[] sep = date.split("/");
+        int month = Integer.parseInt(sep[1]);
+        if(month>8 && month <=12){
+            return true;
+        }
+        return false;
+    }
+
 
 }
 

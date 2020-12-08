@@ -28,9 +28,9 @@ public class TeacherDaoImp implements TeacherDao {
             if (rs.next()) {
                 result = new Teacher();
 
-                result.setName(rs.getString("tea_name"));
-                result.setId(rs.getString("tea_id"));
-                result.setPassword(rs.getString("tea_pwd"));
+                result.setName(rs.getString("TEA_NAME"));
+                result.setId(rs.getString("TEA_ID"));
+                result.setPassword(rs.getString("TEA_PWD"));
 
                 return result;
             }

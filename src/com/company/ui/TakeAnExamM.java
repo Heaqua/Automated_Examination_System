@@ -76,7 +76,7 @@ public class TakeAnExamM extends JFrame {
         panel.add(B1);
         panel.add(C1);
         panel.add(D1);
-
+        /*
         //four labels for answer
         JLabel A2 = new JLabel(A);
         JLabel B2 = new JLabel(B);
@@ -134,6 +134,7 @@ public class TakeAnExamM extends JFrame {
         this.setVisible(true);
 
 
+         */
 
     }
 

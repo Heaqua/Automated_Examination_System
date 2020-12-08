@@ -231,12 +231,7 @@ public class TeacherDaoImp implements TeacherDao {
 
             if (rs1.next()) {
                 i++;
-                Exam exam = new Exam();
-
-                exam.setTestNo(rs1.getString("test#"));
-                exam.setStart(rs1.getTimestamp("start_time"));
-                exam.setDuration(rs1.getInt("duration"));
-
+                Exam exam = new Exam(rs1.getString("test#"), rs1.getTimestamp("start_time"), rs1.getInt("duration"));
                 result[i - 1] = exam;
 
             }

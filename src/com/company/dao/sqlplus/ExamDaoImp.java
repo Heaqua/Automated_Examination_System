@@ -7,6 +7,7 @@ import com.company.domain.TestStats;
 import oracle.jdbc.driver.OracleConnection;
 import oracle.jdbc.proxy.annotation.Pre;
 
+import java.math.BigDecimal;
 import java.sql.*;
 
 public class ExamDaoImp implements ExamDao {
@@ -15,6 +16,8 @@ public class ExamDaoImp implements ExamDao {
     static PreparedStatement queryExamTime;
     static PreparedStatement queryExamSete;
     static PreparedStatement subByExam;
+    static PreparedStatement queryTestStats;
+    static PreparedStatement queryAllScore;
 
     static {
         try {
@@ -22,6 +25,8 @@ public class ExamDaoImp implements ExamDao {
                     "FROM QUESTION WHERE TEST# = ?");
             queryExamTime = conn.prepareStatement("SELECT START_TIME, DURATION FROM EXAM WHERE TEST# = ?");
             queryExamSete = conn.prepareStatement("SELECT YEAR, SEM, TEA_ID, C_ID FROM SETE WHERE TEST# = ?");
+            queryTestStats = conn.prepareStatement("SELECT AVG(TEST_RESULT), MED(TEST_RESULT), MAX(TEST_RESULT), MIN(TEST_RESULT), STDDEV(TEST_RESULT) FROM TAKE WHERE TEST# = ?");
+            queryAllScore = conn.prepareStatement("SELECT TEST_RESULT FROM TAKE WHERE TEST# = ?");
             subByExam = conn.prepareStatement("SELECT SUB_ID FROM TEACH WHERE YEAR = ? " +
                     "AND SEM = ? AND C_ID = ? AND TEA_ID = ?");
         } catch (SQLException throwables) {
@@ -122,7 +127,39 @@ public class ExamDaoImp implements ExamDao {
 
     @Override
     public TestStats getTestStatsById(String testId) {
-        return null;
+        TestStats t = null;
+        ResultSet rs = null;
+        try {
+            queryTestStats.setString(1, testId);
+            rs = queryTestStats.executeQuery();
+            rs.next();
+            double average = rs.getBigDecimal(1).doubleValue();
+            double median = rs.getBigDecimal(2).doubleValue();
+            double max = rs.getBigDecimal(3).doubleValue();
+            double min = rs.getBigDecimal(4).doubleValue();
+            double sd = rs.getBigDecimal(5).doubleValue();
+            queryAllScore.setString(1, testId);
+            rs = queryAllScore.executeQuery();
+            rs.last();
+            int num = rs.getRow();
+            rs.beforeFirst();
+            double[] scores = new double[num];
+            for(int i = 0; i< num; i++){
+                rs.next();
+                scores[i] = rs.getBigDecimal(1).doubleValue();
+            }
+            t = new TestStats(scores, average, median, max, min, sd);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException exception) {
+                }
+            }
+        }
+        return t;
     }
 
 

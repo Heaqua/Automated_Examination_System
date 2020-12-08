@@ -9,21 +9,16 @@ public class TestStats {
     private double max;
     private double min;
     private double sd;
-    private String comment;
 
-    public TestStats(double[] scores, double average, double median, double max, double min, double sd, String comment) {
+    public TestStats(double[] scores, double average, double median, double max, double min, double sd) {
         this.scores = scores;
         this.average = average;
         this.median = median;
         this.max = max;
         this.min = min;
         this.sd = sd;
-        this.comment = comment;
     }
 
-    public String getComment(){
-        return comment;
-    }
 
     public double[] getScores() {
         return scores;

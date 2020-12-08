@@ -155,9 +155,8 @@ public class FullLength extends JFrame {
             BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
             String answerFromText=answer.getText();
             //insert values
-            //TODO
             QuestionDao questionDao=new QuestionDaoImp();
-//            questionDao.create(num,SetAnExam.testNumber,comOrOp,"long",scoreBigDecimal,questionFromText,answerFromText);
+            questionDao.create((short)num,SetAnExam.testNumber,comOrOp,"long",scoreBigDecimal,questionFromText,answerFromText);
 
 
         });
@@ -174,9 +173,8 @@ public class FullLength extends JFrame {
             BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
             String answerFromText=answer.getText();
             //insert values
-            //TODO
             QuestionDao questionDao=new QuestionDaoImp();
-//            questionDao.create(num,SetAnExam.testNumber,comOrOp,"long",scoreBigDecimal,questionFromText,answerFromText);
+            questionDao.create((short)num,SetAnExam.testNumber,comOrOp,"long",scoreBigDecimal,questionFromText,answerFromText);
 
 
         });

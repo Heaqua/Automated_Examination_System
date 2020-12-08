@@ -19,7 +19,7 @@ public class StudentDaoImp implements StudentDao {
 
         try{
             conn=TestApplication.conn;
-            String sql="select stu_id,stu_name,c_id, stu_pwd from teacher where stu_id= ?";
+            String sql="SELECT STU_ID,STU_NAME,C_ID, STU_PWD FROM STUDENT WHERE STU_ID= ?";
             pstmt=conn.prepareStatement(sql);
             pstmt.setString(1,userId);
             rs=pstmt.executeQuery();
@@ -82,9 +82,13 @@ public class StudentDaoImp implements StudentDao {
             conn=TestApplication.conn;
 
             //TODO
-            String sql1="";
+            String sql1="SELECT TEST#,DATE,START_TIME,DURATION FROM STUDENT S,SET E,TEACH T " +
+                    "WHERE S.STU_ID =? AND S.C_ID=E.C_ID AND T.YEAR =? " +
+                    "AND T.TEA_ID = E.TEA_ID AND T.YEAR = E.YEAR AND T.SEM = E.SEM AND" +
+                    "T.C_ID = S.C_ID";
             pstmt1=conn.prepareStatement(sql1);
             pstmt1.setString(1,student.getId());
+            pstmt1.setShort(2,);
             rs1=pstmt1.executeQuery();
 
             String sql2="";

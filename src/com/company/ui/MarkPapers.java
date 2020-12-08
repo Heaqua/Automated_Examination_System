@@ -1,7 +1,13 @@
 package com.company.ui;
 
 import com.company.dao.AnswerDao;
+import com.company.dao.TeacherDao;
 import com.company.dao.sqlplus.AnswerDaoImp;
+import com.company.dao.sqlplus.TeacherDaoImp;
+import com.company.domain.Answer;
+import com.company.domain.Exam;
+import com.company.domain.Question;
+import com.company.domain.Teacher;
 
 import javax.swing.*;
 
@@ -13,6 +19,13 @@ import java.math.BigDecimal;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class MarkPapers extends JFrame {
+
+
+    TeacherDao teacherDao=new TeacherDaoImp();
+    Exam[] allExams=teacherDao.findAllExams(MainApplication.user.getId());
+
+    AnswerDao answerDao=new AnswerDaoImp();
+    Answer[] allAnswers=answerDao.findByTeaId(MainApplication.user.getId());
 
 
     public MarkPapers(String Question, String Answer, int score) {

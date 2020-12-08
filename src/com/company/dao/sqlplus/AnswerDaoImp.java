@@ -2,6 +2,7 @@ package com.company.dao.sqlplus;
 
 import com.company.dao.AnswerDao;
 import com.company.domain.Answer;
+import com.company.domain.Exam;
 import oracle.jdbc.driver.OracleConnection;
 
 import java.math.BigDecimal;
@@ -36,7 +37,7 @@ public class AnswerDaoImp implements AnswerDao {
             rs = queryAnswer.executeQuery();
             rs.next();
             String stu_ans = rs.getString(1);
-            int score = rs.getInt(2);
+            BigDecimal score = rs.getBigDecimal(2);
             a = new Answer(questionNo, testNo, stu_id, stu_ans, score);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -126,4 +127,97 @@ public class AnswerDaoImp implements AnswerDao {
             throwables.printStackTrace();
         }
     }
+
+    public Answer[] findByTeaId(String teaId){
+        Connection conn = null;
+        PreparedStatement pstmt1 = null;
+        PreparedStatement pstmt2 = null;
+        ResultSet rs1 = null;
+        ResultSet rs2 = null;
+        Answer[] result = null;
+
+        try {
+            conn = TestApplication.conn;
+            //TODO
+            String sql1 = "";
+            pstmt1 = conn.prepareStatement(sql1);
+            pstmt1.setString(1, teaId);
+            rs1 = pstmt1.executeQuery();
+
+            //TODO
+            String sql2 = "";
+            pstmt2 = conn.prepareStatement(sql2);
+            pstmt2.setString(1, teaId);
+            rs2 = pstmt2.executeQuery();
+
+            int index=0;
+            if(rs2.next()){
+                index=rs2.getInt(1);
+            }
+            result = new Answer[index];
+            int i = 0;
+
+            if (rs1.next()) {
+                i++;
+                Answer answer = new Answer();
+
+                answer.setQuesNo(rs1.getShort("Q#"));
+                answer.setStu_ID(rs1.getString("stu_id"));
+                answer.setTestNo(rs1.getString("test#"));
+                answer.setStu_ans(rs1.getString("stu_ans"));
+                answer.setScore(rs1.getBigDecimal("stu_score"));
+
+                result[i - 1] = answer;
+
+            }
+            return result;
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs1 != null) {
+                try {
+                    rs1.close();
+                } catch (SQLException e) {
+
+                }
+            }
+            if (rs2 != null) {
+                try {
+                    rs2.close();
+                } catch (SQLException e) {
+
+                }
+            }
+
+            if (pstmt1 != null) {
+                try {
+                    pstmt1.close();
+                    ;
+                } catch (SQLException e) {
+
+                }
+            }
+            if (pstmt2 != null) {
+                try {
+                    pstmt2.close();
+                } catch (SQLException e) {
+
+                }
+            }
+
+
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+
+                }
+            }
+        }
+        return null;
+    }
 }
+
+

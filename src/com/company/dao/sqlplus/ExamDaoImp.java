@@ -53,7 +53,7 @@ public class ExamDaoImp implements ExamDao {
             int sem = rs.getInt(2);
             String tea_id = rs.getString(3);
             String c_id = rs.getString(4);
-            subByExam.setInt(1, year);
+            subByExam.setShort(1, year);
             subByExam.setInt(2, sem);
             subByExam.setString(3, c_id);
             subByExam.setString(4, tea_id);

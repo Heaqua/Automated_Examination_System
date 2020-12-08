@@ -240,29 +240,24 @@ public class ExamDaoImp implements ExamDao {
 
     }
 
-    public BigDecimal generateAverageResult(String testNo, String cId){
+    public BigDecimal[] generateResult(String testNo){
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        BigDecimal result = null;
+        BigDecimal[] result = new BigDecimal[4];
 
         try {
-            String sql = "SELECT S.TEST# FROM TEACH T,SETE S WHERE T.YEAR=? AND T.SEM=? AND T.SUB_ID=? AND T.C_ID=?" +
-                    "S.YEAR=T.YEAR AND T.TEA_ID=S.TEA_ID AND S.SEM=T.SEM";
+            String sql = "SELECT AVG(TEST_RESULT), MEDIAN(TEST_RESULT), STATS_MODE(TEST_RESULT)," +
+                    "STDDEV(TEST_RESULT) FROM TAKE WHERE TEST#=?";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, Current.getCurrentYear());
-            pstmt.setInt(2, Current.getCurrentSem());
-            pstmt.setString(3, subId);
-            pstmt.setString(4, cId);
+            pstmt.setString(1, testNo);
 
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                result = new Exam();
-
-                result.setTestNo(rs.getString("TEST#"));
-                result.setStart(rs.getTimestamp("START_TIME"));
-                result.setDuration(rs.getInt("DURATION"));
-
+                result[0] = rs.getBigDecimal(1);
+                result[1]=rs.getBigDecimal(2);
+                result[2]=rs.getBigDecimal(3);
+                result[3]=rs.getBigDecimal(4);
                 return result;
             }
         } catch (SQLException e) {
@@ -289,28 +284,20 @@ public class ExamDaoImp implements ExamDao {
 
     }
 
-    public BigDecimal generateMediumResult(String testNo, String cId){
+    public Exam examStartTime(String testNo){
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        BigDecimal result = null;
+        Exam result = null;
 
         try {
-            String sql = "SELECT S.TEST# FROM TEACH T,SETE S WHERE T.YEAR=? AND T.SEM=? AND T.SUB_ID=? AND T.C_ID=?" +
-                    "S.YEAR=T.YEAR AND T.TEA_ID=S.TEA_ID AND S.SEM=T.SEM";
+            String sql = "SELECT TEST#, START_TIME, DURATION FROM EXAM WHERE TEST#=?";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, Current.getCurrentYear());
-            pstmt.setInt(2, Current.getCurrentSem());
-            pstmt.setString(3, subId);
-            pstmt.setString(4, cId);
+            pstmt.setString(1, testNo);
 
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                result = new Exam();
-
-                result.setTestNo(rs.getString("TEST#"));
-                result.setStart(rs.getTimestamp("START_TIME"));
-                result.setDuration(rs.getInt("DURATION"));
+                result=new Exam(rs.getString(1),rs.getTimestamp(2),rs.getInt(3));
 
                 return result;
             }
@@ -337,52 +324,5 @@ public class ExamDaoImp implements ExamDao {
         return null;
     }
 
-    public BigDecimal generateModeResult(String testNo,String cId){
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        BigDecimal result = null;
-
-        try {
-            String sql = "SELECT S.TEST# FROM TEACH T,SETE S WHERE T.YEAR=? AND T.SEM=? AND T.SUB_ID=? AND T.C_ID=?" +
-                    "S.YEAR=T.YEAR AND T.TEA_ID=S.TEA_ID AND S.SEM=T.SEM";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, Current.getCurrentYear());
-            pstmt.setInt(2, Current.getCurrentSem());
-            pstmt.setString(3, subId);
-            pstmt.setString(4, cId);
-
-            rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                result = new Exam();
-
-                result.setTestNo(rs.getString("TEST#"));
-                result.setStart(rs.getTimestamp("START_TIME"));
-                result.setDuration(rs.getInt("DURATION"));
-
-                return result;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-
-                }
-            }
-
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                    ;
-                } catch (SQLException e) {
-
-                }
-            }
-        }
-        return null;
-    }
 
 }

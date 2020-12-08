@@ -71,6 +71,12 @@ public class Exam {
         this.sub_id = sub_id;
     }
 
+    public Exam(String testNo, Timestamp start,int duration){
+        this.testNo=testNo;
+        this.start=start;
+        this.duration=duration;
+    }
+
     public void setTestNo(String testNo) {
         this.testNo = testNo;
     }

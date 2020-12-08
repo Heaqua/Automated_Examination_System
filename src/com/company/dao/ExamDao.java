@@ -19,8 +19,9 @@ public interface ExamDao {
     public TestStats getTestStatsById(String testId);
 
     public Exam findBySubIdCId(String subId,String cId);
-    public BigDecimal generateAverageResult(String testNo, String cId);
-    public BigDecimal generateMediumResult(String testNo, String cId);
-    public BigDecimal generateModeResult(String testNo,String cId);
+    public BigDecimal[] generateResult(String testNo);
+
+    public Exam examStartTime(String testNo);
+
 
 }

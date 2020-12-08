@@ -18,9 +18,7 @@ import java.awt.*;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ReportsAndResults2 extends JFrame {
-    public static void main(String[] args) {
-        new ReportsAndResults2();
-    }
+
 
     StudentDao studentDao=new StudentDaoImp();
     Subject[] allSubjects=studentDao.allSubjects((Student) MainApplication.user);

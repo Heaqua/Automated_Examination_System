@@ -1,8 +1,10 @@
 package com.company.ui;
 
 import com.company.dao.AnswerDao;
+import com.company.dao.QuestionDao;
 import com.company.dao.TeacherDao;
 import com.company.dao.sqlplus.AnswerDaoImp;
+import com.company.dao.sqlplus.QuestionDaoImp;
 import com.company.dao.sqlplus.TeacherDaoImp;
 import com.company.domain.Answer;
 import com.company.domain.Exam;
@@ -26,6 +28,12 @@ public class MarkPapers extends JFrame {
 
     AnswerDao answerDao=new AnswerDaoImp();
     Answer[] allAnswers=answerDao.findByTeaId(MainApplication.user.getId());
+
+    private Question answerToQuestion(Answer answer){
+        QuestionDao questionDao=new QuestionDaoImp();
+        return questionDao.findByID(answer.getQuesNo(),answer.getTestNo());
+    }
+
 
 
     public MarkPapers(String Question, String Answer, int score) {

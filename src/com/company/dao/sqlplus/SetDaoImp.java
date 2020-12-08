@@ -3,6 +3,7 @@ package com.company.dao.sqlplus;
 import com.company.dao.SetDao;
 import com.company.domain.*;
 import oracle.jdbc.driver.OracleConnection;
+import oracle.jdbc.proxy.annotation.Pre;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +12,26 @@ import java.sql.SQLException;
 
 public class SetDaoImp implements SetDao {
     static OracleConnection conn = TestApplication.conn;
+    static PreparedStatement deleteSete;
+
+    static {
+        try {
+            deleteSete = conn.prepareStatement("DELETE FROM SETE WHERE TEST# = ?");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void deleteSete(String testId){
+        try {
+            deleteSete.setString(1, testId);
+            deleteSete.executeUpdate();
+            System.out.println(testId + " deleted");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
 
     public Set findById(String testNo){
         PreparedStatement pstmt = null;

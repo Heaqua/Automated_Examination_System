@@ -39,7 +39,7 @@ public class ReportsAndResults2 extends JFrame {
 
             SubjectDao subjectDao=new SubjectDaoImp();
             //needs to review
-            subjectId=subjectDao.findByStuId(Current.getCurrentYear(),Current.getCurrentSem(),MainApplication.user.getId(),allExams[i].getTestNo()).getSub_id();
+            //subjectId=subjectDao.findByStuId(Current.getCurrentYear(),Current.getCurrentSem(),MainApplication.user.getId(),allExams[i].getTestNo()).getSub_id();
 
 
             //TODO:report=;

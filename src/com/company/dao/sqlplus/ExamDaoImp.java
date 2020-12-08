@@ -20,9 +20,11 @@ public class ExamDaoImp implements ExamDao {
     static PreparedStatement queryTestStats;
     static PreparedStatement queryAllScore;
     static PreparedStatement deleteExam;
+    static PreparedStatement examByClass;
 
     static {
         try {
+            examByClass = conn.prepareStatement("SELECT TEST# FROM SETE WHERE C_ID = ?");
             questions = conn.prepareStatement("SELECT Q#, COMPULSORY, TYPE, SCORE, Q_CONTENT, ANSWER " +
                     "FROM QUESTION WHERE TEST# = ?");
             queryExamTime = conn.prepareStatement("SELECT START_TIME, DURATION FROM EXAM WHERE TEST# = ?");
@@ -36,7 +38,24 @@ public class ExamDaoImp implements ExamDao {
             throwables.printStackTrace();
         }
     }
-
+    public Exam[] findExamByClass(String c_id){
+        ResultSet rs = null;
+        ArrayList<Exam> exams = new ArrayList<>();
+        Exam[] examsArray = null;
+        try {
+            examByClass.setString(1, c_id);
+            rs = examByClass.executeQuery();
+            while(rs.next()){
+                Exam exam = findById(rs.getString(1));
+                exams.add(exam);
+            }
+            examsArray = new Exam[exams.size()];
+            examsArray = exams.toArray(examsArray);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return examsArray;
+    }
 
     @Override
     public Exam findById(String testId) {

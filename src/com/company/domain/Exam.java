@@ -13,7 +13,7 @@ public class Exam {
     private String tea_id;
     private String c_id;
 
-    public short getYear() {
+    public int getYear() {
         return year;
     }
 

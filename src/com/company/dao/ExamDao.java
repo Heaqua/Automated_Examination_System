@@ -4,6 +4,7 @@ import com.company.domain.Exam;
 import com.company.domain.Question;
 import com.company.domain.TestStats;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 
 public interface ExamDao {

@@ -4,10 +4,7 @@ import com.company.dao.ExamDao;
 import com.company.dao.SetDao;
 import com.company.dao.StudentDao;
 import com.company.dao.SubjectDao;
-import com.company.dao.sqlplus.ExamDaoImp;
-import com.company.dao.sqlplus.SetDaoImp;
-import com.company.dao.sqlplus.StudentDaoImp;
-import com.company.dao.sqlplus.SubjectDaoImp;
+import com.company.dao.sqlplus.*;
 import com.company.domain.Exam;
 import com.company.domain.Set;
 import com.company.domain.Student;
@@ -108,25 +105,6 @@ public class ExamSchedule extends JFrame {
 
     }
 
-    public static short getCurrentYear() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-        Date date = new Date();
-        String y = sdf.format(date);
-        short y2 = Short.parseShort(y);
-        return y2;
-    }
-
-    public static boolean getCurrentSem() {
-        SimpleDateFormat sdf = new SimpleDateFormat("MM");
-        Date date = new Date();
-        String m = sdf.format(date);
-        int month = Integer.parseInt(m);
-        if(month > 8 && month <= 12){
-            return true;
-        }
-        return false;
-    }
-
 
         private static String fromTestNoToSubId(Exam exam){
         String testNo=exam.getTestNo();
@@ -135,7 +113,7 @@ public class ExamSchedule extends JFrame {
 
         SubjectDao subjectDao=new SubjectDaoImp();
 
-        Subject subject=subjectDao.findByTeaClaId(getCurrentYear(),getCurrentSem(),set.getTea_ID(),set.getC_ID());
+        Subject subject=subjectDao.findByTeaClaId(Current.getCurrentYear(),Current.getCurrentSem(),set.getTea_ID(),set.getC_ID());
         String sub_id=subject.getSub_id();
         return sub_id;
     }

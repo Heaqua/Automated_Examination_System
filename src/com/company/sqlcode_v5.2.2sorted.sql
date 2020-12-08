@@ -260,6 +260,7 @@ INSERT INTO EXAM VALUES ('201E201202',to_date('2020/12/10:08:00:00AM','yyyy/mm/d
 INSERT INTO SETE VALUES ('201C241101',2020,1,'T890023','C01');
 INSERT INTO SETE VALUES ('201A123401',2020,1,'T865677','C01');
 INSERT INTO SETE VALUES ('201E201202',2020,1,'T825189','C02');
+--SETE VALUES('201Z100199', 2018, true, 'T090909' ,'C09')
 
 --insert preset data for QUESTION
 INSERT INTO QUESTION VALUES ('201C241101',1,'Y','MC',10,'What is the basic unit that can be translated into the algebraic operators and optimized?|Query block|Transaction|Sector|Record','A');

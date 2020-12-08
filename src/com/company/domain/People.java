@@ -1,9 +1,9 @@
 package com.company.domain;
 
 public class People {
-    private String name;
-    private String id;
-    private String password;
+    private static String name;
+    private static String id;
+    private static String password;
 
     public String getName() {
         return name;

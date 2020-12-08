@@ -4,6 +4,7 @@ import com.company.dao.StudentDao;
 import com.company.domain.Exam;
 import com.company.domain.Student;
 import com.company.domain.Subject;
+import oracle.jdbc.driver.OracleConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,8 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class StudentDaoImp implements StudentDao {
+    static OracleConnection conn = TestApplication.conn;
     public Student findById(String userId){
-        Connection conn=null;
         PreparedStatement pstmt=null;
         ResultSet rs=null;
         Student result=null;
@@ -56,22 +57,12 @@ public class StudentDaoImp implements StudentDao {
 
                 }
             }
-
-            if(conn !=null){
-                try {
-                    conn.close();
-                }
-                catch (SQLException e){
-
-                }
-            }
         }
         return null;
 
     }
 
     public Exam[]  allExams(Student student){
-        Connection conn=null;
         PreparedStatement pstmt1=null;
         PreparedStatement pstmt2=null;
         ResultSet rs1=null;
@@ -159,22 +150,11 @@ public class StudentDaoImp implements StudentDao {
 
                 }
             }
-
-
-            if(conn !=null){
-                try {
-                    conn.close();
-                }
-                catch (SQLException e){
-
-                }
-            }
         }
         return null;
     }
 
     public Subject[] allSubjects(Student student){
-        Connection conn=null;
         PreparedStatement pstmt1=null;
         PreparedStatement pstmt2=null;
         ResultSet rs1=null;
@@ -182,7 +162,6 @@ public class StudentDaoImp implements StudentDao {
         Subject[] result=null;
 
         try{
-            conn=TestApplication.conn;
             String sql1="select sub_id,sub_name from subject,choose,student where subject.sub_id=choose.sub_id and choose.c_id=student.c_id and student.stu_id=?";
             pstmt1=conn.prepareStatement(sql1);
             pstmt1.setString(1,student.getId());
@@ -249,16 +228,6 @@ public class StudentDaoImp implements StudentDao {
             if(pstmt2!=null){
                 try{
                     pstmt2.close();
-                }
-                catch (SQLException e){
-
-                }
-            }
-
-
-            if(conn !=null){
-                try {
-                    conn.close();
                 }
                 catch (SQLException e){
 

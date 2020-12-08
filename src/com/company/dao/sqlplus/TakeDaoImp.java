@@ -3,6 +3,7 @@ package com.company.dao.sqlplus;
 import com.company.dao.TakeDao;
 import com.company.domain.Take;
 import com.company.domain.Teacher;
+import oracle.jdbc.driver.OracleConnection;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -11,15 +12,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TakeDaoImp implements TakeDao {
+    static OracleConnection conn = TestApplication.conn;
 
     public Take findByKey(String testNo, String stuId){
-        Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Take result = null;
 
         try {
-            conn = TestApplication.conn;
             String sql = "select test#,stu_id,test_result,comments from take where test#=? and stu_id=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,testNo );
@@ -55,23 +55,13 @@ public class TakeDaoImp implements TakeDao {
 
                 }
             }
-
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-
-                }
-            }
         }
         return null;
 
     }
 
     public void create(String testNo, String stuId , BigDecimal testResult, String comments){
-
         try {
-            Connection conn = TestApplication.conn;
             String sql = "insert into take (test#,stu_id,test_result,comments) values (?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,testNo );
@@ -87,7 +77,6 @@ public class TakeDaoImp implements TakeDao {
 
     public void modifyTestResult(Take take, BigDecimal testResult){
     try{
-        Connection conn = TestApplication.conn;
         String sql = "update take set test_result=? where test#=? and stu_id=?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setBigDecimal(1,testResult);
@@ -102,7 +91,6 @@ public class TakeDaoImp implements TakeDao {
 
     public void modifyComments(Take take,String comments){
         try{
-            Connection conn = TestApplication.conn;
             String sql = "update take set comments=? where test#=? and stu_id=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,comments);

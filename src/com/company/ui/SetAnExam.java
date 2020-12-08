@@ -129,7 +129,7 @@ public class SetAnExam extends JFrame {
 
             //insert values into EXAM
             ExamDao examDao=new ExamDaoImp();
-            examDao.create(testNumber,start2,dur);
+//            examDao.create(testNumber,"",dur);
         });
 
 

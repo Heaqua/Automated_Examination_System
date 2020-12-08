@@ -1,7 +1,9 @@
 package com.company.ui;
 
 import com.company.dao.ExamDao;
+import com.company.dao.SetDao;
 import com.company.dao.sqlplus.ExamDaoImp;
+import com.company.dao.sqlplus.SetDaoImp;
 import com.company.domain.*;
 import com.company.dao.sqlplus.TestApplication;
 
@@ -36,14 +38,13 @@ public class MainApplication {
     public static void forTestingPurpose() {
         try {
             TestApplication.testApplication();
-            ExamDaoImp examDaoImp = new ExamDaoImp();
-            Exam e = examDaoImp.findById("201Z100199");
-            System.out.println(e.getDuration());
+//            ExamDao examDao=new ExamDaoImp();
+//            examDao.create(testNumber,start2,dur);
+            SetDao setDao = new SetDaoImp();
+            setDao.create("201Z100199",2018,1,"T090909","C09");
             TestApplication.conn.close();
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException throwables) {
             throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

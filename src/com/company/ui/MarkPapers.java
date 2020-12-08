@@ -23,7 +23,9 @@ public class MarkPapers extends JFrame {
 
     TeacherDao teacherDao=new TeacherDaoImp();
     Exam[] allExams=teacherDao.findAllExams(MainApplication.user.getId());
-    Answer[] allAnswers;
+
+    AnswerDao answerDao=new AnswerDaoImp();
+    Answer[] allAnswers=answerDao.findByTeaId(MainApplication.user.getId());
 
 
     public MarkPapers(String Question, String Answer, int score) {

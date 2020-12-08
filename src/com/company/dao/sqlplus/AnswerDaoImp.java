@@ -37,7 +37,7 @@ public class AnswerDaoImp implements AnswerDao {
             rs = queryAnswer.executeQuery();
             rs.next();
             String stu_ans = rs.getString(1);
-            int score = rs.getInt(2);
+            BigDecimal score = rs.getBigDecimal(2);
             a = new Answer(questionNo, testNo, stu_id, stu_ans, score);
         } catch (SQLException throwables) {
             throwables.printStackTrace();

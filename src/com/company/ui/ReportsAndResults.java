@@ -1,5 +1,10 @@
 package com.company.ui;
 
+import com.company.dao.StudentDao;
+import com.company.dao.sqlplus.StudentDaoImp;
+import com.company.domain.Student;
+import com.company.domain.Subject;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
@@ -9,7 +14,12 @@ import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ReportsAndResults extends JFrame {
 
+    public static void main(String[] args) {
+        new ReportsAndResults();
+    }
 
+    StudentDao studentDao=new StudentDaoImp();
+    Subject[] allSubjects=studentDao.allSubjects((Student) MainApplication.user);
 
     public ReportsAndResults() {
         super("Reports and Results");

@@ -21,6 +21,7 @@ public class ReportsAndResults extends JFrame {
     StudentDao studentDao=new StudentDaoImp();
     Subject[] allSubjects=studentDao.allSubjects((Student) MainApplication.user);
 
+
     public ReportsAndResults() {
         super("Reports and Results");
         JPanel panel = new JPanel();
@@ -51,7 +52,15 @@ public class ReportsAndResults extends JFrame {
         panel.add(subject);
 
         //set a ComboBox
-        String[] subjects = new String[]{"ABCT1234", "AF2111", "APSS1011", "CBS2012","COMP2011","COMP2021","COMP2411","ELC2012","HTM1203"};
+        //
+
+        String[] allSubjectsId=new String[allSubjects.length];
+        for(int i=0;i<allSubjects.length;i++){
+            allSubjectsId[i]=allSubjects[i].getSub_id();
+        }
+
+
+        String[] subjects =allSubjectsId ;
         final String[] sub = new String[1];
         final JComboBox<String> comboBox = new JComboBox<String>(subjects);{
             comboBox.addItemListener(new ItemListener() {
@@ -89,7 +98,7 @@ public class ReportsAndResults extends JFrame {
         //click "Sure"
         sure.addActionListener(e -> {
             setVisible(false);
-            new ReportsAndResults2(sub[0],"A","You are so greatlalaedddadaaacacacaecaaelalalallalala");
+            new ReportsAndResults2();
         });
 
         this.setVisible(true);

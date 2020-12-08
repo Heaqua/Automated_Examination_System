@@ -29,15 +29,24 @@ public class MarkPapers extends JFrame {
     AnswerDao answerDao=new AnswerDaoImp();
     Answer[] allAnswers=answerDao.findByTeaId(MainApplication.user.getId());
 
+    int len=allAnswers.length;
+
+
+
     private Question answerToQuestion(Answer answer){
         QuestionDao questionDao=new QuestionDaoImp();
         return questionDao.findByID(answer.getQuesNo(),answer.getTestNo());
     }
 
 
-
-    public MarkPapers(String Question, String Answer, int score) {
+    public MarkPapers(int i) {
         super("Mark papers");
+
+        String Question=answerToQuestion(allAnswers[i]).getContent();
+        String Answer=answerToQuestion(allAnswers[i]).getAnswer();
+        int score=answerToQuestion(allAnswers[i]).getScore();
+
+
         JPanel panel = new JPanel();
         this.setSize(700, 600);
         this.setLocationRelativeTo(null);
@@ -127,14 +136,18 @@ public class MarkPapers extends JFrame {
         //click the button "Save and next"
         save.addActionListener(e -> {
             setVisible(false);
-            new MarkPapers("3+4 = ?","7",3);
+
+            if(i<len){
+                new MarkPapers(i+1);
+                MainApplication.start++;
+            }
 
             String scoreFromText=score2.getText();
             BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
 
 
             AnswerDao answerDao=new AnswerDaoImp();
-            //TODO:answerDao.modify(,scoreBigDecimal);
+            answerDao.modify(allAnswers[i],scoreBigDecimal);
 
         });
 
@@ -146,7 +159,7 @@ public class MarkPapers extends JFrame {
             String scoreFromText=score2.getText();
             BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
             AnswerDao answerDao=new AnswerDaoImp();
-            //TODO:answerDao.modify(,scoreBigDecimal);
+            answerDao.modify(allAnswers[i],scoreBigDecimal);
 
         });
 

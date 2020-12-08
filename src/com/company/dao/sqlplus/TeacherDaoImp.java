@@ -26,11 +26,7 @@ public class TeacherDaoImp implements TeacherDao {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                result = new Teacher();
-
-                result.setName(rs.getString("TEA_NAME"));
-                result.setId(rs.getString("TEA_ID"));
-                result.setPassword(rs.getString("TEA_PWD"));
+                result = new Teacher(rs.getString("TEA_NAME"),rs.getString("TEA_ID"),rs.getString("TEA_PWD"));
 
                 return result;
             }

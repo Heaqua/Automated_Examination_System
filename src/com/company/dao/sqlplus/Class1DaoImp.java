@@ -81,12 +81,11 @@ public class Class1DaoImp implements ClassDao {
 
             if(rs1.next()){
                 i++;
-                Student student=new Student();
-
-                student.setName(rs1.getString("stu_name"));
-                student.setId(rs1.getString("stu_id"));
+                Student student=new Student(rs1.getString("stu_name"),
+                        rs1.getString("stu_id"),
+                        rs1.getString("stu_pwd")
+                        );
                 student.setC_id(rs1.getString("c_id"));
-                student.setPassword(rs1.getString("stu_pwd"));
 
                 result[i-1]=student;
 

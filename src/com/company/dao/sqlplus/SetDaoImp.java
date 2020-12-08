@@ -97,7 +97,7 @@ public class SetDaoImp implements SetDao {
             conn = TestApplication.conn;
             String sql = "select test#,year,sem,tea_id,c_id from set where test#=?";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, testNo );
+            //pstmt.setString(1, testNo );
             rs = pstmt.executeQuery();
 
 

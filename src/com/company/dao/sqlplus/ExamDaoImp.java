@@ -80,7 +80,7 @@ public class ExamDaoImp implements ExamDao {
     public void create(String testNo, String start, int duration){
         try{
             Connection conn=TestApplication.conn;
-            String sql="insert into exam values ?,to_date(?,'yyyy/mm/dd:hh:mi:ss'),?" ;
+            String sql="insert into exam values (?,to_date(?,'yyyy/mm/dd:hh24:mi:ss'),?)" ;
             PreparedStatement pstmt=conn.prepareStatement(sql);
 
             pstmt.setString(1,testNo);

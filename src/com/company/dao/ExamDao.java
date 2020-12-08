@@ -16,4 +16,6 @@ public interface ExamDao {
 
     public TestStats getTestStatsById(String testId);
 
+    public Exam findBySubIdCId(String subId,String cId);
+
 }

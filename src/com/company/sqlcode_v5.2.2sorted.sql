@@ -5,9 +5,9 @@ DROP TABLE CHOOSE;
 DROP TABLE SETE;
 DROP TABLE TAKE;
 DROP TABLE STUDENT;
+DROP TABLE CLASS;
 DROP TABLE TEACHER;
 DROP TABLE SUBJECT;
-DROP TABLE CLASS;
 DROP TABLE EXAM;
 
 
@@ -26,7 +26,6 @@ CREATE TABLE CLASS(C_ID VARCHAR(3) NOT NULL ,INSTRUCTOR_ID VARCHAR(12),PRIMARY K
 
 -- create table - EXAM
 CREATE TABLE EXAM(TEST# VARCHAR(11) NOT NULL,START_TIME DATE,DURATION NUMBER(5),PRIMARY KEY (TEST#));
-
 
 -- create table - QUESTION
 CREATE TABLE QUESTION(TEST# VARCHAR(11) NOT NULL, Q# NUMBER(3) NOT NULL,COMPULSORY VARCHAR(2),TYPE VARCHAR(20),SCORE NUMBER(4,2),Q_CONTENT VARCHAR(1000),ANSWER VARCHAR(1000),
@@ -250,11 +249,19 @@ INSERT INTO CHOOSE VALUES (2019,1,'C03','ABCT1234');
 INSERT INTO CHOOSE VALUES (2019,1,'C03','HTM1203');
 
 
-
---insert pre-set data COMP2411 FOR C01
- 
+--insert preset data for EXAM
 INSERT INTO EXAM VALUES ('201C241101',to_date('2020/12/07:11:00:00AM','yyyy/mm/dd:hh:mi:ssam'),60);
+INSERT INTO EXAM VALUES ('201A123401',to_date('2020/12/07:3:00:00PM','yyyy/mm/dd:hh:mi:sspm'),80);
+INSERT INTO EXAM VALUES ('201E201202',to_date('2020/12/10:08:00:00AM','yyyy/mm/dd:hh:mi:ssam'),30);
+--The exams that may exists due to testing of create methods
+--EXAM VALUES ('201Z100199',to_date('2020/12/31:14:00:00','yyyy/mm/dd:hh24:mi:ss'),180)
 
+--insert preset data for SETE
+INSERT INTO SETE VALUES ('201C241101',2020,1,'T890023','C01');
+INSERT INTO SETE VALUES ('201A123401',2020,1,'T865677','C01');
+INSERT INTO SETE VALUES ('201E201202',2020,1,'T825189','C02');
+
+--insert preset data for QUESTION
 INSERT INTO QUESTION VALUES ('201C241101',1,'Y','MC',10,'What is the basic unit that can be translated into the algebraic operators and optimized?|Query block|Transaction|Sector|Record','A');
 INSERT INTO QUESTION VALUES ('201C241101',2,'Y','MC',10,'If we include one entry for each record in the data file, then it is called a____?| Dense index|Primary index|Secondary index|Clustering index','A');
 INSERT INTO QUESTION VALUES ('201C241101',3,'Y','blank',10,'Unknown attributes are assigned a ____ value.','null');
@@ -262,7 +269,19 @@ INSERT INTO QUESTION VALUES ('201C241101',4,'Y','blank',10,'Schema in 1st Normal
 INSERT INTO QUESTION VALUES ('201C241101',5,'Y','long',20,'What is lossless join?',NULL);
 INSERT INTO QUESTION VALUES ('201C241101',6,'N','long',10,'For collision resolution, explain the difference between Linear Probing and Quadratic Probing.',NULL);
 
-INSERT INTO SETE VALUES ('201C241101',2020,1,'T890023','C01');
+INSERT INTO QUESTION VALUES ('201A123401',1,'Y','MC',10,'The fastest-running terrestrial animal is___?|Lion|Man|Cheetah|Jaguar','C');
+INSERT INTO QUESTION VALUES ('201A123401',2,'Y','MC',10,'What yellow metal is an alloy of copper and zinc? |Steel|Brass|Bronze|Silver','B');
+INSERT INTO QUESTION VALUES ('201A123401',3,'Y','blank',15,'Fe is the atomic symbol of which element?','Iron');
+INSERT INTO QUESTION VALUES ('201A123401',4,'Y','blank',15,'Which fruit has more genes than humans','Tomato');
+INSERT INTO QUESTION VALUES ('201A123401',5,'Y','long',20,'Tell me something about photosynthesis.',NULL);
+INSERT INTO QUESTION VALUES ('201A123401',6,'N','long',10,'Tell me something about Cellular differentiation.',NULL);
+
+INSERT INTO QUESTION VALUES ('201E201202',1,'N','long',25,'Write a subject for an email send to your boss ask for a leaving',NULL);
+INSERT INTO QUESTION VALUES ('201E201202',2,'N','MC',25,'Which of the following should not be included in a business proposal?|Timeline|Budget|Finance Position|Personnel','C');
+INSERT INTO QUESTION VALUES ('201E201202',3,'Y','blank',25,'When writing a news release for general public, we should use ______ English','plain');
+INSERT INTO QUESTION VALUES ('201E201202',4,'Y','blank',25,'The document attached to the CV of jobseeker to further explain their suitability is called _______.','cover letter');
+
+--insert preset data for ANSWER
 
 INSERT INTO ANSWER VALUES ('201C241101',1,'S180101','A',10);
 INSERT INTO ANSWER VALUES ('201C241101',2,'S180101','B',0);
@@ -285,28 +304,8 @@ INSERT INTO ANSWER VALUES ('201C241101',4,'S180103','index',0);
 INSERT INTO ANSWER VALUES ('201C241101',5,'S180103','Lossless join is a way of join.',5);
 INSERT INTO ANSWER VALUES ('201C241101',6,'S180103',NULL,0);
 
-INSERT INTO TAKE VALUES ('201C241101','S180101',71.43,'Good try!');
-INSERT INTO TAKE VALUES ('201C241101','S180102',40,'Need more efforts on the subject!');
-INSERT INTO TAKE VALUES ('201C241101','S180103',35.71,'Need more efforts on the subject! Maybe we will meet again in next semester.');
 
 
-
-
-
-
-
---insert pre-set data ABCT1234 FOR  C01
-
-INSERT INTO EXAM VALUES ('201A123401',to_date('2020/12/07:3:00:00PM','yyyy/mm/dd:hh:mi:sspm'),80);
-
-INSERT INTO SETE VALUES ('201A123401',2020,1,'T865677','C01');
-
-INSERT INTO QUESTION VALUES ('201A123401',1,'Y','MC',10,'The fastest-running terrestrial animal is___?|Lion|Man|Cheetah|Jaguar','C');
-INSERT INTO QUESTION VALUES ('201A123401',2,'Y','MC',10,'What yellow metal is an alloy of copper and zinc? |Steel|Brass|Bronze|Silver','B');
-INSERT INTO QUESTION VALUES ('201A123401',3,'Y','blank',15,'Fe is the atomic symbol of which element?','Iron');
-INSERT INTO QUESTION VALUES ('201A123401',4,'Y','blank',15,'Which fruit has more genes than humans','Tomato');
-INSERT INTO QUESTION VALUES ('201A123401',5,'Y','long',20,'Tell me something about photosynthesis.',NULL);
-INSERT INTO QUESTION VALUES ('201A123401',6,'N','long',10,'Tell me something about Cellular differentiation.',NULL);
 
 INSERT INTO ANSWER VALUES ('201A123401',1,'S180101','A',0);
 INSERT INTO ANSWER VALUES ('201A123401',2,'S180101','B',10);
@@ -329,27 +328,6 @@ INSERT INTO ANSWER VALUES ('201A123401',4,'S180103','Tomato',15);
 INSERT INTO ANSWER VALUES ('201A123401',5,'S180103','It is about how green plants produce oxygen.',10);
 INSERT INTO ANSWER VALUES ('201A123401',6,'S180103',NULL,0);
 
-INSERT INTO TAKE VALUES ('201A123401','S180101',62.5,'Good try!');
-INSERT INTO TAKE VALUES ('201A123401','S180102',56.25,'Good!');
-INSERT INTO TAKE VALUES ('201A123401','S180103',50,'Well done!');
-
-
-
-
---insert pre-set data ELC2012 FOR  C02
-
-
-INSERT INTO EXAM VALUES ('201E201202',to_date('2020/12/10:08:00:00AM','yyyy/mm/dd:hh:mi:ssam'),30);
-
-
-INSERT INTO SETE VALUES ('201E201202',2020,1,'T825189','C02');
-
-
-INSERT INTO QUESTION VALUES ('201E201202',1,'N','long',25,'Write a subject for an email send to your boss ask for a leaving',NULL);
-INSERT INTO QUESTION VALUES ('201E201202',2,'N','MC',25,'Which of the following should not be included in a business proposal?|Timeline|Budget|Finance Position|Personnel','C');
-
-INSERT INTO QUESTION VALUES ('201E201202',3,'Y','blank',25,'When writing a news release for general public, we should use ______ English','plain');
-INSERT INTO QUESTION VALUES ('201E201202',4,'Y','blank',25,'The document attached to the CV of jobseeker to further explain their suitability is called _______.','cover letter');
 
 
 INSERT INTO ANSWER VALUES ('201E201202',1,'S190207','Sorry I have to leave next monday',10);
@@ -357,12 +335,10 @@ INSERT INTO ANSWER VALUES ('201E201202',2,'S190207','C',25);
 INSERT INTO ANSWER VALUES ('201E201202',3,'S190207','Simple',0);
 INSERT INTO ANSWER VALUES ('201E201202',4,'S190207','resume',0);
 
-
 INSERT INTO ANSWER VALUES ('201E201202',1,'S190230','Leave Request',15);
 INSERT INTO ANSWER VALUES ('201E201202',2,'S190230',NULL,0);
 INSERT INTO ANSWER VALUES ('201E201202',3,'S190230','plain',25);
 INSERT INTO ANSWER VALUES ('201E201202',4,'S190230','cover letter',25);
-
 
 INSERT INTO ANSWER VALUES ('201E201202',1,'S190221','I want to leave',0);
 INSERT INTO ANSWER VALUES ('201E201202',2,'S190221','A',0);
@@ -374,10 +350,17 @@ INSERT INTO ANSWER VALUES ('201E201202',2,'S190220','B',0);
 INSERT INTO ANSWER VALUES ('201E201202',3,'S190220','Plain',25);
 INSERT INTO ANSWER VALUES ('201E201202',4,'S190220','cover letter',25);
 
+--insert preset data for TAKE
+INSERT INTO TAKE VALUES ('201C241101','S180101',71.43,'Good try!');
+INSERT INTO TAKE VALUES ('201C241101','S180102',40,'Need more efforts on the subject!');
+INSERT INTO TAKE VALUES ('201C241101','S180103',35.71,'Need more efforts on the subject! Maybe we will meet again in next semester.');
 
+INSERT INTO TAKE VALUES ('201A123401','S180101',62.5,'Good try!');
+INSERT INTO TAKE VALUES ('201A123401','S180102',56.25,'Good!');
+INSERT INTO TAKE VALUES ('201A123401','S180103',50,'Well done!');
 
-INSERT INTO TAKE VALUES ('201C241101','S190207',35,'More effort is needed in this subject.');
-INSERT INTO TAKE VALUES ('201C241101','S190230',65,NULL);
-INSERT INTO TAKE VALUES ('201C241101','S190221',25,'Please feel free to contact me for help.');
-INSERT INTO TAKE VALUES ('201C241101','S190220',70,'Keep the good work!');
+INSERT INTO TAKE VALUES ('201E201202','S190207',35,'More effort is needed in this subject.');
+INSERT INTO TAKE VALUES ('201E201202','S190230',65,NULL);
+INSERT INTO TAKE VALUES ('201E201202','S190221',25,'Please feel free to contact me for help.');
+INSERT INTO TAKE VALUES ('201E201202','S190220',70,'Keep the good work!');
 

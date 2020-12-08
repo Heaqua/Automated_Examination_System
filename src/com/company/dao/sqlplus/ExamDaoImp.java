@@ -9,6 +9,7 @@ import oracle.jdbc.proxy.annotation.Pre;
 
 import java.math.BigDecimal;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ExamDaoImp implements ExamDao {
     static OracleConnection conn = TestApplication.conn;
@@ -21,11 +22,11 @@ public class ExamDaoImp implements ExamDao {
 
     static {
         try {
-            questions = conn.prepareStatement("SELECT Q#, COMPULSORY, TYPE, SCORE, Q_CONTENT " +
+            questions = conn.prepareStatement("SELECT Q#, COMPULSORY, TYPE, SCORE, Q_CONTENT, ANSWER " +
                     "FROM QUESTION WHERE TEST# = ?");
             queryExamTime = conn.prepareStatement("SELECT START_TIME, DURATION FROM EXAM WHERE TEST# = ?");
             queryExamSete = conn.prepareStatement("SELECT YEAR, SEM, TEA_ID, C_ID FROM SETE WHERE TEST# = ?");
-            queryTestStats = conn.prepareStatement("SELECT AVG(TEST_RESULT), MED(TEST_RESULT), MAX(TEST_RESULT), MIN(TEST_RESULT), STDDEV(TEST_RESULT) FROM TAKE WHERE TEST# = ?");
+            queryTestStats = conn.prepareStatement("SELECT AVG(TEST_RESULT), MEDIAN(TEST_RESULT), MAX(TEST_RESULT), MIN(TEST_RESULT), STDDEV(TEST_RESULT) FROM TAKE WHERE TEST# = ?");
             queryAllScore = conn.prepareStatement("SELECT TEST_RESULT FROM TAKE WHERE TEST# = ?");
             subByExam = conn.prepareStatement("SELECT SUB_ID FROM TEACH WHERE YEAR = ? " +
                     "AND SEM = ? AND C_ID = ? AND TEA_ID = ?");
@@ -94,22 +95,20 @@ public class ExamDaoImp implements ExamDao {
 
     }
 
+    // Debugged
     public Question[] allQuestions(Exam e){
         ResultSet rs = null;
+        ArrayList<Question> quesList = new ArrayList<>();
         Question[] ques = null;
         try {
             questions.setString(1, e.getTestNo());
             rs = questions.executeQuery();
-            int num = 0;
-            if(rs.last()){
-                num = rs.getRow();
-                rs.beforeFirst();
+            while(rs.next()){
+                quesList.add(new Question(rs.getShort(1), rs.getString(2), rs.getString(3),
+                        rs.getInt(4), rs.getString(5), rs.getString(6)));
             }
-            ques = new Question[num];
-            for(int i = 0; i < num; i++){
-                ques[i] = new Question(rs.getShort(1), rs.getString(2), rs.getString(3),
-                        rs.getInt(4), rs.getString(5), rs.getString(6));
-            }
+            ques = new Question[quesList.size()];
+            ques = quesList.toArray(ques);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }finally {
@@ -125,6 +124,7 @@ public class ExamDaoImp implements ExamDao {
         return ques;
     }
 
+    // Debugged
     @Override
     public TestStats getTestStatsById(String testId) {
         TestStats t = null;
@@ -140,14 +140,11 @@ public class ExamDaoImp implements ExamDao {
             double sd = rs.getBigDecimal(5).doubleValue();
             queryAllScore.setString(1, testId);
             rs = queryAllScore.executeQuery();
-            rs.last();
-            int num = rs.getRow();
-            rs.beforeFirst();
-            double[] scores = new double[num];
-            for(int i = 0; i< num; i++){
-                rs.next();
-                scores[i] = rs.getBigDecimal(1).doubleValue();
+            ArrayList<Double> scoresList = new ArrayList();
+            while(rs.next()){
+                scoresList.add(rs.getBigDecimal(1).doubleValue());
             }
+            double[] scores = scoresList.stream().mapToDouble(i -> i).toArray();
             t = new TestStats(scores, average, median, max, min, sd);
         } catch (SQLException throwables) {
             throwables.printStackTrace();

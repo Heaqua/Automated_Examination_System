@@ -210,8 +210,9 @@ public class MultipleChoice extends JFrame {
                 ques = question.getText()+"|"+A1+"|"+B1+"|"+C1+"|"+D1;
                 setVisible(false);
                 new TeacherMainPage();
+                //TODO
                 QuestionDao questionDao = new QuestionDaoImp();
-                questionDao.create(num,SetAnExam.testNumber,compul,"MC",scores,ques,ans);
+//                questionDao.create(num,SetAnExam.testNumber,compul,"MC",scores,ques,ans);
             });
 
             //Click the button "Save and Next"
@@ -225,8 +226,9 @@ public class MultipleChoice extends JFrame {
                 ques = question.getText()+"|"+A1+"|"+B1+"|"+C1+"|"+D1;
                 setVisible(false);
                 new QuestionType();
+                //TODO
                 QuestionDao questionDao = new QuestionDaoImp();
-                questionDao.create(num,SetAnExam.testNumber,compul,"MC",scores,ques,ans);
+//                questionDao.create(num,SetAnExam.testNumber,compul,"MC",scores,ques,ans);
             });
 
     }

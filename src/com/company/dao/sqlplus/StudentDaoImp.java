@@ -88,7 +88,7 @@ public class StudentDaoImp implements StudentDao {
                     "T.C_ID = S.C_ID";
             pstmt1=conn.prepareStatement(sql1);
             pstmt1.setString(1,student.getId());
-            pstmt1.setShort(2,);
+//            pstmt1.setShort(2,);
             rs1=pstmt1.executeQuery();
 
             String sql2="";

@@ -130,8 +130,9 @@ public class FillBlanks extends JFrame {
             String questionFromText=question.getText();
             String answer2 = answer.getText();
             //insert values
+            //TODO
             QuestionDao questionDao=new QuestionDaoImp();
-            questionDao.create(num,SetAnExam.testNumber,comOrOp,"blank",scoreBigDecimal,questionFromText,answer2);
+//            questionDao.create(num,SetAnExam.testNumber,comOrOp,"blank",scoreBigDecimal,questionFromText,answer2);
 
         });
 
@@ -146,8 +147,9 @@ public class FillBlanks extends JFrame {
             String questionFromText=question.getText();
             String answer2 = answer.getText();
             //insert values
+            //TODO
             QuestionDao questionDao=new QuestionDaoImp();
-            questionDao.create(num,SetAnExam.testNumber,comOrOp,"blank",scoreBigDecimal,questionFromText,answer2);
+//            questionDao.create(num,SetAnExam.testNumber,comOrOp,"blank",scoreBigDecimal,questionFromText,answer2);
 
         });
 

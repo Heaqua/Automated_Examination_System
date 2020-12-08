@@ -22,5 +22,8 @@ public class Teacher extends People {
 
     public Teacher(String tea_id, String tea_name, String password) {
         super(tea_name, tea_id, password);
+        this.tea_id = tea_id;
+        this.tea_name = tea_name;
+        this.password= password;
     }
 }

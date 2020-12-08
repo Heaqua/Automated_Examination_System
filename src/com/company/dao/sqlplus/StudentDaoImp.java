@@ -194,12 +194,12 @@ public class StudentDaoImp implements StudentDao {
 
             if(rs1.next()){
                 i++;
-                Student student=new Student();
+                Student student=new Student(rs1.getString(2),rs1.getString(1),rs1.getString(4));
 
-                student.setId(rs1.getString(1));
-                student.setName(rs1.getString(2));
-                student.setC_id(rs1.getString(3));
-                student.setPassword(rs1.getString(4));
+//                student.setId(rs1.getString(1));
+//                student.setName(rs1.getString(2));
+//                student.setC_id(rs1.getString(3));
+//                student.setPassword(rs1.getString(4));
 
                 result[i-1]=student;
 

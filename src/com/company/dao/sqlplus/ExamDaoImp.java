@@ -76,14 +76,15 @@ public class ExamDaoImp implements ExamDao {
         return e;
     }
 
-    public void create(String testNo, Timestamp start, int duration){
+    //TODO please comment in the sql file if you run the create methods
+    public void create(String testNo, String start, int duration){
         try{
             Connection conn=TestApplication.conn;
-            String sql="insert into exam (test#,start_time,duration) values (?,?,?)" ;
+            String sql="insert into exam values ?,to_date(?,'yyyy/mm/dd:hh:mi:ss'),?" ;
             PreparedStatement pstmt=conn.prepareStatement(sql);
 
             pstmt.setString(1,testNo);
-            pstmt.setTimestamp(2,start);
+            pstmt.setString(2,start);
             pstmt.setInt(3,duration);
 
             int insertedRows=pstmt.executeUpdate();
@@ -92,7 +93,6 @@ public class ExamDaoImp implements ExamDao {
         } catch (SQLException e){
             e.printStackTrace();
         }
-
     }
 
     // Debugged

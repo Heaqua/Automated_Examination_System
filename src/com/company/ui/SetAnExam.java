@@ -80,7 +80,7 @@ public class SetAnExam extends JFrame {
         panel.add(start);
 
         //set the hint
-        JLabel hint = new JLabel("(Format:yyyy-MM-dd'T'HH-mm)");
+        JLabel hint = new JLabel("(Format:yyyy/mm/dd:hh:mi:ss)");
         hint.setBounds(70,380,300,30);
         hint.setFont(font4);
         panel.add(hint);
@@ -98,7 +98,7 @@ public class SetAnExam extends JFrame {
         panel.add(duration);
 
         //set the second hint
-        JLabel hint2 = new JLabel("(Format: 120min)");
+        JLabel hint2 = new JLabel("(Format: 120)(min)");
         hint2.setBounds(70,460,300,30);
         hint2.setFont(font4);
         panel.add(hint2);
@@ -130,6 +130,7 @@ public class SetAnExam extends JFrame {
             //insert values into EXAM
             ExamDao examDao=new ExamDaoImp();
             examDao.create(testNumber,start2,dur);
+            //Ex12 18:00,120
         });
 
 

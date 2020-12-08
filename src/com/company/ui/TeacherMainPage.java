@@ -24,10 +24,10 @@ public class TeacherMainPage extends JFrame {
 
         //set a label to show the personal information
         //TODO
-        //JLabel info = new JLabel(MainApplication.user.getName()+" "+MainApplication.user.getId());
-        //info.setBounds(1,1,500,30);
-        //info.setFont(font);
-        //panel.add(info);
+        JLabel info = new JLabel(MainApplication.user.getName()+" "+MainApplication.user.getId());
+        info.setBounds(1,1,500,30);
+        info.setFont(font);
+        panel.add(info);
 
         //set a label to notice logout
         JLabel logout = new JLabel("Logout");

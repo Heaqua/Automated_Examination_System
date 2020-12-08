@@ -1,5 +1,15 @@
 package com.company.ui;
 
+import com.company.dao.StudentDao;
+import com.company.dao.SubjectDao;
+import com.company.dao.TeacherDao;
+import com.company.dao.sqlplus.StudentDaoImp;
+import com.company.dao.sqlplus.SubjectDaoImp;
+import com.company.dao.sqlplus.TeacherDaoImp;
+import com.company.domain.People;
+import com.company.domain.Subject;
+import com.company.domain.Teacher;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
@@ -8,6 +18,9 @@ import java.awt.event.ItemListener;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ViewExaminationResults extends JFrame {
+
+    TeacherDao teacherDao=new TeacherDaoImp();
+    Subject[] allSubjects=teacherDao.findAllSubjects((Teacher)MainApplication.user);
 
     public ViewExaminationResults(){
         super("View Examination Results");
@@ -62,7 +75,16 @@ public class ViewExaminationResults extends JFrame {
         panel.add(subject2);
 
         //set a ComboBox
-        String[] subjects = new String[]{"ABCT1234", "AF2111", "APSS1011", "CBS2012","COMP2011","COMP2021","COMP2411","ELC2012","HTM1203"};
+
+        String[] subjectsId=new String[allSubjects.length];
+        for(int i=0;i<allSubjects.length;i++){
+            subjectsId[i]=allSubjects[i].getSub_id();
+        }
+        //String[] subjects = new String[]{"ABCT1234", "AF2111", "APSS1011", "CBS2012","COMP2011","COMP2021","COMP2411","ELC2012","HTM1203"};
+        String[] subjects=subjectsId;
+
+
+
         final String[] sub2 = new String[1];
         final JComboBox<String> comboBox2 = new JComboBox<String>(subjects);{
             comboBox.addItemListener(new ItemListener() {

@@ -139,13 +139,19 @@ public class AnswerDaoImp implements AnswerDao {
         try {
             conn = TestApplication.conn;
             //TODO
-            String sql1 = "";
+            String sql1 = "SELECT A.TEST#, A.Q#, A.STU_ID, A.STU_ANS " +
+                    "FROM ANSWER A, SETE S" +
+                    "WHERE S.TEA_ID=? AND S.TEST#=A.TEST#" +
+                    "ORDER BY TEST#,STU_ID,Q#";
             pstmt1 = conn.prepareStatement(sql1);
             pstmt1.setString(1, teaId);
             rs1 = pstmt1.executeQuery();
 
             //TODO
-            String sql2 = "";
+            String sql2 = "SELECT SUM(A.TEST#) " +
+                    "FROM ANSWER A, SETE S" +
+                    "WHERE S.TEA_ID=? AND S.TEST#=A.TEST#" +
+                    "ORDER BY TEST#,STU_ID,Q#";
             pstmt2 = conn.prepareStatement(sql2);
             pstmt2.setString(1, teaId);
             rs2 = pstmt2.executeQuery();

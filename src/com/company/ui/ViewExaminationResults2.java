@@ -9,6 +9,9 @@ public class ViewExaminationResults2 extends JFrame {
 
 
     public ViewExaminationResults2(String class0,String subject) {
+
+
+
         super("View Examination Results");
         JPanel panel = new JPanel();
         setSize(700, 600);

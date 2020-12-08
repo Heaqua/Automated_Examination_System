@@ -14,6 +14,7 @@ public class MainApplication {
 
     public static People user;
     public static OriginalLoginPage app;
+    public static  Object mainPage;
     public static short num=1;
     public static int start=0;
 

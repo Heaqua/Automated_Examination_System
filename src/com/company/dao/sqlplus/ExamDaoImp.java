@@ -26,7 +26,7 @@ public class ExamDaoImp implements ExamDao {
         try {
             examByClass = conn.prepareStatement("SELECT TEST# FROM SETE WHERE C_ID = ?");
             questions = conn.prepareStatement("SELECT Q#, COMPULSORY, TYPE, SCORE, Q_CONTENT, ANSWER " +
-                    "FROM QUESTION WHERE TEST# = ?");
+                    "FROM QUESTION WHERE TEST# = ? ORDER BY Q#");
             queryExamTime = conn.prepareStatement("SELECT START_TIME, DURATION FROM EXAM WHERE TEST# = ?");
             queryExamSete = conn.prepareStatement("SELECT YEAR, SEM, TEA_ID, C_ID FROM SETE WHERE TEST# = ?");
             queryTestStats = conn.prepareStatement("SELECT AVG(TEST_RESULT), MEDIAN(TEST_RESULT), MAX(TEST_RESULT), MIN(TEST_RESULT), STDDEV(TEST_RESULT) FROM TAKE WHERE TEST# = ?");

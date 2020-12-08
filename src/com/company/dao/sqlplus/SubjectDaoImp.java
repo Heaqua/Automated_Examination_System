@@ -110,7 +110,7 @@ public class SubjectDaoImp implements SubjectDao {
         try {
             String sql = "";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, );
+            //pstmt.setString(1, );
 
             rs = pstmt.executeQuery();
 

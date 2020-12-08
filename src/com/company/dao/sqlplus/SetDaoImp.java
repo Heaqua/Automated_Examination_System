@@ -20,7 +20,7 @@ public class SetDaoImp implements SetDao {
 
         try {
             conn = TestApplication.conn;
-            String sql = "select test#,year,sem,tea_id,c_id from set where test#=?";
+            String sql = "SELECT TEST#,YEAR,SEM,TEA_ID,C_ID FROM SETE WHERE TEST#=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, testNo );
             rs = pstmt.executeQuery();
@@ -61,11 +61,11 @@ public class SetDaoImp implements SetDao {
 
     public void create(String testNo,short year,boolean sem,String teaId,String cId){
      try{
-        String sql="insert into set (test#,year,sem,tea_id,c_id) values (?,?,?,?,?)" ;
+        String sql="INSERT INTO SETE (TEST#,YEAR,SEM,TEA_ID,C_ID) VALUES (?,?,?,?,?)" ;
         PreparedStatement pstmt=conn.prepareStatement(sql);
 
         pstmt.setString(1,testNo);
-        pstmt.setShort(2,year);
+        pstmt.setInt(2,year);
         pstmt.setBoolean(3,sem);
         pstmt.setString(4,teaId);
         pstmt.setString(5,cId);

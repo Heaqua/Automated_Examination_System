@@ -49,11 +49,11 @@ public class ExamDaoImp implements ExamDao {
             queryExamSete.setString(1, testId);
             rs = queryExamSete.executeQuery();
             rs.next();
-            int year = rs.getInt(1);
+            short year = rs.getShort(1);
             int sem = rs.getInt(2);
             String tea_id = rs.getString(3);
             String c_id = rs.getString(4);
-            subByExam.setInt(1, year);
+            subByExam.setShort(1, year);
             subByExam.setInt(2, sem);
             subByExam.setString(3, c_id);
             subByExam.setString(4, tea_id);

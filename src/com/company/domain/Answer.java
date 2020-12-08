@@ -1,14 +1,16 @@
 package com.company.domain;
 
+import java.math.BigDecimal;
+
 public class Answer {
     private int quesNo;
     private String testNo;
     private String stu_ID;
     private String stu_ans;
-    private int score;
+    private BigDecimal score;
 
     public Answer(){}
-    public Answer(int quesNo, String testNo, String stu_ID, String stu_ans, int score){
+    public Answer(int quesNo, String testNo, String stu_ID, String stu_ans, BigDecimal score){
         this.testNo = testNo;
         this.quesNo = quesNo;
         this.stu_ID = stu_ID;
@@ -31,8 +33,12 @@ public class Answer {
         this.stu_ans = stu_ans;
     }
 
-    public void setScore(int score) {
+    public void setScore(BigDecimal score) {
         this.score = score;
+    }
+
+    public void setTestNo(String testNo) {
+        this.testNo = testNo;
     }
 
     public int getQuesNo() {
@@ -47,7 +53,7 @@ public class Answer {
         return stu_ans;
     }
 
-    public int getScore() {
+    public BigDecimal getScore() {
         return score;
     }
 }

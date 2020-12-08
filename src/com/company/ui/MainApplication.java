@@ -12,18 +12,25 @@ public class MainApplication {
 
     public static People user;
     public static OriginalLoginPage app;
-    public static short num=0;
+    public static short num=1;
     public static int start=0;
 
 
     public static void main(String[] args){
-        forTestingPurpose();
-        app=new OriginalLoginPage();
+        //forTestingPurpose();
         try {
-            TestApplication.conn.close();
+            TestApplication.testApplication();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        app=new OriginalLoginPage();
+//        try {
+//            TestApplication.conn.close();
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
     }
 
     public static void forTestingPurpose() {

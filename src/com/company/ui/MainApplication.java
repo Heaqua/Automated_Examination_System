@@ -18,6 +18,11 @@ public class MainApplication {
     public static void main(String[] args){
         forTestingPurpose();
         app=new OriginalLoginPage();
+        try {
+            TestApplication.conn.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public static void forTestingPurpose() {

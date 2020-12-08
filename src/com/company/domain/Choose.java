@@ -4,7 +4,7 @@ public class Choose {
     private String c_ID;
     private String sub_ID;
     private int sem;
-    private short year;
+    private int year;
 
     public String getC_ID() {
         return c_ID;

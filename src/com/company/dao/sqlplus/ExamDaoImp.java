@@ -3,7 +3,6 @@ package com.company.dao.sqlplus;
 import com.company.dao.ExamDao;
 import com.company.domain.Exam;
 import com.company.domain.Question;
-import com.company.domain.Teacher;
 import com.company.domain.TestStats;
 import oracle.jdbc.driver.OracleConnection;
 import oracle.jdbc.proxy.annotation.Pre;
@@ -20,22 +19,43 @@ public class ExamDaoImp implements ExamDao {
     static PreparedStatement subByExam;
     static PreparedStatement queryTestStats;
     static PreparedStatement queryAllScore;
+    static PreparedStatement deleteExam;
+    static PreparedStatement examByClass;
 
     static {
         try {
+            examByClass = conn.prepareStatement("SELECT TEST# FROM SETE WHERE C_ID = ?");
             questions = conn.prepareStatement("SELECT Q#, COMPULSORY, TYPE, SCORE, Q_CONTENT, ANSWER " +
                     "FROM QUESTION WHERE TEST# = ?");
             queryExamTime = conn.prepareStatement("SELECT START_TIME, DURATION FROM EXAM WHERE TEST# = ?");
             queryExamSete = conn.prepareStatement("SELECT YEAR, SEM, TEA_ID, C_ID FROM SETE WHERE TEST# = ?");
             queryTestStats = conn.prepareStatement("SELECT AVG(TEST_RESULT), MEDIAN(TEST_RESULT), MAX(TEST_RESULT), MIN(TEST_RESULT), STDDEV(TEST_RESULT) FROM TAKE WHERE TEST# = ?");
             queryAllScore = conn.prepareStatement("SELECT TEST_RESULT FROM TAKE WHERE TEST# = ?");
+            deleteExam = conn.prepareStatement("DELETE FROM EXAM WHERE TEST# = ?");
             subByExam = conn.prepareStatement("SELECT SUB_ID FROM TEACH WHERE YEAR = ? " +
                     "AND SEM = ? AND C_ID = ? AND TEA_ID = ?");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-
+    public Exam[] findExamByClass(String c_id){
+        ResultSet rs = null;
+        ArrayList<Exam> exams = new ArrayList<>();
+        Exam[] examsArray = null;
+        try {
+            examByClass.setString(1, c_id);
+            rs = examByClass.executeQuery();
+            while(rs.next()){
+                Exam exam = findById(rs.getString(1));
+                exams.add(exam);
+            }
+            examsArray = new Exam[exams.size()];
+            examsArray = exams.toArray(examsArray);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return examsArray;
+    }
 
     @Override
     public Exam findById(String testId) {
@@ -159,6 +179,16 @@ public class ExamDaoImp implements ExamDao {
             }
         }
         return t;
+    }
+
+    public void deleteExam(String testId){
+        try {
+            deleteExam.setString(1, testId);
+            deleteExam.executeUpdate();
+            System.out.println(testId + " deleted");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public Exam findBySubIdCId(String subId,String cId){

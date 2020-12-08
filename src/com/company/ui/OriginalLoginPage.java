@@ -13,6 +13,10 @@ import static java.awt.Toolkit.getDefaultToolkit;
 public class OriginalLoginPage extends JFrame{
     JLabel label;
     public int[] ifAStudent=new int[1];
+
+    public static void main(String[] args) {
+        new OriginalLoginPage();
+    }
     public OriginalLoginPage(){
         super("Online Examination System");
 

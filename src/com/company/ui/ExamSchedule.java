@@ -12,9 +12,15 @@ import com.company.domain.Exam;
 import com.company.domain.Set;
 import com.company.domain.Student;
 import com.company.domain.Subject;
+import com.sun.deploy.cache.BaseLocalApplicationProperties;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
@@ -101,19 +107,37 @@ public class ExamSchedule extends JFrame {
         }
 
     }
-    //TODO:获取当前年份和学期
 
-    private static String fromTestNoToSubId(Exam exam){
+    public static short getCurrentYear() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        Date date = new Date();
+        String y = sdf.format(date);
+        short y2 = Short.parseShort(y);
+        return y2;
+    }
+
+    public static boolean getCurrentSem() {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM");
+        Date date = new Date();
+        String m = sdf.format(date);
+        int month = Integer.parseInt(m);
+        if(month > 8 && month <= 12){
+            return true;
+        }
+        return false;
+    }
+
+
+        private static String fromTestNoToSubId(Exam exam){
         String testNo=exam.getTestNo();
         SetDao setDao=new SetDaoImp();
         Set set=setDao.findById(testNo);
 
         SubjectDao subjectDao=new SubjectDaoImp();
 
-        //TODO:Subject subject=subjectDao.findByTeaClaId(set.getTea_ID(),set.getC_ID(),,);
-        //String sub_id=subject.getSub_id();
-        //return sub_id;
-        return null;
+        Subject subject=subjectDao.findByTeaClaId(getCurrentYear(),getCurrentSem(),set.getTea_ID(),set.getC_ID());
+        String sub_id=subject.getSub_id();
+        return sub_id;
     }
 
 }

@@ -141,7 +141,7 @@ public class SetAnExam extends JFrame {
             String sub2 = (String) comboBox.getSelectedItem();
             String cla = (String) comboBox2.getSelectedItem();
             testNumber = testNo.getText();
-            String start2 = start.getText();
+            String start2 = time.getText();
             if(testNumber.equals("") || time.getText().equals("") ||du.getText().equals("")){
                 JOptionPane.showMessageDialog(this,"You have not set all,Please finish your setting first.");
                 new SetAnExam();

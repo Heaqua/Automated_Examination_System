@@ -211,7 +211,7 @@ public class MultipleChoice extends JFrame {
                 setVisible(false);
                 new TeacherMainPage();
                 QuestionDao questionDao = new QuestionDaoImp();
-                questionDao.create(num,SetAnExam.testNumber,compul,"MC",scores,ques,ans);
+                questionDao.create((short)num,SetAnExam.testNumber,compul,"MC",scores,ques,ans);
             });
 
             //Click the button "Save and Next"
@@ -226,7 +226,7 @@ public class MultipleChoice extends JFrame {
                 setVisible(false);
                 new QuestionType();
                 QuestionDao questionDao = new QuestionDaoImp();
-                questionDao.create(num,SetAnExam.testNumber,compul,"MC",scores,ques,ans);
+                questionDao.create((short)num,SetAnExam.testNumber,compul,"MC",scores,ques,ans);
             });
 
     }

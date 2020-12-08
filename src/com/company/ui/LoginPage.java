@@ -73,6 +73,7 @@ public class LoginPage extends JFrame {
                 String passwordText = new String(pw.getPassword());
 
                 if (teacher.getPassword().equals(passwordText) && teacher != null) {
+                    setVisible(false);
                     new TeacherMainPage();
                     MainApplication.user = teacher;
                 } else {
@@ -86,6 +87,7 @@ public class LoginPage extends JFrame {
                 String passwordText=new String(pw.getPassword());
 
                 if(student.getPassword().equals(passwordText)&&student!=null){
+                    setVisible(false);
                     new StudentMainPage();
                     MainApplication.user=student;
                 }else {

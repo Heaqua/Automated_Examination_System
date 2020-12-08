@@ -19,7 +19,7 @@ public class StudentDaoImp implements StudentDao {
 
         try{
             conn=TestApplication.conn;
-            String sql="SELECT STU_ID,STU_NAME,C_ID, STU_PWD FROM STUDENT WHERE STU_ID= ?";
+            String sql="SELECT STU_ID,STU_NAME,C_ID,STU_PWD FROM STUDENT WHERE STU_ID= ?";
             pstmt=conn.prepareStatement(sql);
             pstmt.setString(1,userId);
             rs=pstmt.executeQuery();
@@ -83,15 +83,19 @@ public class StudentDaoImp implements StudentDao {
 
             //TODO
             String sql1="SELECT TEST#,DATE,START_TIME,DURATION FROM STUDENT S,SET E,TEACH T " +
-                    "WHERE S.STU_ID =? AND S.C_ID=E.C_ID AND T.YEAR =? " +
+                    "WHERE S.STU_ID =? AND S.C_ID=E.C_ID AND T.YEAR =? AND T.SEM =?" +
                     "AND T.TEA_ID = E.TEA_ID AND T.YEAR = E.YEAR AND T.SEM = E.SEM AND" +
                     "T.C_ID = S.C_ID";
             pstmt1=conn.prepareStatement(sql1);
             pstmt1.setString(1,student.getId());
-            pstmt1.setShort(2,);
+            pstmt1.setShort(2,Current.getCurrentYear());
+            pstmt1.setBoolean(3,Current.getCurrentSem());
             rs1=pstmt1.executeQuery();
 
-            String sql2="";
+            String sql2="SELECT SUM (TEST#) FROM STUDENT S,SET E,TEACH T " +
+                    "WHERE S.STU_ID =? AND S.C_ID=E.C_ID AND T.YEAR =? AND T.SEM =?" +
+                    "AND T.TEA_ID = E.TEA_ID AND T.YEAR = E.YEAR AND T.SEM = E.SEM AND" +
+                    "T.C_ID = S.C_ID";
             pstmt2=conn.prepareStatement(sql2);
             pstmt2.setString(1,student.getId());
             rs2=pstmt2.executeQuery();

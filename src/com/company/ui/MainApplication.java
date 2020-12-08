@@ -15,6 +15,16 @@ public class MainApplication {
 
 
     public static void main(String[] args){
+        try {
+            TestApplication.testApplication();
+            Question q = new QuestionDaoImp().findByID((short) 1, "201C241101");
+            System.out.println(q.getContent());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         app=new OriginalLoginPage();
     }
@@ -33,3 +43,4 @@ try {
         }
 
  */
+

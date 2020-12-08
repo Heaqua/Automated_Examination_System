@@ -19,7 +19,7 @@ public class TeacherDaoImp implements TeacherDao {
 
         try {
             conn = TestApplication.conn;
-            String sql = "select tea_id,tea_name,tea_pwd from teacher where tea_id= ?";
+            String sql = "SELECT TEA_ID,TEA_NAME,TEA_PWD FROM TEACHER WHERE TEA_ID=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userId);
             rs = pstmt.executeQuery();

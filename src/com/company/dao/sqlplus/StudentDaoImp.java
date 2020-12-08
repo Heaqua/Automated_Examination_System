@@ -162,12 +162,12 @@ public class StudentDaoImp implements StudentDao {
         Subject[] result=null;
 
         try{
-            String sql1="select sub_id,sub_name from subject,choose,student where subject.sub_id=choose.sub_id and choose.c_id=student.c_id and student.stu_id=?";
+            String sql1="select subject.sub_id,subject.sub_name from subject,choose,student where subject.sub_id=choose.sub_id and choose.c_id=student.c_id and student.stu_id=?";
             pstmt1=conn.prepareStatement(sql1);
             pstmt1.setString(1,student.getId());
             rs1=pstmt1.executeQuery();
 
-            String sql2="select sum(sub_id) from subject,choose,student where subject.sub_id=choose.sub_id and choose.c_id=student.c_id and student.stu_id=?";
+            String sql2="select sum(subject.sub_id) from subject,choose,student where subject.sub_id=choose.sub_id and choose.c_id=student.c_id and student.stu_id=?";
             pstmt2=conn.prepareStatement(sql2);
             pstmt2.setString(1,student.getId());
             rs2=pstmt2.executeQuery();

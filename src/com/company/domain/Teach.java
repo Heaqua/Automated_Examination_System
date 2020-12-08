@@ -1,27 +1,27 @@
 package com.company.domain;
 
 public class Teach {
-    private short year;
+    private int year;
 
     //semester 1:true semester 2:false
-    private boolean sem;
+    private int sem;
     private String c_ID;
     private String tea_ID;
     private String sub_ID;
 
-    public short getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(short year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public boolean getSem() {
+    public int getSem() {
         return sem;
     }
 
-    public void setSem(boolean sem) {
+    public void setSem(int sem) {
         this.sem = sem;
     }
 

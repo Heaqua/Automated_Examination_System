@@ -3,14 +3,14 @@ package com.company.domain;
 import java.math.BigDecimal;
 
 public class Answer {
-    private short quesNo;
+    private int quesNo;
     private String testNo;
     private String stu_ID;
     private String stu_ans;
     private BigDecimal score;
 
     public Answer(){}
-    public Answer(short quesNo, String testNo, String stu_ID, String stu_ans, BigDecimal score){
+    public Answer(int quesNo, String testNo, String stu_ID, String stu_ans, BigDecimal score){
         this.testNo = testNo;
         this.quesNo = quesNo;
         this.stu_ID = stu_ID;
@@ -41,7 +41,7 @@ public class Answer {
         this.testNo = testNo;
     }
 
-    public short getQuesNo() {
+    public int getQuesNo() {
         return quesNo;
     }
 

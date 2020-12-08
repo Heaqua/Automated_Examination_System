@@ -131,6 +131,7 @@ public class TakeAnExamM extends JFrame {
         compulsory.setBounds(480,300,300,40);
         compulsory.setFont(font2);
         panel.add(compulsory);
+        String content2 = ques.getText();
 
 
 
@@ -152,7 +153,29 @@ public class TakeAnExamM extends JFrame {
 
     }
 
+    public TakeAnExamM(int num, int total, int score, String question, String com, String s, String s1, String s2, String optional) {
+    }
 
+    public String getA(String content){
+        String[] sep = content.split("/");
+        String A3 = sep[1];
+        return A3;
+    }
+    public String getB(String content){
+        String[] sep = content.split("/");
+        String B3 = sep[2];
+        return B3;
+    }
+    public String getC(String content){
+        String[] sep = content.split("/");
+        String C3 = sep[3];
+        return C3;
+    }
+    public String getD(String content){
+        String[] sep = content.split("/");
+        String D3 = sep[4];
+        return D3;
+    }
 
     void SetText(JLabel jLabel, String longString) {
         StringBuilder text = new StringBuilder("<html>");
@@ -177,11 +200,4 @@ public class TakeAnExamM extends JFrame {
         text.append("</html>");
         jLabel.setText(text.toString());
     }
-}//        progressBar.setMaximum(MAX_PROGRESS);
-//        progressBar.setValue(currentProgress[0]);
-//        progressBar.setStringPainted(true);
-//        panel.add(progressBar);
-//
-//        //a button for next
-//        JButton next = new JButton("Next");
-//        next.setBounds(480,480,150,50);
+}

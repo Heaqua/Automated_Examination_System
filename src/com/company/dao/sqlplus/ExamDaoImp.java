@@ -3,6 +3,7 @@ package com.company.dao.sqlplus;
 import com.company.dao.ExamDao;
 import com.company.domain.Exam;
 import com.company.domain.Question;
+import com.company.domain.TestStats;
 import oracle.jdbc.driver.OracleConnection;
 import oracle.jdbc.proxy.annotation.Pre;
 
@@ -119,9 +120,10 @@ public class ExamDaoImp implements ExamDao {
         return ques;
     }
 
-
-
-
+    @Override
+    public TestStats getTestStatsById(String testId) {
+        return null;
+    }
 
 
 }

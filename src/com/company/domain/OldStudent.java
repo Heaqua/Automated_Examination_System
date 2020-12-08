@@ -151,7 +151,7 @@ public class OldStudent{
      * @param d a numeric number of score
      * @return the letter grade
      */
-    public String letterGradeByNumGrade(Double d){
+    public static String letterGradeByNumGrade(Double d){
         if(d >= 95 && d <= 100) return "A+";
         else if(d >= 90) return "A";
         else if(d >= 85) return "A-";

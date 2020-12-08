@@ -197,9 +197,14 @@ public class ExamDaoImp implements ExamDao {
         Exam result = null;
 
         try {
-            String sql = "";
+            String sql = "SELECT S.TEST# FROM TEACH T,SETE S WHERE T.YEAR=? AND T.SEM=? AND T.SUB_ID=? AND T.C_ID=?" +
+                    "S.YEAR=T.YEAR AND T.TEA_ID=S.TEA_ID AND S.SEM=T.SEM";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, cId);
+            pstmt.setInt(1, Current.getCurrentYear());
+            pstmt.setInt(2, Current.getCurrentSem());
+            pstmt.setString(3, subId);
+            pstmt.setString(4, cId);
+
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -233,6 +238,151 @@ public class ExamDaoImp implements ExamDao {
         }
         return null;
 
+    }
+
+    public BigDecimal generateAverageResult(String testNo, String cId){
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        BigDecimal result = null;
+
+        try {
+            String sql = "SELECT S.TEST# FROM TEACH T,SETE S WHERE T.YEAR=? AND T.SEM=? AND T.SUB_ID=? AND T.C_ID=?" +
+                    "S.YEAR=T.YEAR AND T.TEA_ID=S.TEA_ID AND S.SEM=T.SEM";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, Current.getCurrentYear());
+            pstmt.setInt(2, Current.getCurrentSem());
+            pstmt.setString(3, subId);
+            pstmt.setString(4, cId);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                result = new Exam();
+
+                result.setTestNo(rs.getString("TEST#"));
+                result.setStart(rs.getTimestamp("START_TIME"));
+                result.setDuration(rs.getInt("DURATION"));
+
+                return result;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+
+                }
+            }
+
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                    ;
+                } catch (SQLException e) {
+
+                }
+            }
+        }
+        return null;
+
+    }
+
+    public BigDecimal generateMediumResult(String testNo, String cId){
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        BigDecimal result = null;
+
+        try {
+            String sql = "SELECT S.TEST# FROM TEACH T,SETE S WHERE T.YEAR=? AND T.SEM=? AND T.SUB_ID=? AND T.C_ID=?" +
+                    "S.YEAR=T.YEAR AND T.TEA_ID=S.TEA_ID AND S.SEM=T.SEM";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, Current.getCurrentYear());
+            pstmt.setInt(2, Current.getCurrentSem());
+            pstmt.setString(3, subId);
+            pstmt.setString(4, cId);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                result = new Exam();
+
+                result.setTestNo(rs.getString("TEST#"));
+                result.setStart(rs.getTimestamp("START_TIME"));
+                result.setDuration(rs.getInt("DURATION"));
+
+                return result;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+
+                }
+            }
+
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                    ;
+                } catch (SQLException e) {
+
+                }
+            }
+        }
+        return null;
+    }
+
+    public BigDecimal generateModeResult(String testNo,String cId){
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        BigDecimal result = null;
+
+        try {
+            String sql = "SELECT S.TEST# FROM TEACH T,SETE S WHERE T.YEAR=? AND T.SEM=? AND T.SUB_ID=? AND T.C_ID=?" +
+                    "S.YEAR=T.YEAR AND T.TEA_ID=S.TEA_ID AND S.SEM=T.SEM";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, Current.getCurrentYear());
+            pstmt.setInt(2, Current.getCurrentSem());
+            pstmt.setString(3, subId);
+            pstmt.setString(4, cId);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                result = new Exam();
+
+                result.setTestNo(rs.getString("TEST#"));
+                result.setStart(rs.getTimestamp("START_TIME"));
+                result.setDuration(rs.getInt("DURATION"));
+
+                return result;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+
+                }
+            }
+
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                    ;
+                } catch (SQLException e) {
+
+                }
+            }
+        }
+        return null;
     }
 
 }

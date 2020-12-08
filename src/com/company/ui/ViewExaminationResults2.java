@@ -50,14 +50,13 @@ public class ViewExaminationResults2 extends JFrame {
 
         Object[][] row0=new Object[3][2];
         row0[0][0]="Average";
-        row0[0][1]=;
+        row0[0][1]=examDao.generateAverageResult(examDao.findBySubIdCId(subject,class0).getTestNo(),class0);
+
         row0[1][0]="Median";
-        row0[1][1]=;
+        row0[1][1]=examDao.generateMediumResult(examDao.findBySubIdCId(subject,class0).getTestNo(),class0);
+
         row0[2][0]="Mode";
-        row0[2][1]=;
-
-
-
+        row0[2][1]=examDao.generateModeResult(examDao.findBySubIdCId(subject,class0).getTestNo(),class0);
 
 
 
@@ -103,6 +102,8 @@ public class ViewExaminationResults2 extends JFrame {
         //set two tables
         Object[] columnNames = {"Student", "Result"};
         Object[] column = {"Name","Statistics"};
+
+        /*
         Object[][] rowData = {
                 {"Lucy", "A"},
                 {"Lisa", "B"},
@@ -116,6 +117,11 @@ public class ViewExaminationResults2 extends JFrame {
                 {"Median", "B"},
                 {"Mode", "B+"},
         };
+
+         */
+        Object[][] rowData=rowData0;
+        Object[][] row=row0;
+
 
         JTable dataTable = new JTable(rowData, columnNames){
             @Override

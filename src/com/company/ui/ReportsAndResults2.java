@@ -8,6 +8,7 @@ import com.company.dao.sqlplus.StudentDaoImp;
 import com.company.dao.sqlplus.SubjectDaoImp;
 import com.company.dao.sqlplus.TakeDaoImp;
 import com.company.domain.Exam;
+import com.company.domain.OldStudent;
 import com.company.domain.Student;
 import com.company.domain.Subject;
 
@@ -25,22 +26,24 @@ public class ReportsAndResults2 extends JFrame {
     Subject[] allSubjects=studentDao.allSubjects((Student) MainApplication.user);
     Exam[] allExams=studentDao.allExams((Student) MainApplication.user);
 
-    String subjectId;
+
     String result;
     String report;
 
 
-    public ReportsAndResults2() {
+    public ReportsAndResults2(String subjectId) {
         //
         super("Reports and Results");
         for(int i=0;i<allExams.length;i++){
+
             TakeDao takeDao=new TakeDaoImp();
-            result= takeDao.findByKey(allExams[i].getTestNo(),MainApplication.user.getId()).getTest_result().toString();
+            result= OldStudent.letterGradeByNumGrade(takeDao.findByKey(allExams[i].getTestNo(),MainApplication.user.getId()).getTest_result().doubleValue());
+
 
             SubjectDao subjectDao=new SubjectDaoImp();
             //needs to review
             //TODO
-//            subjectId=subjectDao.findByStuId(Current.getCurrentYear(),Current.getCurrentSem(),MainApplication.user.getId(),allExams[i].getTestNo()).getSub_id();
+            //subjectId=subjectDao.findByStuId(Current.getCurrentYear(),Current.getCurrentSem(),MainApplication.user.getId(),allExams[i].getTestNo()).getSub_id();
 
 
             //TODO:report=;

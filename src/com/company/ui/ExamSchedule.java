@@ -101,15 +101,19 @@ public class ExamSchedule extends JFrame {
         }
 
     }
-    private String fromTestNoToSubId(Exam exam){
+    //TODO:获取当前年份和学期
+
+    private static String fromTestNoToSubId(Exam exam){
         String testNo=exam.getTestNo();
         SetDao setDao=new SetDaoImp();
         Set set=setDao.findById(testNo);
 
         SubjectDao subjectDao=new SubjectDaoImp();
-        Subject subject=subjectDao.findByTeaClaId(set.getTea_ID(),set.getC_ID());
-        String sub_id=subject.getSub_id();
-        return sub_id;
+
+        //TODO:Subject subject=subjectDao.findByTeaClaId(set.getTea_ID(),set.getC_ID(),,);
+        //String sub_id=subject.getSub_id();
+        //return sub_id;
+        return null;
     }
 
 }

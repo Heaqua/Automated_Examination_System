@@ -3,7 +3,7 @@ package com.company.domain;
 public class Set {
     private String testNo;
     private int year;
-    private int sem;
+    private boolean sem;
     private String tea_ID;
     private String c_ID;
 
@@ -23,11 +23,11 @@ public class Set {
         this.year = year;
     }
 
-    public int getSem() {
+    public boolean getSem() {
         return sem;
     }
 
-    public void setSem(int sem) {
+    public void setSem(boolean sem) {
         this.sem = sem;
     }
 

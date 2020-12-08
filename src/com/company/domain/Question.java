@@ -1,7 +1,7 @@
 package com.company.domain;
 
 public class Question {
-    private int quesNo;
+    private short quesNo;
     private String com;
     private String type;
     private int score;
@@ -12,7 +12,7 @@ public class Question {
 
     }
 
-    public Question(int quesNo, String com, String type, int score, String content, String answer) {
+    public Question(short quesNo, String com, String type, int score, String content, String answer) {
         this.quesNo = quesNo;
         this.com = com;
         this.type = type;
@@ -21,7 +21,7 @@ public class Question {
         this.answer = answer;
     }
 
-    public void setQuesNo(int quesNo) {
+    public void setQuesNo(short quesNo) {
         this.quesNo = quesNo;
     }
 
@@ -65,7 +65,7 @@ public class Question {
         return com;
     }
 
-    public int getQuesNo() {
+    public short getQuesNo() {
         return quesNo;
     }
 }

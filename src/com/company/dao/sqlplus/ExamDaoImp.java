@@ -101,7 +101,7 @@ public class ExamDaoImp implements ExamDao {
             }
             ques = new Question[num];
             for(int i = 0; i < num; i++){
-                ques[i] = new Question(rs.getInt(1), rs.getString(2), rs.getString(3),
+                ques[i] = new Question(rs.getShort(1), rs.getString(2), rs.getString(3),
                         rs.getInt(4), rs.getString(5), rs.getString(6));
             }
         } catch (SQLException throwables) {

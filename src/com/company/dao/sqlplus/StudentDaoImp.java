@@ -70,7 +70,7 @@ public class StudentDaoImp implements StudentDao {
 
     }
 
-    public Exam[]  findAllExams(Student student){
+    public Exam[]  allExams(Student student){
         Connection conn=null;
         PreparedStatement pstmt1=null;
         PreparedStatement pstmt2=null;
@@ -165,7 +165,7 @@ public class StudentDaoImp implements StudentDao {
         return null;
     }
 
-    public Subject[] findAllSubjects(Student student){
+    public Subject[] allSubjects(Student student){
         Connection conn=null;
         PreparedStatement pstmt1=null;
         PreparedStatement pstmt2=null;

@@ -2,7 +2,9 @@ package com.company.domain;
 
 public class Teach {
     private int year;
-    private int sem;
+
+    //semester 1:true semester 2:false
+    private boolean sem;
     private String c_ID;
     private String tea_ID;
     private String sub_ID;
@@ -15,11 +17,11 @@ public class Teach {
         this.year = year;
     }
 
-    public int getSem() {
+    public boolean getSem() {
         return sem;
     }
 
-    public void setSem(int sem) {
+    public void setSem(boolean sem) {
         this.sem = sem;
     }
 

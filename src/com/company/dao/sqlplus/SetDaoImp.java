@@ -27,11 +27,11 @@ public class SetDaoImp implements SetDao {
             if (rs.next()) {
                 result = new Set();
 
-                result.setC_ID(rs.getString("test#"));
-                result.setSem(rs.getInt("year"));
-                result.setTea_ID(rs.getString("sem"));
-                result.setTestNo(rs.getString("tea_id"));
-                result.setTea_ID(rs.getString("c_id"));
+                result.setC_ID(rs.getString("c_id"));
+                result.setSem(rs.getBoolean("sem"));
+                result.setTea_ID(rs.getString("tea_id"));
+                result.setTestNo(rs.getString("test#"));
+                result.setYear(rs.getInt("year"));
 
                 return result;
             }
@@ -66,7 +66,7 @@ public class SetDaoImp implements SetDao {
         return null;
     }
 
-    public void create(String testNo,int year,int sem,String teaId,String cId){
+    public void create(String testNo,int year,boolean sem,String teaId,String cId){
      try{
         Connection conn=TestApplication.conn;
         String sql="insert into set (test#,year,sem,tea_id,c_id) values (?,?,?,?,?)" ;
@@ -74,7 +74,7 @@ public class SetDaoImp implements SetDao {
 
         pstmt.setString(1,testNo);
         pstmt.setInt(2,year);
-        pstmt.setInt(3,sem);
+        pstmt.setBoolean(3,sem);
         pstmt.setString(4,teaId);
         pstmt.setString(5,cId);
 

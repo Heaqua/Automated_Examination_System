@@ -108,8 +108,10 @@ public class MarkPapers extends JFrame {
 
             String scoreFromText=score2.getText();
             BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
+
+
             AnswerDao answerDao=new AnswerDaoImp();
-            answerDao.modify(scoreBigDecimal);
+            //TODO:answerDao.modify(,scoreBigDecimal);
 
         });
 
@@ -121,7 +123,7 @@ public class MarkPapers extends JFrame {
             String scoreFromText=score2.getText();
             BigDecimal scoreBigDecimal=new BigDecimal(scoreFromText);
             AnswerDao answerDao=new AnswerDaoImp();
-            answerDao.modify(scoreBigDecimal);
+            //TODO:answerDao.modify(,scoreBigDecimal);
 
         });
 

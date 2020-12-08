@@ -1,8 +1,7 @@
 package com.company.dao.sqlplus;
 
 import com.company.dao.SetDao;
-import com.company.domain.Set;
-import com.company.domain.Teacher;
+import com.company.domain.*;
 import oracle.jdbc.driver.OracleConnection;
 
 import java.sql.Connection;
@@ -29,10 +28,10 @@ public class SetDaoImp implements SetDao {
                 result = new Set();
 
                 result.setC_ID(rs.getString("c_id"));
-                result.setSem(rs.getBoolean("sem"));
+                result.setSem(rs.getInt("sem"));
                 result.setTea_ID(rs.getString("tea_id"));
                 result.setTestNo(rs.getString("test#"));
-                result.setYear(rs.getShort("year"));
+                result.setYear(rs.getInt("year"));
 
                 return result;
             }
@@ -59,14 +58,14 @@ public class SetDaoImp implements SetDao {
         return null;
     }
 
-    public void create(String testNo,short year,boolean sem,String teaId,String cId){
+    public void create(String testNo,int year,int sem,String teaId,String cId){
      try{
         String sql="INSERT INTO SETE (TEST#,YEAR,SEM,TEA_ID,C_ID) VALUES (?,?,?,?,?)" ;
         PreparedStatement pstmt=conn.prepareStatement(sql);
 
         pstmt.setString(1,testNo);
         pstmt.setInt(2,year);
-        pstmt.setBoolean(3,sem);
+        pstmt.setInt(3,sem);
         pstmt.setString(4,teaId);
         pstmt.setString(5,cId);
 
@@ -97,10 +96,10 @@ public class SetDaoImp implements SetDao {
                 result = new Set();
 
                 result.setC_ID(rs.getString("c_id"));
-                result.setSem(rs.getBoolean("sem"));
+                result.setSem(rs.getInt("sem"));
                 result.setTea_ID(rs.getString("tea_id"));
                 result.setTestNo(rs.getString("test#"));
-                result.setYear(rs.getShort("year"));
+                result.setYear(rs.getInt("year"));
 
                 return result;
             }

@@ -141,18 +141,18 @@ public class SetAnExam extends JFrame {
         });
 
     }
-    public short getYear(String date){
+    public int getYear(String date){
         String[] sep = date.split("/");
-        short year = Short.parseShort(sep[0]);
+        int year = Integer.parseInt(sep[0]);
         return year;
     }
-    public boolean getMonth(String date){
+    public int getMonth(String date){
         String[] sep = date.split("/");
         int month = Integer.parseInt(sep[1]);
         if(month>8 && month <=12){
-            return true;
+            return 1;
         }
-        return false;
+        return 2;
     }
 
 

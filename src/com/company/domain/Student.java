@@ -8,6 +8,10 @@ import java.sql.*;
 public class Student extends People {
     private String c_id;
 
+    public Student(String name, String id, String password) {
+        super(name, id, password);
+    }
+
     public String getC_id() {
         return c_id;
     }

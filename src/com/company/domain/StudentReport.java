@@ -1,8 +1,8 @@
 package com.company.domain;
 
 public class StudentReport {
-    private short year;
-    private boolean sem;
+    private int year;
+    private int sem;
     private String stu_name;
     private String stu_id;
     private String c_id;
@@ -10,7 +10,7 @@ public class StudentReport {
             "score in the class", "Highest score in the class", "Professor name", "Professor comments"};
     public String[][] table;
 
-    public StudentReport(short year, boolean sem, String stu_name, String stu_id, String c_id) {
+    public StudentReport(int year, int sem, String stu_name, String stu_id, String c_id) {
         this.year = year;
         this.sem = sem;
         this.stu_name = stu_name;
@@ -18,19 +18,19 @@ public class StudentReport {
         this.c_id = c_id;
     }
 
-    public short getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(short year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public boolean isSem() {
+    public int getSem() {
         return sem;
     }
 
-    public void setSem(boolean sem) {
+    public void setSem(int sem) {
         this.sem = sem;
     }
 

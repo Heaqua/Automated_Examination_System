@@ -11,7 +11,7 @@ public class MainApplication {
 
     public static People user;
     public static OriginalLoginPage app;
-    public static short num=0;
+    public static int num=0;
 
 
     public static void main(String[] args){
@@ -27,9 +27,9 @@ try {
         Question q = new QuestionDaoImp().findByID((short) 1, "201C241101");
         System.out.println(q.getContent());
         } catch (SQLException throwables) {
-        throwables.printStackTrace();
+            throwables.printStackTrace();
         } catch (IOException e) {
-        e.printStackTrace();
+            e.printStackTrace();
         }
 
  */

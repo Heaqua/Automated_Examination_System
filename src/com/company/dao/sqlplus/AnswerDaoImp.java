@@ -27,12 +27,12 @@ public class AnswerDaoImp implements AnswerDao {
         }
     }
     @Override
-    public Answer findByKey(short questionNo, String testNo, String stu_id) {
+    public Answer findByKey(int questionNo, String testNo, String stu_id) {
         ResultSet rs = null;
         Answer a = null;
         try {
             queryAnswer.setString(1, testNo);
-            queryAnswer.setShort(2, questionNo);
+            queryAnswer.setInt(2, questionNo);
             queryAnswer.setString(3, stu_id);
             rs = queryAnswer.executeQuery();
             rs.next();

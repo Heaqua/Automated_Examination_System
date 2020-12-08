@@ -2,8 +2,10 @@ package com.company.ui;
 
 import com.company.dao.AnswerDao;
 import com.company.dao.ExamDao;
+import com.company.dao.QuestionDao;
 import com.company.dao.sqlplus.AnswerDaoImp;
 import com.company.dao.sqlplus.ExamDaoImp;
+import com.company.dao.sqlplus.QuestionDaoImp;
 import com.company.domain.Exam;
 import com.company.domain.Question;
 
@@ -14,6 +16,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
@@ -21,9 +24,13 @@ public class TakeAnExamM extends JFrame {
 
     int num;
     int total;
-    int score;
+    BigDecimal score;
     String Question;
     String Com;
+    String studentAnswer;
+
+
+
     public TakeAnExamM(Exam e, int i){
         super("Take an exam");
 
@@ -137,13 +144,51 @@ public class TakeAnExamM extends JFrame {
 
         this.setVisible(true);
 
+
+        A1.addActionListener(e1 -> {
+            studentAnswer=A1.getText();
+        });
+
+        B1.addActionListener(e1 -> {
+            studentAnswer=B1.getText();
+        });
+
+        C1.addActionListener(e1 -> {
+            studentAnswer=C1.getText();
+        });
+
+        D1.addActionListener(e1 -> {
+            studentAnswer=D1.getText();
+        });
+
+
+
+
+        BigDecimal stuScore;
+
+        if(studentAnswer.equals(allQuestions[i].getAnswer())){
+            stuScore=allQuestions[i].getScore();
+
+        }
+        else {
+            stuScore=new BigDecimal(0);
+        }
+
+
+
+
+
         next.addActionListener(x -> {
             setVisible(false);
             MainApplication.start++;
             if(MainApplication.start<allQuestions.length) {
                 if (allQuestions[i].getType().equals("MC")) {
+                    AnswerDao answerDao=new AnswerDaoImp();
+                    answerDao.create(num,e.getTestNo(),MainApplication.user.getId(),studentAnswer,stuScore);
                     new TakeAnExamM(e, MainApplication.start);
                 } else {
+                    AnswerDao answerDao=new AnswerDaoImp();
+                    answerDao.create(num,e.getTestNo(),MainApplication.user.getId(),studentAnswer,stuScore);
                     new TakeAnExamB(e, MainApplication.start);
                 }
 
@@ -153,8 +198,6 @@ public class TakeAnExamM extends JFrame {
 
     }
 
-    public TakeAnExamM(int num, int total, int score, String question, String com, String s, String s1, String s2, String optional) {
-    }
 
     public String getA(String content){
         String[] sep = content.split("/");

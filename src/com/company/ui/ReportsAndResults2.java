@@ -1,12 +1,7 @@
 package com.company.ui;
 
-import com.company.dao.StudentDao;
-import com.company.dao.SubjectDao;
-import com.company.dao.TakeDao;
-import com.company.dao.sqlplus.Current;
-import com.company.dao.sqlplus.StudentDaoImp;
-import com.company.dao.sqlplus.SubjectDaoImp;
-import com.company.dao.sqlplus.TakeDaoImp;
+import com.company.dao.*;
+import com.company.dao.sqlplus.*;
 import com.company.domain.Exam;
 import com.company.domain.OldStudent;
 import com.company.domain.Student;
@@ -32,20 +27,32 @@ public class ReportsAndResults2 extends JFrame {
     public ReportsAndResults2(String subjectId) {
         //
         super("Reports and Results");
-        for(int i=0;i<allExams.length;i++){
+//        for(int i=0;i<allExams.length;i++){
+//
+//            TakeDao takeDao=new TakeDaoImp();
+//            result= OldStudent.letterGradeByNumGrade(takeDao.findByKey(allExams[i].getTestNo(),MainApplication.user.getId()).getTest_result().doubleValue());
+//
+//
+//            SubjectDao subjectDao=new SubjectDaoImp();
+//            //needs to review
+//
+//            //subjectId=subjectDao.findByStuId(Current.getCurrentYear(),Current.getCurrentSem(),MainApplication.user.getId(),allExams[i].getTestNo()).getSub_id();
+//
+//
+//
+//        }
 
-            TakeDao takeDao=new TakeDaoImp();
-            result= OldStudent.letterGradeByNumGrade(takeDao.findByKey(allExams[i].getTestNo(),MainApplication.user.getId()).getTest_result().doubleValue());
 
+        TakeDao takeDao=new TakeDaoImp();
+        ExamDao examDao=new ExamDaoImp();
+        ClassDao classDao=new Class1DaoImp();
+        String testNo=examDao.findBySubIdCId(subjectId,classDao.findById(MainApplication.user.getId()).getC_id()).getTestNo();
+        result=OldStudent.letterGradeByNumGrade(takeDao.findByKey(testNo,MainApplication.user.getId()).getTest_result().doubleValue());
 
-            SubjectDao subjectDao=new SubjectDaoImp();
-            //needs to review
-            //TODO
-            //subjectId=subjectDao.findByStuId(Current.getCurrentYear(),Current.getCurrentSem(),MainApplication.user.getId(),allExams[i].getTestNo()).getSub_id();
+        StudentDao studentDao=new StudentDaoImp();
 
-
-            //TODO:report=;
-        }
+        //handling report
+        report=studentDao.getStudentReport((Student) MainApplication.user).table.toString();
 
 
 

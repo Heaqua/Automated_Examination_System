@@ -25,10 +25,13 @@ public class Take {
     }
 
     public BigDecimal getTest_result() {
+        System.out.println("getTest_result");
         return test_result;
     }
 
     public String getLetterGrade(){
+        System.out.println(this.test_result);
+        System.out.println(this.getTestNo()+ " Have called getLetterGrade");
         return letterGradeByNumGrade(getTest_result().doubleValue());
     }
 

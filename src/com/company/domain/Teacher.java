@@ -9,16 +9,9 @@ public class Teacher extends People {
         return tea_id;
     }
 
-    public void setTea_id(String tea_id) {
-        this.tea_id = tea_id;
-    }
 
     public String getTea_name() {
         return tea_name;
-    }
-
-    public void setTea_name(String tea_name) {
-        this.tea_name = tea_name;
     }
 
     @Override
@@ -26,15 +19,8 @@ public class Teacher extends People {
         return password;
     }
 
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public Teacher(){}
     public Teacher(String tea_id, String tea_name, String password) {
-        this.tea_id = tea_id;
-        this.tea_name = tea_name;
-        this.password = password;
+        super(tea_name, tea_id, password);
     }
 }

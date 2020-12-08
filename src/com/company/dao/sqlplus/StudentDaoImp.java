@@ -34,11 +34,8 @@ public class StudentDaoImp implements StudentDao {
             rs=pstmt.executeQuery();
 
             if(rs.next()){
-                result= new Student();
+                result= new Student(rs.getString("stu_name"), rs.getString("stu_id"), rs.getString("stu_pwd"));
 
-                result.setName(rs.getString("stu_name"));
-                result.setId(rs.getString("stu_id"));
-                result.setPassword(rs.getString("stu_pwd"));
                 result.setC_id(rs.getString("c_id"));
 
                 return result;
@@ -74,10 +71,8 @@ public class StudentDaoImp implements StudentDao {
         try {
             findClass.setString(1, student.getId());
             ResultSet rs = findClass.executeQuery();
-
             rs.next();
             String c_id = rs.getString(1);
-            System.out.println(c_id);
             ExamDaoImp examDaoImp = new ExamDaoImp();
             return examDaoImp.findExamByClass(c_id);
         } catch (SQLException throwables) {
@@ -185,10 +180,12 @@ public class StudentDaoImp implements StudentDao {
             table[i][1] = subject.getSub_name();
             // Find letter grade and comments
             Take take = takeDaoImp.findByKey(exams[i].getTestNo(), s.getId());
-            System.out.println(i+exams[i].getTestNo());
+            System.out.println(exams[i].getTestNo());
+            System.out.println(s.getId());
+            System.out.println(take == null);
 
-            table[i][2] = take.getLetterGrade();
             double numGrade = take.getTest_result().doubleValue();
+            table[i][2] = take.letterGradeByNumGrade(numGrade);
             table[i][7] = take.getComment();
             // Find prof name
             Teacher teacher = teacherDaoImp.findById(exams[i].getTea_id());

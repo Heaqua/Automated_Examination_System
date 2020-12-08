@@ -45,18 +45,19 @@ public class TakeDaoImp implements TakeDao {
             pstmt.setString(1,testNo );
             pstmt.setString(2,stuId);
             rs = pstmt.executeQuery();
-
             if (rs.next()) {
                 result = new Take();
 
                 result.setTestNo(rs.getString("test#"));
                 result.setStu_ID(rs.getString("stu_id"));
+                System.out.println("test_result: " + rs.getBigDecimal(("test_result")));
                 result.setTest_result(rs.getBigDecimal("test_result"));
                 result.setComment(rs.getString("comments"));
-
+                System.out.println("Has return result");
                 return result;
             }
         } catch (SQLException e) {
+            System.out.println("sqlexception");
             e.printStackTrace();
         } finally {
             if (rs != null) {
@@ -76,7 +77,8 @@ public class TakeDaoImp implements TakeDao {
                 }
             }
         }
-        return null;
+        System.out.println("Has returned null");
+        return result;
 
     }
 

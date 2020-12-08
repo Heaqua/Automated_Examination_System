@@ -38,20 +38,15 @@ public class MainApplication {
 
     public static void forTestingPurpose() {
 //        TakeDaoImp takeDaoImp = new TakeDaoImp();
-//        takeDaoImp.delete("0201Z100199", "S180102");
-        try {
-            Statement stmt = TestApplication.conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT C_ID FROM STUDENT WHERE STU_ID = 'S180102'");
-            rs.next();
-            System.out.println(rs.getString(1));
+//
+//        Take take = takeDaoImp.findByKey("201A123401", "S180102");
+//        System.out.println(take.getComment());
+//        System.out.println(take.getTest_result().doubleValue());
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
         StudentDaoImp studentDaoImp = new StudentDaoImp();
-        Student s = new Student();
-        s.setId("S180102");
-        studentDaoImp.allExams(s);
+        Student s = new Student("Goofy", "S180102", "123456");
+        StudentReport report = studentDaoImp.getStudentReport(s);
+
     }
 
 }

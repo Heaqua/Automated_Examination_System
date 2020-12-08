@@ -98,7 +98,7 @@ public class ReportsAndResults extends JFrame {
         //click "Sure"
         sure.addActionListener(e -> {
             setVisible(false);
-            new ReportsAndResults2();
+            new ReportsAndResults2(sub[0]);
         });
 
         this.setVisible(true);

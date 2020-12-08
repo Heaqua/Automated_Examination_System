@@ -197,9 +197,14 @@ public class ExamDaoImp implements ExamDao {
         Exam result = null;
 
         try {
-            String sql = "";
+            String sql = "SELECT S.TEST# FROM TEACH T,SETE S WHERE T.YEAR=? AND T.SEM=? AND T.SUB_ID=? AND T.C_ID=?" +
+                    "S.YEAR=T.YEAR AND T.TEA_ID=S.TEA_ID AND S.SEM=T.SEM";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, cId);
+            pstmt.setInt(1, Current.getCurrentYear());
+            pstmt.setInt(2, Current.getCurrentSem());
+            pstmt.setString(3, subId);
+            pstmt.setString(4, cId);
+
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -234,5 +239,90 @@ public class ExamDaoImp implements ExamDao {
         return null;
 
     }
+
+    public BigDecimal[] generateResult(String testNo){
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        BigDecimal[] result = new BigDecimal[4];
+
+        try {
+            String sql = "SELECT AVG(TEST_RESULT), MEDIAN(TEST_RESULT), STATS_MODE(TEST_RESULT)," +
+                    "STDDEV(TEST_RESULT) FROM TAKE WHERE TEST#=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, testNo);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                result[0] = rs.getBigDecimal(1);
+                result[1]=rs.getBigDecimal(2);
+                result[2]=rs.getBigDecimal(3);
+                result[3]=rs.getBigDecimal(4);
+                return result;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+
+                }
+            }
+
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                    ;
+                } catch (SQLException e) {
+
+                }
+            }
+        }
+        return null;
+
+    }
+
+    public Exam examStartTime(String testNo){
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Exam result = null;
+
+        try {
+            String sql = "SELECT TEST#, START_TIME, DURATION FROM EXAM WHERE TEST#=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, testNo);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                result=new Exam(rs.getString(1),rs.getTimestamp(2),rs.getInt(3));
+
+                return result;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+
+                }
+            }
+
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                    ;
+                } catch (SQLException e) {
+
+                }
+            }
+        }
+        return null;
+    }
+
 
 }

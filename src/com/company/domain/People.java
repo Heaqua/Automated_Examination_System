@@ -1,9 +1,15 @@
 package com.company.domain;
 
 public class People {
-    private static String name;
-    private static String id;
-    private static String password;
+    private String name;
+    private String id;
+    private String password;
+
+    public People(String name, String id, String password) {
+        this.name = name;
+        this.id = id;
+        this.password = password;
+    }
 
     public String getName() {
         return name;
@@ -17,15 +23,4 @@ public class People {
         return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

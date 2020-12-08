@@ -4,6 +4,7 @@ import com.company.domain.Exam;
 import com.company.domain.Question;
 import com.company.domain.TestStats;
 
+import java.math.BigDecimal;
 import java.sql.Time;
 import java.sql.Timestamp;
 
@@ -18,5 +19,9 @@ public interface ExamDao {
     public TestStats getTestStatsById(String testId);
 
     public Exam findBySubIdCId(String subId,String cId);
+    public BigDecimal[] generateResult(String testNo);
+
+    public Exam examStartTime(String testNo);
+
 
 }

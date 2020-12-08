@@ -19,7 +19,16 @@ import java.awt.*;
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ViewExaminationResults2 extends JFrame {
+//    public static void main(String[] args) {
+//
+////        new ViewExaminationResults2("C01","COMP2011");
+//    }
 
+    StudentDao studentDao=new StudentDaoImp();
+
+    TakeDao takeDao=new TakeDaoImp();
+    SubjectDao subjectDao=new SubjectDaoImp();
+    ExamDao examDao=new ExamDaoImp();
 
 
 
@@ -27,12 +36,7 @@ public class ViewExaminationResults2 extends JFrame {
     public ViewExaminationResults2(String class0,String subject) {
 
         super("View Examination Results");
-
-        StudentDao studentDao=new StudentDaoImp();
         Student[] allStudents=studentDao.findByCId(class0);
-        TakeDao takeDao=new TakeDaoImp();
-        SubjectDao subjectDao=new SubjectDaoImp();
-        ExamDao examDao=new ExamDaoImp();
 
         String[] oneString;
 
@@ -48,19 +52,20 @@ public class ViewExaminationResults2 extends JFrame {
             rowData0[i]=oneString;
         }
 
-        Object[][] row0=new Object[3][2];
+        Object[][] row0=new Object[4][2];
         row0[0][0]="Average";
-        //row0[0][1]=;
+        row0[0][1]=examDao.generateResult(examDao.findBySubIdCId(subject,class0).getTestNo())[0];
+
         row0[1][0]="Median";
-        //row0[1][1]=;
+        row0[1][1]=examDao.generateResult(examDao.findBySubIdCId(subject,class0).getTestNo())[1];
+
         row0[2][0]="Mode";
-        //row0[2][1]=;
+        row0[2][1]=examDao.generateResult(examDao.findBySubIdCId(subject,class0).getTestNo())[2];
 
+        row0[3][0]="Standard deviation";
+        row0[3][1]=examDao.generateResult(examDao.findBySubIdCId(subject,class0).getTestNo())[3];
 
-
-
-
-
+        //[
 
         JPanel panel = new JPanel();
         setSize(700, 600);
@@ -103,6 +108,8 @@ public class ViewExaminationResults2 extends JFrame {
         //set two tables
         Object[] columnNames = {"Student", "Result"};
         Object[] column = {"Name","Statistics"};
+
+        /*
         Object[][] rowData = {
                 {"Lucy", "A"},
                 {"Lisa", "B"},
@@ -116,6 +123,11 @@ public class ViewExaminationResults2 extends JFrame {
                 {"Median", "B"},
                 {"Mode", "B+"},
         };
+
+         */
+        Object[][] rowData=rowData0;
+        Object[][] row=row0;
+
 
         JTable dataTable = new JTable(rowData, columnNames){
             @Override

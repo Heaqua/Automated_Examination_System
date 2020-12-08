@@ -1,5 +1,7 @@
 package com.company.ui;
 
+import com.company.domain.Exam;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,9 +11,8 @@ import static java.awt.Toolkit.getDefaultToolkit;
 
 public class TakeAnExamB extends JFrame {
 
+
     public TakeAnExamB(int num,int total,int score,String Question,String Com){
-
-
         super("Take an exam");
         JPanel panel = new JPanel();
         setSize(700,600);

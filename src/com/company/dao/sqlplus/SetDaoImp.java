@@ -98,6 +98,7 @@ public class SetDaoImp implements SetDao {
     }
     }
 
+    //TODO a teacher can set multiple exams how can it has a return type of Set instead of Set[]?
     public Set findByTeaId(String teaId){
         PreparedStatement pstmt = null;
         ResultSet rs = null;

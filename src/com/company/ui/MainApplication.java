@@ -2,14 +2,13 @@ package com.company.ui;
 
 import com.company.dao.ExamDao;
 import com.company.dao.SetDao;
-import com.company.dao.sqlplus.ExamDaoImp;
-import com.company.dao.sqlplus.SetDaoImp;
-import com.company.dao.sqlplus.StudentDaoImp;
+import com.company.dao.sqlplus.*;
 import com.company.domain.*;
-import com.company.dao.sqlplus.TestApplication;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class MainApplication {
 
@@ -38,13 +37,16 @@ public class MainApplication {
     }
 
     public static void forTestingPurpose() {
+//        TakeDaoImp takeDaoImp = new TakeDaoImp();
+//
+//        Take take = takeDaoImp.findByKey("201A123401", "S180102");
+//        System.out.println(take.getComment());
+//        System.out.println(take.getTest_result().doubleValue());
+
         StudentDaoImp studentDaoImp = new StudentDaoImp();
-        Student s = new Student();
-        s.setId("S180102");
-        Exam[] exams = studentDaoImp.allExams(s);
-        for(Exam exam: exams){
-            System.out.println(exam.getSub_id());
-        }
+        Student s = new Student("Goofy", "S180102", "123456");
+        StudentReport report = studentDaoImp.getStudentReport(s);
+
     }
 
 }

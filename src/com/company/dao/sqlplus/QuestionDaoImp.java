@@ -25,7 +25,7 @@ public class QuestionDaoImp implements QuestionDao {
     }
 
     @Override
-    public Question findByID(short questionNo, String testNo) {
+    public Question findByID(int questionNo, String testNo) {
         Question q = null;
         ResultSet rs = null;
         try {
@@ -51,13 +51,13 @@ public class QuestionDaoImp implements QuestionDao {
     }
 
     @Override
-    public void create(short questionNo, String testNo, String compulsory, String type, BigDecimal score, String content, String answer) {
+    public void create(int questionNo, String testNo, String compulsory, String type, BigDecimal score, String content, String answer) {
         try{
             Connection conn=TestApplication.conn;
             String sql="insert into question (q#,test#,compulsory,type,score,question_content,answer) values (?,?,?,?,?,?,?)" ;
             PreparedStatement pstmt=conn.prepareStatement(sql);
 
-            pstmt.setShort(1,questionNo);
+            pstmt.setInt(1,questionNo);
             pstmt.setString(2,testNo);
             pstmt.setString(3,compulsory);
             pstmt.setString(4,type);

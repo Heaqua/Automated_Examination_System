@@ -86,7 +86,7 @@ public class SetDaoImp implements SetDao {
     }
     }
 
-    public Set findByTeaId(String teaId){
+    public Set[] findByTeaId(String teaId){
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;

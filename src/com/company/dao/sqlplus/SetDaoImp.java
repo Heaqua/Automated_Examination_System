@@ -3,6 +3,7 @@ package com.company.dao.sqlplus;
 import com.company.dao.SetDao;
 import com.company.domain.Set;
 import com.company.domain.Teacher;
+import oracle.jdbc.driver.OracleConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,9 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SetDaoImp implements SetDao {
+    static OracleConnection conn = TestApplication.conn;
 
     public Set findById(String testNo){
-        Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Set result = null;
@@ -54,21 +55,12 @@ public class SetDaoImp implements SetDao {
 
                 }
             }
-
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-
-                }
-            }
         }
         return null;
     }
 
     public void create(String testNo,short year,boolean sem,String teaId,String cId){
      try{
-        Connection conn=TestApplication.conn;
         String sql="insert into set (test#,year,sem,tea_id,c_id) values (?,?,?,?,?)" ;
         PreparedStatement pstmt=conn.prepareStatement(sql);
 
@@ -87,7 +79,6 @@ public class SetDaoImp implements SetDao {
     }
 
     public Set findByTeaId(String teaId){
-        Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Set result = null;
@@ -128,14 +119,6 @@ public class SetDaoImp implements SetDao {
                 try {
                     pstmt.close();
                     ;
-                } catch (SQLException e) {
-
-                }
-            }
-
-            if (conn != null) {
-                try {
-                    conn.close();
                 } catch (SQLException e) {
 
                 }

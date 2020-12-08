@@ -4,6 +4,7 @@ import com.company.dao.ClassDao;
 import com.company.domain.Class1;
 import com.company.domain.Student;
 import com.company.domain.Teacher;
+import oracle.jdbc.driver.OracleConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,15 +12,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Class1DaoImp implements ClassDao {
+    static OracleConnection conn = TestApplication.conn;
     @Override
     public Class1 findById(String cId) {
-        Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Class1 result = null;
 
         try {
-            conn = TestApplication.conn;
             String sql = "select c_id, instructor_id  from class where c_id= ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, cId);
@@ -52,20 +52,11 @@ public class Class1DaoImp implements ClassDao {
 
                 }
             }
-
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-
-                }
-            }
         }
         return null;
     }
 
     public Student[] allStudents(Class1 class1){
-        Connection conn=null;
         PreparedStatement pstmt1=null;
         PreparedStatement pstmt2=null;
         ResultSet rs1=null;
@@ -136,16 +127,6 @@ public class Class1DaoImp implements ClassDao {
             if(pstmt2!=null){
                 try{
                     pstmt2.close();
-                }
-                catch (SQLException e){
-
-                }
-            }
-
-
-            if(conn !=null){
-                try {
-                    conn.close();
                 }
                 catch (SQLException e){
 

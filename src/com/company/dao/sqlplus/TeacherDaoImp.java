@@ -4,6 +4,7 @@ import com.company.dao.TeacherDao;
 import com.company.domain.Class1;
 import com.company.domain.Subject;
 import com.company.domain.Teacher;
+import oracle.jdbc.driver.OracleConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,14 +12,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TeacherDaoImp implements TeacherDao {
+    static OracleConnection conn = TestApplication.conn;
     public Teacher findById(String userId) {
-        Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Teacher result = null;
 
         try {
-            conn = TestApplication.conn;
             String sql = "SELECT TEA_ID,TEA_NAME,TEA_PWD FROM TEACHER WHERE TEA_ID=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userId);
@@ -52,21 +52,12 @@ public class TeacherDaoImp implements TeacherDao {
 
                 }
             }
-
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-
-                }
-            }
         }
         return null;
 
     }
 
     public Subject[] findAllSubjects(Teacher teacher) {
-        Connection conn = null;
         PreparedStatement pstmt1 = null;
         PreparedStatement pstmt2 = null;
         ResultSet rs1 = null;
@@ -74,7 +65,6 @@ public class TeacherDaoImp implements TeacherDao {
         Subject[] result = null;
 
         try {
-            conn = TestApplication.conn;
             String sql1 = "select sub_id,sub_name from teach where tea_id=?";
             pstmt1 = conn.prepareStatement(sql1);
             pstmt1.setString(1, teacher.getId());
@@ -135,22 +125,12 @@ public class TeacherDaoImp implements TeacherDao {
 
                 }
             }
-
-
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-
-                }
-            }
         }
         return null;
     }
 
 
     public Class1[] findAllClasses(Teacher teacher) {
-        Connection conn = null;
         PreparedStatement pstmt1 = null;
         PreparedStatement pstmt2 = null;
         ResultSet rs1 = null;
@@ -158,7 +138,6 @@ public class TeacherDaoImp implements TeacherDao {
         Class1[] result = null;
 
         try {
-            conn = TestApplication.conn;
             String sql1 = "select c_id,instructor_id from teach,class where tea_id=? and class.c_id=teach.c_id";
             pstmt1 = conn.prepareStatement(sql1);
             pstmt1.setString(1, teacher.getId());
@@ -187,8 +166,6 @@ public class TeacherDaoImp implements TeacherDao {
 
             }
             return result;
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -219,16 +196,6 @@ public class TeacherDaoImp implements TeacherDao {
                 try {
                     pstmt2.close();
                 } catch (SQLException e) {
-
-                }
-            }
-
-
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-
                 }
             }
         }

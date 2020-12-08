@@ -23,19 +23,9 @@ public class MainApplication {
     public static void forTestingPurpose() {
         try {
             TestApplication.testApplication();
-            Exam e = new Exam();
-            e.setTestNo("201C241101");
             ExamDaoImp examDaoImp = new ExamDaoImp();
-            Question[] ques = examDaoImp.allQuestions(e);
-            for(Question q: ques){
-                System.out.print(q.getQuesNo());
-                System.out.print(q.getCom());
-                System.out.print(q.getType());
-                System.out.print(q.getScore());
-                System.out.print(q.getContent());
-                System.out.print(q.getAnswer());
-                System.out.println();
-            }
+            Exam e = examDaoImp.findById("201Z100199");
+            System.out.println(e.getDuration());
             TestApplication.conn.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -45,16 +35,3 @@ public class MainApplication {
     }
 
 }
-
-/*
-try {
-        TestApplication.testApplication();
-        Question q = new QuestionDaoImp().findByID((short) 1, "201C241101");
-        System.out.println(q.getContent());
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
- */

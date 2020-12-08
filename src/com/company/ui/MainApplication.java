@@ -28,7 +28,7 @@ public class MainApplication {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //forTestingPurpose();
+        forTestingPurpose();
         app=new OriginalLoginPage();
 //        try {
 //            TestApplication.conn.close();
@@ -43,6 +43,15 @@ public class MainApplication {
 //        Take take = takeDaoImp.findByKey("201A123401", "S180102");
 //        System.out.println(take.getComment());
 //        System.out.println(take.getTest_result().doubleValue());
+//        try {
+//            Statement stmt = TestApplication.conn.createStatement();
+//            ResultSet rs = stmt.executeQuery("SELECT TEST# FROM SETE WHERE C_ID = 'C01'");
+//            while(rs.next()){
+//                System.out.println(rs.getString(1));
+//            }
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
 
         StudentDaoImp studentDaoImp = new StudentDaoImp();
         Student s = new Student("Goofy", "S180102", "123456");

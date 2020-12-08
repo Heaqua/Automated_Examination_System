@@ -4,6 +4,7 @@ import com.company.dao.ExamDao;
 import com.company.dao.SetDao;
 import com.company.dao.sqlplus.ExamDaoImp;
 import com.company.dao.sqlplus.SetDaoImp;
+import com.company.dao.sqlplus.StudentDaoImp;
 import com.company.domain.*;
 import com.company.dao.sqlplus.TestApplication;
 
@@ -19,7 +20,7 @@ public class MainApplication {
 
 
     public static void main(String[] args){
-        //forTestingPurpose();
+
         try {
             TestApplication.testApplication();
         } catch (SQLException throwables) {
@@ -27,24 +28,22 @@ public class MainApplication {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        forTestingPurpose();
         app=new OriginalLoginPage();
-//        try {
-//            TestApplication.conn.close();
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
+        try {
+            TestApplication.conn.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public static void forTestingPurpose() {
-        try {
-            TestApplication.testApplication();
-//            ExamDao examDao=new ExamDaoImp();
-//            examDao.create(testNumber,start2,dur);
-            SetDao setDao = new SetDaoImp();
-            setDao.create("201Z100199",2018,1,"T090909","C09");
-            TestApplication.conn.close();
-        } catch (SQLException | IOException throwables) {
-            throwables.printStackTrace();
+        StudentDaoImp studentDaoImp = new StudentDaoImp();
+        Student s = new Student();
+        s.setId("S180102");
+        Exam[] exams = studentDaoImp.allExams(s);
+        for(Exam exam: exams){
+            System.out.println(exam.getSub_id());
         }
     }
 

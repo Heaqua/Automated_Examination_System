@@ -1,14 +1,24 @@
 package com.company.ui;
 
+import com.company.dao.ExamDao;
+import com.company.dao.QuestionDao;
+import com.company.dao.StudentDao;
+import com.company.dao.sqlplus.ExamDaoImp;
+import com.company.dao.sqlplus.StudentDaoImp;
+import com.company.domain.Exam;
+import com.company.domain.Question;
+import com.company.domain.Student;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Timestamp;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class StudentMainPage extends JFrame{
-
+    Exam takeAnExam;
     public StudentMainPage(){
         super("Main Page");
         JPanel panel = new JPanel();
@@ -76,8 +86,27 @@ public class StudentMainPage extends JFrame{
 
         //click "take an exam"
         take.addActionListener(e -> {
-           setVisible(false);
+            setVisible(false);
+            Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
+            StudentDao studentDao = new StudentDaoImp();
+            Exam[] exams = studentDao.allExams((Student) MainApplication.user);
+            for (int i = 0; i < exams.length; i++) {
+                if (currentTime.toString().equals(exams[i].getStart().toString())) {
+                    takeAnExam=exams[i];
+
+                    //judge the first question type
+                    ExamDao examDao=new ExamDaoImp();
+                    Question[] allQuestions=examDao.allQuestions(takeAnExam);
+                    if(allQuestions[0].getType().equals("MC")){
+                        new TakeAnExamM();
+                    }
+                    else {
+                        new TakeAnExamB(allQuestions[0].getQuesNo(),allQuestions.length,allQuestions[0].getScore(),allQuestions[0].getContent(),allQuestions[0].getCom());
+                    }
+
+                }
+            }
         });
 
         //click "reports and results"

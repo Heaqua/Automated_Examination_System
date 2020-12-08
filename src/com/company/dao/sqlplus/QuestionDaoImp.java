@@ -18,7 +18,7 @@ public class QuestionDaoImp implements QuestionDao {
     static {
         try {
             queryQuestion = conn.prepareStatement("SELECT COMPULSORY, TYPE, SCORE," +
-                    " Q_CONTENT, ANSWER FROM QUESTION WHERE TEST# = ? AND Q# = ?");
+                    " Q_CONTENT, ANSWER FROM QUESTION WHERE TEST# = ? AND Q# = ? ");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

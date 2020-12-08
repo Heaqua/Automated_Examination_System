@@ -107,6 +107,12 @@ public class TakeAnExamB extends JFrame {
 //        });
 //        this.setVisible(true);
 //
+        next.addActionListener(e -> {
+            setVisible(false);
+            MainApplication.start++;
+            (StudentMainPage)MainApplication.mainPage.takeAnExam
+
+        });
 
 
     }

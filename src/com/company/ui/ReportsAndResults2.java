@@ -1,15 +1,54 @@
 package com.company.ui;
 
+import com.company.dao.StudentDao;
+import com.company.dao.SubjectDao;
+import com.company.dao.TakeDao;
+import com.company.dao.sqlplus.Current;
+import com.company.dao.sqlplus.StudentDaoImp;
+import com.company.dao.sqlplus.SubjectDaoImp;
+import com.company.dao.sqlplus.TakeDaoImp;
+import com.company.domain.Exam;
+import com.company.domain.Student;
+import com.company.domain.Subject;
+
 import javax.swing.*;
 import java.awt.*;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
 public class ReportsAndResults2 extends JFrame {
+    public static void main(String[] args) {
+        new ReportsAndResults2();
+    }
+
+    StudentDao studentDao=new StudentDaoImp();
+    Subject[] allSubjects=studentDao.allSubjects((Student) MainApplication.user);
+    Exam[] allExams=studentDao.allExams((Student) MainApplication.user);
+
+    String subjectId;
+    String result;
+    String report;
 
 
-    public ReportsAndResults2(String subject,String result,String report) {
+    public ReportsAndResults2() {
+        //
         super("Reports and Results");
+        for(int i=0;i<allExams.length;i++){
+            TakeDao takeDao=new TakeDaoImp();
+            result= takeDao.findByKey(allExams[i].getTestNo(),MainApplication.user.getId()).getTest_result().toString();
+
+            SubjectDao subjectDao=new SubjectDaoImp();
+            //needs to review
+            subjectId=subjectDao.findByStuId(Current.getCurrentYear(),Current.getCurrentSem(),MainApplication.user.getId(),allExams[i].getTestNo()).getSub_id();
+
+
+            //TODO:report=;
+        }
+
+
+
+
+
         JPanel panel = new JPanel();
         setSize(700, 600);
         setLocationRelativeTo(null);
@@ -26,8 +65,8 @@ public class ReportsAndResults2 extends JFrame {
         Font font2 = new Font("Times New Roman", Font.PLAIN, 28);
 
         //set a title
-        JLabel title = new JLabel(subject);
-        if(subject == null) {
+        JLabel title = new JLabel(subjectId);
+        if(subjectId == null) {
             title = new JLabel("ABCT1234");
         }
         title.setBounds(290,50,400,50);

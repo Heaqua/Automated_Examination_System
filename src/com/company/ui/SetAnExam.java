@@ -85,7 +85,7 @@ public class SetAnExam extends JFrame {
         panel.add(start);
 
         //set the hint
-        JLabel hint = new JLabel("(Format:yyyy/mm/dd:hh:mi:ss)");
+        JLabel hint = new JLabel("(Format:yyyy-MM-dd'T'HH-mm)");
         hint.setBounds(70,380,300,30);
         hint.setFont(font4);
         panel.add(hint);
@@ -103,7 +103,7 @@ public class SetAnExam extends JFrame {
         panel.add(duration);
 
         //set the second hint
-        JLabel hint2 = new JLabel("(Format: 120)(min)");
+        JLabel hint2 = new JLabel("(Format: 120min)");
         hint2.setBounds(70,460,300,30);
         hint2.setFont(font4);
         panel.add(hint2);

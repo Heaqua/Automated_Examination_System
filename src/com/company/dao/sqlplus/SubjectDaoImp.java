@@ -101,4 +101,48 @@ public class SubjectDaoImp implements SubjectDao {
         }
         return null;
     }
+
+    public Subject findByStuId(short year,boolean sem,String stuId,String testNo){
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Subject result = null;
+
+        try {
+            String sql = "";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, );
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                result = new Subject();
+
+                result.setSub_name(rs.getString("sub_name"));
+                result.setSub_id(rs.getString("sub_id"));
+
+                return result;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+
+                }
+            }
+
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                    ;
+                } catch (SQLException e) {
+
+                }
+            }
+
+        }
+        return null;
+    }
 }

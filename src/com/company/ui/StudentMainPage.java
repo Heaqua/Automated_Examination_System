@@ -90,7 +90,8 @@ public class StudentMainPage extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 setVisible(false);
-                new OriginalLoginPage();
+                MainApplication.app = new OriginalLoginPage();
+
             }
 
             @Override

@@ -66,7 +66,7 @@ public class LoginPage extends JFrame {
 
         //Event
         loginButton.addActionListener(e -> {
-            if(app.ifAStudent[0]==1) {
+            if(app.ifAStudent[0]==0) {
                 TeacherDao teacherDao = new TeacherDaoImp();
                 Teacher teacher = teacherDao.findById(user_text.getText());
 

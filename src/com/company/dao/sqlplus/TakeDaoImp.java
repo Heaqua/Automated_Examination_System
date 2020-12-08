@@ -13,6 +13,26 @@ import java.sql.SQLException;
 
 public class TakeDaoImp implements TakeDao {
     static OracleConnection conn = TestApplication.conn;
+    static PreparedStatement deleteTake;
+
+    static {
+        try {
+            deleteTake = conn.prepareStatement("DELETE FROM TAKE WHERE TEST# = ? AND STU_ID = ?");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void delete(String testId, String stu_id){
+        try {
+            deleteTake.setString(1, testId);
+            deleteTake.setString(2, stu_id);
+            deleteTake.executeUpdate();
+            System.out.println(testId + " " + stu_id +  "deleted");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
 
     public Take findByKey(String testNo, String stuId){
         PreparedStatement pstmt = null;

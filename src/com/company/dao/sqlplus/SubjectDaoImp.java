@@ -64,7 +64,7 @@ public class SubjectDaoImp implements SubjectDao {
         Subject result = null;
 
         try {
-            String sql = "select sub_id, sub_name from subject where sub_id=?,";
+            String sql = "select sub_id, sub_name from subject where sub_id=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, subId);
 

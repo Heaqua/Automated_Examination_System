@@ -1,45 +1,40 @@
 package com.company.domain;
 
 public class Teacher extends People {
+    private String tea_id;
+    private String tea_name;
+    private String password;
 
-    /*
-    public boolean login(String name, String stu_id){
-        return true;
+    public String getTea_id() {
+        return tea_id;
     }
 
-    public boolean instructor(Class e){
-        return true;
+    public void setTea_id(String tea_id) {
+        this.tea_id = tea_id;
     }
 
-    public boolean eligibleToSetExam(Subject s, Class c){
-        return true;
+    public String getTea_name() {
+        return tea_name;
     }
 
-    public void setExam(Subject s, Class c, String date,
-                        String start_time, String duration){
-        // check eligible or not
-        // Call exam constructor
-    }
-    public void setQuestion(Exam e, int questionNumber, boolean compulsory, String type, double score){
-        // Complete the parameters
-    }
-    public void gradeQuestion(Question q){
-        // question type other than T/F or MCQ
-    }
-    public void gradeExam(Exam e){}
-
-    public void printInformation(){
-        // Instructor?
-        // Subject ? Class?
+    public void setTea_name(String tea_name) {
+        this.tea_name = tea_name;
     }
 
-    public String getTestResult(Exam e, Student s){
-        return "A";
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    public void getAnalysisReport(Student s){
-
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-     */
+    public Teacher(){}
+    public Teacher(String tea_id, String tea_name, String password) {
+        this.tea_id = tea_id;
+        this.tea_name = tea_name;
+        this.password = password;
+    }
 }

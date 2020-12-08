@@ -2,6 +2,7 @@ package com.company.dao.sqlplus;
 
 import com.company.dao.SetDao;
 import com.company.domain.Set;
+import com.company.domain.Subject;
 import com.company.domain.Teacher;
 
 import java.sql.Connection;
@@ -94,9 +95,9 @@ public class SetDaoImp implements SetDao {
 
         try {
             conn = TestApplication.conn;
-            String sql = "SELECT TEST#,YEAR,SEM,TEA_ID,C_ID FROM SET WHERE TEST#=?";
+            String sql = "select test#,year,sem,tea_id,c_id from set where test#=?";
             pstmt = conn.prepareStatement(sql);
-            //pstmt.setString(1, testNo );
+            pstmt.setString(1, testNo );
             rs = pstmt.executeQuery();
 
 
